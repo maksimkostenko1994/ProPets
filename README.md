@@ -14,6 +14,8 @@ https://xd.adobe.com/view/f8d235c1-c662-44d2-bb34-52236e66221a-ad81/
 https://fontawesome.com/v4.7/icons
 ## fontawesome v5
 https://fontawesome.com/v5.15/icons?d=gallery&p=2
+## trello
+https://trello.com/b/G0fQjBz6/propets
 
 # how to run the project
 1. Run `npm install`
