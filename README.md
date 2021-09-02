@@ -11,7 +11,7 @@ https://sass-lang.com/guide
 ## psd-layout
 https://xd.adobe.com/view/f8d235c1-c662-44d2-bb34-52236e66221a-ad81/
 ## fontawesome v4 && v5
-https://fontawesome.com/v4.7/icons/
+https://fontawesome.com/v4.7/icons/\n
 https://fontawesome.com/v5.15/icons?d=gallery&p=2
 
 # how to run the project
