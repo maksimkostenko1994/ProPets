@@ -12,7 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/maksimkostenko1994/ProPets.git"
   },
-  "keywords": ["pets"],
+  "keywords": [
+    "pets"
+  ],
   "author": "Maksym Kostenko, Igor Kuznecov, Anton Vilchynskyy",
   "license": "ISC",
   "bugs": {
@@ -24,6 +26,7 @@
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
     "babel-loader": "^8.2.2",
+    "bootstrap": "^5.1.0",
     "css-loader": "^6.2.0",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.2",
