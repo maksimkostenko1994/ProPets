@@ -19,5 +19,5 @@ https://trello.com/b/G0fQjBz6/propets
 
 # how to run the project
 1. Run `npm install`
-2. Run command `npm run build`
-3. after finishing the first command run `npm run dev`. Server automatically will open in your browser.
+2. Run command `npm build`
+3. after finishing the first command run `npm start`. Server automatically will open in your browser.
