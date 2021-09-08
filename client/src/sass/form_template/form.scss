@@ -1,43 +1,45 @@
 @import "./src/sass/variables";
 @mixin input {
-    input {
-        border: none;
-        border-bottom: 1px solid $textColor;
-        font-size: $text12;
-    }
-    ::-webkit-input-placeholder {
+    border: none;
+    border-bottom: 1px solid $textColor;
+    font-size: $text12;
+
+    &::-webkit-input-placeholder {
         color: $textGrey;
     }
-    input:focus {
+    &:focus {
         outline: none;
     }
 }
 @mixin textarea {
-    textarea {
-        border-color: $textColor;
-        font-size: $text12;
-    }
-    textarea:focus {
+    border-color: $textColor;
+    font-size: $text12;
+    resize: none;
+    &:focus {
         outline: none;
     }
 }
 @mixin select {
-    select {
-        border: none;
-        cursor: pointer;
-        outline: none;
-    }
+    border: none;
+    cursor: pointer;
+    outline: none;
 }
 @mixin labelSpan {
-    span {
-        font-size: $text10;
-        color: $textColor;
-    }
+    font-size: $text10;
+    color: $textColor;
 }
 @mixin formControl {
-    @include input();
-    @include textarea();
-    @include select();
-    @include labelSpan();
+    input {
+        @include input();
+    }
+    textarea {
+        @include textarea();
+    }
+    select {
+        @include select();
+    }
+    span {
+        @include labelSpan();
+    }
     color: $darkText;
 }
