@@ -1,0 +1,64 @@
+@import "./variables";
+
+@mixin logo {
+  border: 1px solid $whiteBgColor;
+  color: $textColor;
+  position: relative;
+
+  h1 {
+    font-family: Montserat, sans-serif;
+    font-weight: $textSuperBolder;
+    font-size: 2.8em;
+    span {
+      letter-spacing: -5px;
+      &:first-child {
+        margin: 0 15px;
+      }
+    }
+  }
+
+  .logo-search {
+    position: absolute;
+    top: 13px;
+    left: 48px;
+  }
+
+  .logo-paw {
+    position: absolute;
+    top: 24px;
+    left: 59.5px;
+  }
+
+  .logo-circle-inside {
+    position: absolute;
+    top: 19px;
+    left: 54px;
+    height: 28px;
+    width: 28px;
+    border: 4px solid white;
+    border-radius: 50%;
+  }
+
+  .logo-circle-outside {
+    height: 40px;
+    width: 40px;
+    top: 12.5px;
+    left: 47.5px;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-radius: 50%;
+    position: absolute;
+    transform: rotate(324deg);
+  }
+
+  .logo-line {
+    height: 1px;
+    width: 9px;
+    background-color: white;
+    position: absolute;
+    bottom: 5px;
+    left: 86px;
+    transform: rotate(135deg);
+  }
+}
