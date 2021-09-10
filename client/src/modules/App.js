@@ -13,7 +13,6 @@ function App() {
         setModalWindow(isModalWindow)
     }
 
-
     const openModalWindow = () => {
         let isModalWindow = isModal
         isModalWindow = true

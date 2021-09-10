@@ -4,6 +4,7 @@ import {faSearch, faPaw} from "@fortawesome/free-solid-svg-icons";
 import "../../../sass/logo_template/Logo.scss"
 
 const Logo = () => {
+    
     return (
         <div className="logo">
             <h1>Pr<span/>P<span>ET</span>S</h1>
@@ -15,6 +16,8 @@ const Logo = () => {
         </div>
     )
 }
+
+
 
 export default Logo
 
