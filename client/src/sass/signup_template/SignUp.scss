@@ -1,0 +1,14 @@
+@import "../form_template/form";
+
+.signup-box {
+  display: flex;
+
+  .signup-form {
+    @include formControl;
+    width: 50%;
+  }
+
+  .form-validation {
+    width: 50%;
+  }
+}

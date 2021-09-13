@@ -20,7 +20,7 @@ function App() {
     }
 
     return (
-        <div style={{display: "flex", height: "40px", justifyContent: "center", alignItems: 'center', margin: "4px"}}>
+        <div>
             <FontAwesomeIcon icon={faUserAlt} size="2x"/><h1>Hello Guys!</h1>
             <button onClick={openModalWindow}>Click me</button>
             {isModal ? <ModalWindow closeModalWindow={closeModalWindow}/> : ""}
