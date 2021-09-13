@@ -62,3 +62,34 @@
     transform: rotate(135deg);
   }
 }
+
+// =========== mixins for buttons ========== start
+/* @mixin btnStandard(){
+  color: $whiteText;
+  border: 1px solid $btnWhite;
+  border-radius: 17px;
+  background-color: $btn;
+  &:hover{
+      background-color: $btnHover;
+      border: 1px solid $btnHover;
+      font-weight: 500;
+      color: $darkText;
+  }
+} */
+
+$btnMainPageHeight: 93px;
+@mixin btnMainPage(){
+  display: block;
+  height: $btnMainPageHeight;
+  border: none;
+  border-radius: 0 $btnMainPageHeight/2 $btnMainPageHeight/2 0;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+  h3{
+    font-size: $text32;
+    text-align: left;
+    padding-left: 10vw;
+    margin-bottom: 0;
+  }
+}
+// =========== mixins for buttons ========== end
