@@ -3,6 +3,7 @@
     border: none;
     border-bottom: 1px solid $textColor;
     font-size: $text12;
+    padding-top: 15px;
 
     &::placeholder {
         color: $textGrey;

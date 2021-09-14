@@ -3,7 +3,8 @@ import Logo from "../logo/Logo";
 import SignIn from "../signin/SignIn"
 import SignUp from "../signup/SignUp";
 
-import {useState} from "react";
+import React, {useState} from "react";
+import ModalFooter from "./ModalFooter";
 
 const ModalWindow = ({closeModalWindow}) => {
     const [currentForm, setCurrentForm] = useState(true)
@@ -21,14 +22,15 @@ const ModalWindow = ({closeModalWindow}) => {
         <div className="modal-window">
             <div className="modal-window-body">
                 <Logo color={""}/>
-                <button className="close-btn" onClick={closeModalWindow}>Close</button>
                 <h5><span>Welcome! </span>Please sign in / sign up to continue or</h5>
                 {/*Временные кнопки*/}
-                <button className="btn active" onClick={(event) => changeFormHandler(event)}>Sign in</button>
-                <button className="btn" onClick={(event) => changeFormHandler(event)}>Sign up</button>
+                <div className="nav-btns">
+                    <button className="btn active" onClick={(event) => changeFormHandler(event)}>Sign in</button>
+                    <button className="btn" onClick={(event) => changeFormHandler(event)}>Sign up</button>
+                </div>
                 {/*=================*/}
                 {currentForm ? <SignIn/> : <SignUp/>}
-
+                <ModalFooter closeModalWindow={closeModalWindow}/>
             </div>
         </div>
     )

@@ -10,43 +10,44 @@
   justify-content: center;
 
   .modal-window-body {
-    padding: 20px 50px ;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 50px 70px 50px;
     background-color: $whiteBgColor;
     width: 60%;
     height: 525px;
     position: relative;
     animation: animateModalWindow 1s ease;
     animation-fill-mode: forwards;
-    box-shadow: 0 8px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
 
-    .close-btn {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
 
     h5 {
       font-family: Montserat, sans-serif;
       color: $textColor;
+
       span {
         font-weight: bold;
         color: $textActive;
       }
     }
-    
-    .btn {
-      background-color: #06B2BB9A;
-      border-radius: 0;
-      border: none;
-      border-top: 1px solid $mainBgColor;
-      color: $whiteText;
-      font-family: Montserat, sans-serif;
-      width: 50%;
-      font-weight: $textBolder;
-    }
 
-    .active {
-      background-color: $textActive;
+    .nav-btns {
+      .btn {
+        background-color: #06B2BB9A;
+        border-radius: 0;
+        border: none;
+        border-top: 1px solid $mainBgColor;
+        color: $whiteText;
+        font-family: Montserat, sans-serif;
+        width: 50%;
+        font-weight: $textBolder;
+        box-shadow: none;
+      }
+
+      .active {
+        background-color: $textActive;
+      }
     }
   }
 }

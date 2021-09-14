@@ -1,14 +1,45 @@
 @import "../form_template/form";
+@import "../variables";
 
 .signup-box {
   display: flex;
 
   .signup-form {
     @include formControl;
-    width: 50%;
+    width: 100%;
+    padding-right: 20px;
+    padding-top: 30px;
+
+    div {
+      display: flex;
+      text-align: right;
+      height: 35px;
+
+      label {
+        width: 10%;
+        margin-right: 20px;
+        margin-top: 10px;
+        font-weight: 700;
+      }
+
+      input {
+        width: 40%;
+        color: $textGrey;
+        margin-right: 10px;
+        height: 35px;
+      }
+
+      p {
+        width: 50%;
+        color: $textGrey;
+        font-size: $text12;
+        text-align: left;
+        margin: 0;
+        align-self: flex-end;
+        line-height: 11px;
+      }
+
+    }
   }
 
-  .form-validation {
-    width: 50%;
-  }
 }
