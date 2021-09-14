@@ -9,14 +9,7 @@ export default function MainPageNav() {
 				<a href="#" className="logo">
 					<img src={logoFull} alt="logo-full" />
 				</a>
-				<Button
-					color='white'
-					hoverColor='yellow'
-					borderColor='white'
-					height={34}
-					width={112}
-					text='Sign in' />
-				{/* <button className="btnSignInMainPage">Sign in</button> */}
+				<Button	btnStyle='btnType1'	btnIcon='' text='Sign in' />
 			</div>
 		</div>
 	)

@@ -64,25 +64,28 @@
 }
 
 // =========== mixins for buttons ========== start
-/* @mixin btnStandard(){
-  color: $whiteText;
-  border: 1px solid $btnWhite;
+@mixin btnStandard(){
+  position: relative;
+  width: 148px;
+  font-size: $text16;
+  height: 34px;
+  border: 1px solid;
   border-radius: 17px;
-  background-color: $btn;
+    .btnIcon{
+      position: absolute;
+      left: 10px;
+      top: 8px;
+    }
   &:hover{
-      background-color: $btnHover;
-      border: 1px solid $btnHover;
       font-weight: 500;
-      color: $darkText;
   }
-} */
+}
 
-$btnMainPageHeight: 93px;
 @mixin btnMainPage(){
   display: block;
-  height: $btnMainPageHeight;
+  height: 93px;
   border: none;
-  border-radius: 0 $btnMainPageHeight/2 $btnMainPageHeight/2 0;
+  border-radius: 0 46.5px 46.5px 0;
   margin-bottom: 10px;
   transition: all 0.3s ease;
   h3{

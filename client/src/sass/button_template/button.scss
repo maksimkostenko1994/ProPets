@@ -1,6 +1,51 @@
-.button-yellow-hover:hover{
-	background-color: #FDD219 !important;
-	border: 1px solid #FDD21981 !important;
-	font-weight: 500 !important;
-	color: black !important;
+@import "./../mixins.scss";
+@import "./../variables.scss";
+
+.btnType1{
+	@include btnStandard();
+	width: 112px !important;
+	background-color: $btn !important;
+	border-color: $btnWhite !important;
+	color: $whiteText !important;
+	&:hover{
+		background-color: $btnHover !important;
+		border-color: #c7a7198c !important;
+		font-weight: 500 !important;
+		color: $darkText !important;
+	}
+}
+.btnType2{
+	@include btnStandard();
+	background-color: $btn !important;
+	border-color: $btnBorder !important;
+	color: $whiteText !important;
+}
+.btnType3{
+	@include btnStandard();
+	font-size: 14px !important;
+	padding-bottom: 2px !important;
+	background-color: #FA5456 !important;
+	border-color: #FF2C2F !important;
+	color: $darkText !important;
+		.btnIcon{
+			font-size: $text16 !important;
+		}
+}
+.btnType4{
+	@include btnStandard();
+	font-size: 14px !important;
+	padding-bottom: 2px !important;
+	background-color: $btn !important;
+	border-color: $btnBorder !important;
+	color: $whiteText !important;
+		.btnIcon{
+			font-size: $text16 !important;
+		}
+}
+.btnType5{
+	@include btnStandard();
+	width: 112px !important;
+	background-color: $btnWhite !important;
+	border-color: $btnBorder !important;
+	color: $textColor !important;
 }
