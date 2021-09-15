@@ -1,4 +1,3 @@
-import React from 'react'
 import MainPageNav from './MainPageNav'
 import MainPageContent from './MainPageContent'
 

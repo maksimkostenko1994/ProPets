@@ -3,109 +3,125 @@
 @import "./variables.scss";
 
 
-.mainPageSection{
-	position: relative;
-	height: 100vh;
-	display: block;
-	min-height: 700px;
-	background-color: #FEFEFE;
-	min-width: 1300px;
+.mainPageSection {
+  position: relative;
+  height: 100vh;
+  display: block;
+  min-height: 700px;
+  background-color: #FEFEFE;
+  min-width: 1300px;
+}
+
+// =========== Main Section adjustment ===== end
+
+// =========== Navigation adjustment ======= start
+.navMainPage {
+  position: relative;
+  width: 100%;
+  height: 70px;
+  background-color: #06B2BB;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+
+  .navContainer {
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      padding-top: 10px;
+      border: none;
+      cursor: pointer;
+    }
   }
-  // =========== Main Section adjustment ===== end
-  
-  // =========== Navigation adjustment ======= start
-  .navMainPage{
-	position: relative;
-	width: 100%;
-	height: 70px;
-	background-color: #06B2BB;
-	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
-	z-index: 1;
-	.navContainer{
-	  width: 80%;
-	  height: 100%;
-	  margin: 0 auto;
-	  display: flex;
-	  justify-content: space-between;
-	  align-items: center;
-	  .logo{
-		padding-top: 10px;
-		border: none;
-		cursor: pointer;
-	  }
-	}
+}
+
+// =========== Navigation adjustment ======= end
+
+// =========== Main Container adjustment === start
+.mainPageContainer {
+  height: 100%;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+
+  .mainLeftContainer, .mainRightContainer {
+    height: calc(100% - 70px);
   }
-  // =========== Navigation adjustment ======= end
-  
-  // =========== Main Container adjustment === start
-  .mainPageContainer{
-	height: 100%;
-	width: 80%;
-	margin: 0 auto;
-	display: flex;
-	justify-content: space-between;
-	.mainLeftContainer, .mainRightContainer{
-	  width: 45%;
-	  height: calc(100% - 70px);
-	}
-	.mainLeftContainer{
-	  h1{
-		font-size: $text56;
-		margin: 100px 0 30px 0;
-		span{
-		  color: $textColor;
-		}
-	  }    
-	  .btnContainer{
-		position: absolute;
-		left: 0;
-		.btnLost{
-		  @include btnMainPage();
-		  position: relative;
-		  background-color: $redBtn;
-		  width: 544px;
-		  &:hover{
-			background-color: $btnHover;
-		  }
-		  img{
-			position: absolute;
-			right: 0;
-			bottom: -2px;
-		  }
-		}
-		.btnFound{
-		  @include btnMainPage();
-		  position: relative;
-		  background-color: $btn;
-		  width: 470px;
-		  h3{
-			color: $whiteText;
-		  }
-		}
-	  }
-	  .mainPageJoinLink{
-		position: absolute;
-		bottom: 10px;
-		font-size: $text16;
-		font-weight: 500;
-		cursor: pointer;
-		a{
-		  color: $textColor;
-		  font-weight: $textBolder;
-		}
-	  }
-	}
-	.mainRightContainer{
-	  text-align: right;
-	  img{
-		height: 100%;
-	  }
-	}
+
+  .mainLeftContainer {
+    h1 {
+      font-size: $text56;
+      margin: 100px 0 30px 0;
+
+      span {
+        color: $textColor;
+      }
+    }
+
+    .btnContainer {
+      position: absolute;
+      left: 0;
+
+      .btnLost {
+        @include btnMainPage();
+        position: relative;
+        background-color: $redBtn;
+        width: 544px;
+
+        &:hover {
+          background-color: $btnHover;
+        }
+
+        img {
+          position: absolute;
+          right: 0;
+          bottom: -2px;
+        }
+      }
+
+      .btnFound {
+        @include btnMainPage();
+        position: relative;
+        background-color: $btn;
+        width: 470px;
+
+        h3 {
+          color: $whiteText;
+        }
+      }
+    }
+
+    .mainPageJoinLink {
+      position: absolute;
+      bottom: 10px;
+      font-size: $text16;
+      font-weight: 500;
+      cursor: pointer;
+
+      a {
+        color: $textColor;
+        font-weight: $textBolder;
+      }
+    }
   }
-  
-  @media screen and (max-width: 1300px) {
-	.btnContainer h3{
-	  padding-left: 130px !important;
-	}
+
+  .mainRightContainer {
+    text-align: right;
+
+    img {
+      height: 100%;
+    }
   }
-  // =========== Main Container adjustment === end
+}
+
+@media screen and (max-width: 1300px) {
+  .btnContainer h3 {
+    padding-left: 130px !important;
+  }
+}
+
+// =========== Main Container adjustment === end
