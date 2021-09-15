@@ -2,6 +2,8 @@
 
 .modal-window {
   position: fixed;
+  padding: 0 !important;
+  margin: 0 !important;
   top: 0;
   background-color: $mainBgColor;
   width: 100%;
