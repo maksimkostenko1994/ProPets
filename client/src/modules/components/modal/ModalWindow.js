@@ -9,12 +9,24 @@ import ModalFooter from "./ModalFooter";
 const ModalWindow = ({closeModalWindow}) => {
     const [currentForm, setCurrentForm] = useState(true)
 
-    const changeFormHandler = (event) => {
+    const changeFormHandler = (event, isChanged) => {
         event.preventDefault()
         const btns = document.querySelectorAll('.btn')
         btns.forEach(item => item.classList.remove("active"))
         event.target.classList.add("active")
-        setCurrentForm(!currentForm)
+        setCurrentForm(isChanged)
+    }
+
+    const signIn = (event) => {
+        changeFormHandler(event, true)
+    }
+
+    const signUp = (event) => {
+        changeFormHandler(event, false)
+    }
+
+    const renderPostComponent = () => {
+        console.log('hello')
     }
 
 
@@ -25,12 +37,12 @@ const ModalWindow = ({closeModalWindow}) => {
                 <h5><span>Welcome! </span>Please sign in / sign up to continue or</h5>
                 {/*Временные кнопки*/}
                 <div className="nav-btns">
-                    <button className="btn active" onClick={(event) => changeFormHandler(event)}>Sign in</button>
-                    <button className="btn" onClick={(event) => changeFormHandler(event)}>Sign up</button>
+                    <button className="btn active" onClick={(event) => signIn(event)}>Sign in</button>
+                    <button className="btn" onClick={(event) => signUp(event)}>Sign up</button>
                 </div>
                 {/*=================*/}
                 {currentForm ? <SignIn/> : <SignUp/>}
-                <ModalFooter closeModalWindow={closeModalWindow}/>
+                <ModalFooter closeModalWindow={closeModalWindow} renderPostComponent={renderPostComponent}/>
             </div>
         </div>
     )

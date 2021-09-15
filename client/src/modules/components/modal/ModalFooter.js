@@ -3,7 +3,7 @@ import {faPaw} from "@fortawesome/free-solid-svg-icons";
 
 import "../../../sass/modal_template/ModalFooter.scss"
 
-const ModalFooter = ({closeModalWindow}) => {
+const ModalFooter = ({closeModalWindow, renderPostComponent}) => {
     return (
         <div className="modal-window-footer">
             <div className="text-box">
@@ -12,7 +12,11 @@ const ModalFooter = ({closeModalWindow}) => {
             </div>
             <div className="btns-box">
                 <button onClick={() => closeModalWindow()}>Cancel</button>
-                <button><FontAwesomeIcon className="btn-icon" icon={faPaw} size="1x"/>Submit</button>
+                <button onClick={() => {
+                    closeModalWindow()
+                    renderPostComponent()
+                }}><FontAwesomeIcon className="btn-icon" icon={faPaw} size="1x"/>Submit
+                </button>
             </div>
         </div>
     )

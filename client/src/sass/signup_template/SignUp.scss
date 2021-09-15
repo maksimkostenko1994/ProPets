@@ -6,14 +6,18 @@
 
   .signup-form {
     @include formControl;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
-    padding-right: 20px;
-    padding-top: 30px;
+    height: 250px;
 
     div {
+      align-self: center;
       display: flex;
       text-align: right;
       height: 35px;
+      width: 100%;
 
       label {
         width: 10%;
