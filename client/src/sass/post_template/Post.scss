@@ -1,0 +1,47 @@
+@import "./src/sass/variables";
+.post {
+    display: flex;
+    flex-direction: column;
+    .post-header {
+        display: flex;
+        flex-direction: row;
+        .post-left {
+            h3 {
+                font-size: $text16;
+                color: $textColor;
+            }
+            p {
+                color: $textGrey;
+                font-size: $text12;
+            }
+        }
+    }
+    .logo-img {
+        border-radius: 50%;
+        width: 60%;
+    }
+    .post-img {
+        width: 100%;
+    }
+    .post-footer {
+        position: relative;
+        margin-top: 15px;
+        border-bottom: 1px solid $darkText;
+    }
+    h4 {
+        font-size: $text16;
+    }
+    .post-like-box {
+        display: flex;
+        justify-content: flex-end;
+        align-items: baseline;
+        p {
+            padding-left: 10px;
+        }
+    }
+    button {
+        background: transparent;
+        border: none;
+        color: $textColor;
+    }
+}
