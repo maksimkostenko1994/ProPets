@@ -5,7 +5,7 @@ function App() {
     return (
         <>
         <MainPageSection/>
-        <Button btnStyle='btnType2' btnIcon='paw' text='Publish' />
+        <Button btnStyle='btnType2' btnIcon='paw' text='Publish'/>
         <Button btnStyle='btnType2' btnIcon='paw' text='Submit' />
         <Button btnStyle='btnType3' btnIcon='search' text='I lost my pet' />
         <Button btnStyle='btnType4' btnIcon='paw' text='I found a pet' />

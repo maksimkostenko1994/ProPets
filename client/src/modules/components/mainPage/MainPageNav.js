@@ -21,12 +21,12 @@ export default function MainPageNav() {
 
     return (
         <div className="navMainPage">
+            {isModal ? <ModalWindow closeModalWindow={closeModalWindow}/> : ""}
             <div className="navContainer">
                 <a href="#" className="logo">
                     <img src={logoFull} alt="logo-full"/>
                 </a>
-                <Button onClick={openModalWindow} btnStyle='btnType1' btnIcon='' text='Sign in'/>
-                {isModal ? <ModalWindow closeModalWindow={closeModalWindow}/> : ""}
+                <Button onClick={openModalWindow} btnStyle='btnType1' btnIcon="" text='Sign in'/>
             </div>
         </div>
     )

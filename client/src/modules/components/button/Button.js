@@ -1,7 +1,7 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSearch, faPaw, faSave, faPlus} from "@fortawesome/free-solid-svg-icons";
 
-export default function Button({onClick, text, btnIcon, btnStyle }) {
+export default function Button({onClick, text, btnIcon, btnStyle}) {
 	function iconSelection(icon) {
 		const icon1 = faPaw, icon2 = faSave, icon3 = faSearch, icon4 = faPlus
 		switch (icon) {

@@ -20,11 +20,12 @@
   width: 100%;
   height: 70px;
   background-color: #06B2BB;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   z-index: 1;
 
   .navContainer {
     height: 100%;
+    width: 80%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
