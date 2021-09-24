@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import "../../sass/post_template/Post.scss"
 import Image2 from '../../assets/img/dog3_full.png'
 import { PostContext } from "../post/Content";

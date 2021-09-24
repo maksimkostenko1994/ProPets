@@ -1,7 +1,7 @@
 import Image from '../../assets/img/dog2.png'
 import Image2 from '../../assets/img/dog3_full.png'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faThumbsUp} from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp} from "@fortawesome/free-regular-svg-icons";
 import "../../sass/post_template/Post-full-info.scss"
 import Comment from './Comment';
 import { useContext } from 'react';
