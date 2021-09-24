@@ -3,12 +3,11 @@ import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import "../../sass/post_template/Post.scss"
 import Image2 from '../../assets/img/dog3_full.png'
 import { PostContext } from "../post/Content";
+import { useContext } from "react";
 
-export default function Post({ post}) {
-    return (
-        <PostContext.Consumer>{
-            context => {
-                return(
+const Post = ({ post }) => {
+    const {changeCurrentPost}=useContext(PostContext)
+            return (
                     <div className='post'>
                         <div className='post-header'>
                             <div className='post-left'>
@@ -24,7 +23,7 @@ export default function Post({ post}) {
                         </div>
                         <div className='post-footer'>
                             <h4>{post.title}</h4>
-                            <button onClick={() => context.changeCurrentPost(post.id)}>...more</button>
+                            <button onClick={() => changeCurrentPost(post.id)}>...more</button>
                             <div className='post-like-box'>
                             <FontAwesomeIcon icon={faThumbsUp} />
                             <p>{post.like}</p>
@@ -32,8 +31,5 @@ export default function Post({ post}) {
                         </div>
                     </div>
                 )
-            }
-        }
-        </PostContext.Consumer>
-    )
 }
+export default Post

@@ -4,7 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faThumbsUp} from "@fortawesome/free-solid-svg-icons";
 import "../../sass/post_template/Post-full-info.scss"
 import Comment from './Comment';
-const PostFullInfo= ({post})=> {
+import { useContext } from 'react';
+import { PostContext } from "./Content"
+const PostFullInfo = ({post}) => {
+    const {addEvolution}=useContext(PostContext)
     return (
         <div className='post'>
             <div className='post-header'>
@@ -25,7 +28,7 @@ const PostFullInfo= ({post})=> {
                 <div className='add-like-btn-box'>
                     <p>{ post.like}</p>
                     <FontAwesomeIcon icon={faThumbsUp} />
-                    <button>add like</button>
+                    <button onClick={()=>{addEvolution(post.id,'like')}}>add like</button>
                 </div>
             </div>
             <Comment/>

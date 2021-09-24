@@ -1,40 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import PostFullInfo from "./../post/PostFullInfo";
 import PostList from "./../post/PostList";
 import getPosts from "./../post/store";
+import { setPostsToLocalStorage } from "./postData";
 
 export const PostContext = React.createContext();
-
-export default class Content extends React.Component{
-    state = {
-        posts: getPosts(),
-        currentPost: null,
-        comments:''
-    }
-    changeCurrentPost = (id) =>{
-        const posts = this.state.posts
+function Content(){
+    const [posts, setPosts] = useState(getPosts());
+    const [currentPost, setCurrentPost] = useState(null)
+    const [comments, setComments] = useState('')
+    
+    const changeCurrentPost = (id) =>{
         const index = posts.findIndex(post => post.id === id)
         const post = {...posts[index]};
-        this.setState({...this.state, currentPost: post})
+        setCurrentPost(post)
     }
-    showPosts = ()=>{
-        this.setState({...this.state, currentPost: null})
+    const addEvolution = (id, key) => {
+        const newPosts = [...posts];
+        const index = posts.findIndex(post => post.id === id)
+        newPosts[index][key]++
+        setPosts(newPosts)
+        setPostsToLocalStorage(newPosts)
     }
-
-
-    render() {
+    const addComment = (author,commentText) => {
+        const newComments = [...comments];
+        
+    }
+        
         return (
             <PostContext.Provider value={{
-            changeCurrentPost: this.changeCurrentPost
+                changeCurrentPost,
+                addEvolution
         }}>
         <div id='content'>
         <div className='left'></div>
-                    <div className='center'>{this.state.currentPost ?
-                        <PostFullInfo post={this.state.currentPost}/>:
-                        <PostList posts={this.state.posts} />}</div>
+                    <div className='center'>{currentPost ?
+                        <PostFullInfo post={currentPost}/>:
+                        <PostList posts={posts} />}</div>
         <div className='right'></div>
                 </div>
                 </PostContext.Provider>
             )    
 }
-}
+export default Content;
