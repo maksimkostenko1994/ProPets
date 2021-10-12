@@ -8,15 +8,11 @@ export default function MainPageNav() {
     const [isModal, setModalWindow] = useState(false)
 
     const closeModalWindow = () => {
-        let isModalWindow = isModal
-        isModalWindow = false
-        setModalWindow(isModalWindow)
+        setModalWindow(false)
     }
 
     const openModalWindow = () => {
-        let isModalWindow = isModal
-        isModalWindow = true
-        setModalWindow(isModalWindow)
+        setModalWindow(true)
     }
 
     return (

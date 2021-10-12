@@ -13,7 +13,6 @@ function App() {
             <Button btnStyle='btnType4' btnIcon='plus' text='Add new'/>
             <Button btnStyle='btnType4' btnIcon='save' text='Save changes'/>
             <Button btnStyle='btnType5' btnIcon='' text='Cancel'/>
-            <Button btnStyle='btnType4 testNavBtn' btnIcon='paw' text='I found a pet'/>
         </>
     );
 }
