@@ -1,18 +1,19 @@
 import MainPageSection from './components/mainPage/MainPageSection';
 import Button from "./components/button/Button.js";
-import "../sass/textBtn.scss"
+
+import {faPaw, faSave, faPlus, faSearch} from "@fortawesome/free-solid-svg-icons";
 
 function App() {
     return (
         <>
             <MainPageSection/>
-            <Button btnStyle='btnType2' btnIcon='paw' text='Publish'/>
-            <Button btnStyle='btnType2' btnIcon='paw' text='Submit'/>
-            <Button btnStyle='btnType3' btnIcon='search' text='I lost my pet'/>
-            <Button btnStyle='btnType4' btnIcon='paw' text='I found a pet'/>
-            <Button btnStyle='btnType4' btnIcon='plus' text='Add new'/>
-            <Button btnStyle='btnType4' btnIcon='save' text='Save changes'/>
-            <Button btnStyle='btnType5' btnIcon='' text='Cancel'/>
+            <Button text='Publish' icon={faPaw} color="#06B2BB"/>
+            <Button text='Submit' icon={faPaw} color="#06B2BB"/>
+            <Button text='I lost my pet' icon={faSearch} color="#FA5456"/>
+            <Button text='I found a pet' icon={faPaw} color="#06B2BB"/>
+            <Button text='Add new' icon={faPlus} color="#06B2BB"/>
+            <Button text='Save changes' icon={faSave} color="#06B2BB"/>
+            <Button text='Cancel' color={"snow"}/>
         </>
     );
 }
