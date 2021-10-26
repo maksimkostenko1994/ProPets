@@ -2,11 +2,9 @@ import React from 'react'
 
 export default function MainPageFoundBtn() {
 	return (
-		<button className="btnFound" onMouseOver={btnFoundChangeText} onMouseOut={btnFoundReturnText}>
-			<h3 className="textBtnFound">I found a pet!</h3>
+		<button className="btnFound">
+			<div className="btn-found-hover"><h3>What to do?</h3></div>
+			<div className="btn-found-state"><h3 className="textBtnLost">I found a pet!</h3></div>
 		</button>
 	)
 }
-
-function btnFoundChangeText(){document.querySelector('.textBtnFound').innerHTML = 'What to do?'}
-function btnFoundReturnText(){document.querySelector('.textBtnFound').innerHTML = 'I found a pet!'}

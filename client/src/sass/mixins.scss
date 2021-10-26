@@ -9,8 +9,10 @@
     font-family: Montserat, sans-serif;
     font-weight: $textSuperBolder;
     font-size: 2.8em;
+
     span {
       letter-spacing: -5px;
+
       &:first-child {
         margin: 0 15px;
       }
@@ -64,35 +66,39 @@
 }
 
 // =========== mixins for buttons ========== start
-@mixin btnStandard(){
+@mixin btnStandard() {
   position: relative;
   width: 148px;
   font-size: $text16;
   height: 34px;
   border: 1px solid;
   border-radius: 17px;
-    .btnIcon{
-      position: absolute;
-      left: 10px;
-      top: 8px;
-    }
-  &:hover{
-      font-weight: 500;
+  .btnIcon {
+    position: absolute;
+    left: 10px;
+    top: 8px;
+  }
+  &:hover {
+    font-weight: 500;
   }
 }
 
-@mixin btnMainPage(){
+@mixin btnMainPage() {
   display: block;
   height: 93px;
   border: none;
   border-radius: 0 46.5px 46.5px 0;
   margin-bottom: 10px;
-  transition: all 0.3s ease;
-  h3{
+  cursor: pointer;
+  transition: all 0.5s ease;
+
+  h3 {
     font-size: $text32;
     text-align: left;
     padding-left: 10vw;
+    padding-top: 25px;
     margin-bottom: 0;
   }
 }
+
 // =========== mixins for buttons ========== end

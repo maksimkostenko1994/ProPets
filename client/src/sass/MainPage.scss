@@ -70,17 +70,41 @@
       .btnLost {
         @include btnMainPage();
         position: relative;
+        z-index: 1;
         background-color: $redBtn;
         width: 544px;
+        overflow: hidden;
+
+        .btn-lost-hover {
+          white-space: nowrap;
+          top: 0;
+          width: 0;
+          height: 100%;
+          position: absolute;
+          z-index: 3;
+          overflow: hidden;
+          background-color: $btnHover;
+          transition: width 0.2s ease;
+        }
+
+        .btn-lost-state {
+          top: 0;
+          z-index: 2;
+          position: absolute;
+        }
 
         &:hover {
-          background-color: $btnHover;
+
+          .btn-lost-hover {
+            width: 100%;
+          }
         }
 
         img {
           position: absolute;
           right: 0;
           bottom: -2px;
+          z-index: 4;
         }
       }
 
@@ -89,6 +113,31 @@
         position: relative;
         background-color: $btn;
         width: 470px;
+        overflow: hidden;
+
+        .btn-found-hover {
+          height: 100%;
+          transform: translateY(-100%);
+          overflow: hidden;
+          transition: transform 0.2s ease;
+        }
+
+        .btn-found-state {
+          height: 100%;
+          transform: translateY(-100%);
+          transition: transform 0.2s ease;
+        }
+
+        &:hover {
+
+          .btn-found-hover {
+            transform: translateY(0);
+          }
+
+          .btn-found-state {
+            transform: translateY(50%);
+          }
+        }
 
         h3 {
           color: $whiteText;

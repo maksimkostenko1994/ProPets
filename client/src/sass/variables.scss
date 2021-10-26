@@ -10,6 +10,26 @@ $btnWhite: snow;
 
 $btnHover: #FFD219;
 
+.redBtn {
+  background-color: $redBtn;
+}
+
+.btn {
+  background-color: $btn;
+}
+
+.btnBorder {
+  border-color: $btnBorder;
+}
+
+.btnWhite {
+  background-color: $btnWhite;
+}
+
+.btnHover {
+  background-color: $btnHover;
+}
+
 //text color
 $whiteText: snow;
 $textColor: #06B2BB;

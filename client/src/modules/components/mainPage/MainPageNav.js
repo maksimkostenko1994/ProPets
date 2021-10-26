@@ -22,7 +22,7 @@ export default function MainPageNav() {
                 <a href="#" className="logo">
                     <img src={logoFull} alt="logo-full"/>
                 </a>
-                <Button onClick={openModalWindow} btnStyle='btnType1' btnIcon="" text='Sign in'/>
+                <Button click={openModalWindow} color='btn' text='Sign in'/>
             </div>
         </div>
     )
