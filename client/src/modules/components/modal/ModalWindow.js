@@ -4,9 +4,8 @@ import SignIn from "../signin/SignIn"
 import SignUp from "../signup/SignUp";
 
 import React, {useState} from "react";
-import ModalFooter from "./ModalFooter";
 
-const ModalWindow = ({closeModalWindow}) => {
+const ModalWindow = () => {
     const [currentForm, setCurrentForm] = useState(true)
 
     const changeFormHandler = (event, isChanged) => {
@@ -25,24 +24,16 @@ const ModalWindow = ({closeModalWindow}) => {
         changeFormHandler(event, false)
     }
 
-    const renderPostComponent = () => {
-        console.log('hello')
-    }
-
-
     return (
         <div className="modal-window">
             <div className="modal-window-body">
                 <Logo color={""}/>
                 <h5><span>Welcome! </span>Please sign in / sign up to continue or</h5>
-                {/*Временные кнопки*/}
                 <div className="nav-btns">
                     <button className="btn active" onClick={(event) => signIn(event)}>Sign in</button>
                     <button className="btn" onClick={(event) => signUp(event)}>Sign up</button>
                 </div>
-                {/*=================*/}
-                {currentForm ? <SignIn/> : <SignUp/>}
-                <ModalFooter closeModalWindow={closeModalWindow} renderPostComponent={renderPostComponent}/>
+                {currentForm ? <SignIn currentForm={currentForm}/> : <SignUp currentForm={currentForm}/>}
             </div>
         </div>
     )

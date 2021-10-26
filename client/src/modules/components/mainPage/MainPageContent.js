@@ -2,6 +2,7 @@ import React from 'react'
 import mainImg from './img/Image2.png'
 import MainPageLostBtn from './MainPageLostBtn'
 import MainPageFoundBtn from './MainPageFoundBtn'
+import {Link} from "react-router-dom";
 
 export default function MainPageContent() {
 	return (
@@ -12,7 +13,7 @@ export default function MainPageContent() {
 					<MainPageLostBtn/>
 					<MainPageFoundBtn/>
 				</div>
-				<p className="mainPageJoinLink">I'm okay, just want to <a href="#">JOIN</a> the pawsome community!</p>
+				<p className="mainPageJoinLink">I'm okay, just want to <Link to="/signin">JOIN</Link> the pawsome community!</p>
 			</div>
 			<div className="mainRightContainer">
 				<img src={mainImg} alt="main-img"/>

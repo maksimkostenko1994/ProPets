@@ -5,7 +5,6 @@ import { faThumbsUp} from "@fortawesome/free-regular-svg-icons";
 import "../../sass/post_template/Post-full-info.scss"
 import Comment from './Comment';
 import { useContext } from 'react';
-import { PostContext } from "./Content"
 const PostFullInfo = ({post}) => {
     const {addEvolution}=useContext(PostContext)
     return (

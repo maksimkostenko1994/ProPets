@@ -3,10 +3,14 @@
 @import "./fonts";
 @import "./MainPage.scss";
 @import './button_template/button.scss';
-
+@import './loader/loader.scss';
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
 }
 

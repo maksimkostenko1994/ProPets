@@ -57,6 +57,7 @@
     h1 {
       font-size: $text56;
       margin: 100px 0 30px 0;
+      width: 500px;
 
       span {
         color: $textColor;
@@ -154,13 +155,15 @@
 
       a {
         color: $textColor;
+        text-decoration: underline;
         font-weight: $textBolder;
       }
     }
   }
 
   .mainRightContainer {
-    text-align: right;
+    text-align: center;
+    width: 100%;
 
     img {
       height: 100%;

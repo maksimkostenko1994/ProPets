@@ -1,12 +1,8 @@
-import Post from "./Post";
-export default function PostList({ posts }) {
+
+export default function PostList() {
     return (
         <div>
-            {posts.map(el=>
-                <Post
-                key={el.id}
-                post={el}
-                />)}
+            <h1>Posts</h1>
         </div>
     )
 }

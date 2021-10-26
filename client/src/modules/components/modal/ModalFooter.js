@@ -2,8 +2,14 @@ import {faPaw} from "@fortawesome/free-solid-svg-icons";
 
 import "../../../sass/modal_template/ModalFooter.scss"
 import Button from "../button/Button";
+import {Link} from "react-router-dom";
+import {loginAction, registrationAction} from "../../../store/auth";
+import {useDispatch} from "react-redux";
 
-const ModalFooter = ({closeModalWindow, renderPostComponent}) => {
+const ModalFooter = ({currentForm, user}) => {
+
+    const dispatch = useDispatch()
+
     return (
         <div className="modal-window-footer">
             <div className="text-box">
@@ -11,11 +17,12 @@ const ModalFooter = ({closeModalWindow, renderPostComponent}) => {
                     in accordance width <span>these terms</span>.</p>
             </div>
             <div className="btns-box">
-                <Button click={closeModalWindow} color="btnWhite" text="Cancel"/>
-                <Button icon={faPaw} text="Submit" color="btn" click={() => {
-                    closeModalWindow()
-                    renderPostComponent()
-                }}/>
+                <Link to="/">
+                    <Button color="btnWhite" text="Cancel"/>
+                </Link>
+                <Link to={`/posts`}>
+                    {currentForm ? <Button click={() => dispatch(loginAction(user))} icon={faPaw} text="Login" color="btn"/>: <Button click={() => dispatch(registrationAction(user))} icon={faPaw} text={'Registration'} color={'btn'}/>}
+                </Link>
             </div>
         </div>
     )
