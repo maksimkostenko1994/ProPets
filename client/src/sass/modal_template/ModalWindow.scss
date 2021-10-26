@@ -28,6 +28,8 @@
     h5 {
       font-family: Montserat, sans-serif;
       color: $textColor;
+      margin: 10px 0;
+      font-size: 1.3rem;
 
       span {
         font-weight: bold;
@@ -44,8 +46,11 @@
         color: $whiteText;
         font-family: Montserat, sans-serif;
         width: 50%;
+        height: 40px;
         font-weight: $textBolder;
+        font-size: 1rem;
         box-shadow: none;
+        cursor: pointer;
       }
 
       .active {

@@ -3,6 +3,7 @@
 
 .signup-box {
   display: flex;
+  margin-right: 20px;
 
   .signup-form {
     @include formControl;

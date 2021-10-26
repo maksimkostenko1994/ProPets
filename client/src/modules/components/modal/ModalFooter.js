@@ -1,7 +1,7 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPaw} from "@fortawesome/free-solid-svg-icons";
 
 import "../../../sass/modal_template/ModalFooter.scss"
+import Button from "../button/Button";
 
 const ModalFooter = ({closeModalWindow, renderPostComponent}) => {
     return (
@@ -11,12 +11,11 @@ const ModalFooter = ({closeModalWindow, renderPostComponent}) => {
                     in accordance width <span>these terms</span>.</p>
             </div>
             <div className="btns-box">
-                <button onClick={() => closeModalWindow()}>Cancel</button>
-                <button onClick={() => {
+                <Button click={closeModalWindow} color="btnWhite" text="Cancel"/>
+                <Button icon={faPaw} text="Submit" color="btn" click={() => {
                     closeModalWindow()
                     renderPostComponent()
-                }}><FontAwesomeIcon className="btn-icon" icon={faPaw} size="1x"/>Submit
-                </button>
+                }}/>
             </div>
         </div>
     )
