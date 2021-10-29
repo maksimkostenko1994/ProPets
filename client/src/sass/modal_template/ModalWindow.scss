@@ -15,9 +15,9 @@
   .modal-window-body {
     display: flex;
     flex-direction: column;
-    padding: 20px 50px 70px 50px;
+    padding: 20px 50px 20px 50px;
     background-color: $whiteBgColor;
-    width: 60%;
+    width: 900px;
     height: 525px;
     position: relative;
     animation: animateModalWindow 1s ease;

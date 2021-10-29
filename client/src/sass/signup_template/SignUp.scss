@@ -2,49 +2,70 @@
 @import "../variables";
 
 .signup-box {
-  display: flex;
-  margin-right: 20px;
+
 
   .signup-form {
     @include formControl;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     width: 100%;
-    height: 250px;
+    height: 325px;
 
-    div {
-      align-self: center;
+    .signup-div {
       display: flex;
-      text-align: right;
-      height: 35px;
-      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
 
-      label {
-        width: 10%;
-        margin-right: 20px;
-        margin-top: 10px;
-        font-weight: 700;
-      }
-
-      input {
-        width: 40%;
-        color: $textGrey;
-        margin-right: 10px;
+      .signup-form-field {
+        align-self: center;
+        display: grid;
+        grid-template-columns: 75px 325px 400px;
+        grid-template-rows: 1fr;
+        text-align: right;
         height: 35px;
-      }
+        width: 100%;
 
-      p {
-        width: 50%;
-        color: $textGrey;
-        font-size: $text12;
-        text-align: left;
-        margin: 0;
-        align-self: flex-end;
-        line-height: 11px;
-      }
+        label {
+          width: 75px;
+          margin-right: 20px;
+          margin-top: 10px;
+          font-weight: 700;
+        }
 
+        input {
+          width: 305px;
+          color: $textGrey;
+          margin: 0 10px;
+          height: 35px;
+        }
+
+        div {
+          width: 400px;
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-end;
+          padding-bottom: 5px;
+          padding-left: 10px;
+
+          p {
+            color: $textGrey;
+            font-size: $text12;
+            text-align: left;
+            margin: 0;
+            align-self: flex-end;
+            line-height: 11px;
+
+            &:first-letter {
+              text-transform: uppercase;
+            }
+          }
+        }
+
+      }
     }
+
+
   }
 
 }
