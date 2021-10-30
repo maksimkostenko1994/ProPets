@@ -2,7 +2,8 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     auth: false,
-    loading: false
+    loading: false,
+    currentUser: null
 }
 
 const appReducer = createSlice({
@@ -18,13 +19,18 @@ const appReducer = createSlice({
         logout: state => {
             localStorage.removeItem('token')
             state.auth = false
+        },
+        setCurrentUser: (state, {payload}) => {
+            state.currentUser = payload
         }
+
     }
 })
 
 export default appReducer.reducer
 
-export const {authSuccess, stateLoading, logout} = appReducer.actions
+export const {authSuccess, stateLoading, logout, setCurrentUser} = appReducer.actions
 
 export const appSelector = state => state.app
 export const authSelector = state => state.app.auth
+export const userSelector = state => state.app.currentUser

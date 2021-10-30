@@ -1,11 +1,11 @@
 import React from 'react'
 import Button from '../button/Button'
-import logoFull from './img/Group1.png'
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {authSelector} from "../../../store/app";
 
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import Logo from "../logo/Logo";
 
 export default function MainPageNav() {
 
@@ -16,9 +16,9 @@ export default function MainPageNav() {
             background: auth && "snow"
         }}>
             <div className="navContainer">
-                {auth ? <Link to="/posts"><img src={logoFull} alt="logo-full"/></Link> :
+                {auth ? <Link to="/posts"><Logo color={"textColor"}/></Link> :
                     <Link to="/" className="logo">
-                        <img src={logoFull} alt="logo-full"/>
+                        <Logo color={"whiteText"}/>
                     </Link>}
                 {auth ?
                     <>

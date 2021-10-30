@@ -27,7 +27,7 @@ const ModalWindow = () => {
     return (
         <div className="modal-window">
             <div className="modal-window-body">
-                <Logo color={""}/>
+                <Logo color={"textColor"}/>
                 <h5><span>Welcome! </span>Please sign in / sign up to continue or</h5>
                 <div className="nav-btns">
                     <button className="btn active" onClick={(event) => signIn(event)}>Sign in</button>

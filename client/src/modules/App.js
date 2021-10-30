@@ -1,5 +1,4 @@
 import {Redirect, Route, Switch} from "react-router-dom";
-import PostList from "./components/post/PostList";
 import MainPageNav from "./components/mainPage/MainPageNav";
 import MainPageContent from "./components/mainPage/MainPageContent";
 import ModalWindow from "./components/modal/ModalWindow";
@@ -7,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {appSelector, authSuccess} from "../store/app";
 import {useEffect} from "react";
 import Loader from "./components/loader/Loader";
+import Home from "./components/home/Home";
 
 function App() {
 
@@ -22,10 +22,10 @@ function App() {
             <MainPageNav/>
             <Switch>
                 <Route exact path="/" component={MainPageContent}/>
-                <Route path="/posts" component={PostList}/>
+                <Route path="/posts" component={Home}/>
                 <Route path="/signin" component={ModalWindow}/>
             </Switch>
-            {auth && <Redirect exact from="/" to="/posts" />}
+            {auth ? <Redirect exact from="/" to="/posts"/> : <Redirect t to="/"/>}
             {loading && <Loader/>}
         </>
     );

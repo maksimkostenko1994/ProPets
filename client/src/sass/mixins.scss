@@ -1,7 +1,6 @@
 @import "variables";
 
 @mixin logo {
-  border: 1px solid $whiteBgColor;
   position: relative;
 
   h1 {
@@ -58,7 +57,7 @@
     width: 9px;
     background-color: white;
     position: absolute;
-    bottom: 5px;
+    bottom: 6px;
     left: 86px;
     transform: rotate(135deg);
   }

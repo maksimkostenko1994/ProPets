@@ -10,9 +10,17 @@ const Logo = ({color}) => {
             <h1>Pr<span/>P<span>ET</span>S</h1>
             <FontAwesomeIcon className="logo-search" icon={faSearch} size="3x"/>
             <FontAwesomeIcon className="logo-paw" icon={faPaw}/>
-            <div className="logo-circle-inside"/>
-            <div className="logo-circle-outside"/>
-            <div className="logo-line"/>
+            <div className="logo-circle-inside" style={{
+                borderColor: color==="whiteText" && "#06B2BB"
+            }}/>
+            <div className="logo-circle-outside" style={{
+                borderTopColor: color==="whiteText" && "#06B2BB",
+                borderLeftColor: color==="whiteText" && "#06B2BB",
+                borderRightColor: color==="whiteText" && "#06B2BB"
+            }}/>
+            <div className="logo-line" style={{
+                backgroundColor: color==="whiteText" && "#06B2BB"
+            }}/>
         </div>
     )
 }

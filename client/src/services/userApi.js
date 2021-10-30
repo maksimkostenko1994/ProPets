@@ -30,3 +30,16 @@ export const check = async () => {
         return await Promise.reject(e)
     }
 }
+
+export const getCurrentUser = () => {
+    return localStorage.getItem('token') ? jwtDecode(localStorage.getItem('token')) : null
+}
+
+export const getUserData = async id => {
+    try {
+        const {data} = await $authHost.get(`/api/users/${id}`)
+        return data
+    } catch (e) {
+        return await Promise.reject(e)
+    }
+}

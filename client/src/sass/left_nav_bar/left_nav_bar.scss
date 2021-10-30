@@ -1,0 +1,25 @@
+.user-profile-btn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  h4 {
+    width: 75px;
+  }
+}
+
+.user-avatar {
+  border: 1px solid snow;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-nav-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}

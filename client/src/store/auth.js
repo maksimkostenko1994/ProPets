@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {authSuccess, stateLoading} from "./app";
-import {login, registration} from "../services/userApi";
+import {authSuccess, setCurrentUser, stateLoading} from "./app";
+import {getCurrentUser, getUserData, login, registration} from "../services/userApi";
 
 const initialState = {
     error: null
@@ -45,6 +45,19 @@ export const registrationAction = data => async dispatch => {
     } catch (error) {
         dispatch(setError(error.message))
     } finally {
+        dispatch(stateLoading(false))
+    }
+}
+
+export const getUser = () => async dispatch => {
+    dispatch(stateLoading(true))
+    dispatch(resetError())
+    try {
+        const user = await getUserData(getCurrentUser().id)
+        dispatch(setCurrentUser(user))
+    }catch (error) {
+        dispatch(setError(error.message))
+    }finally {
         dispatch(stateLoading(false))
     }
 }

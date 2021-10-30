@@ -2,6 +2,14 @@
 $mainBgColor: #06B2BB;
 $whiteBgColor: white;
 
+.mainBgColor {
+  background-color: $mainBgColor;
+}
+
+.whiteBgColor {
+  background-color: $whiteBgColor;
+}
+
 //buttons background-color
 $redBtn: #FA5456;
 $btn: #06B2BB;
