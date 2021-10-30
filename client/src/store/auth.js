@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {authSuccess, setCurrentUser, stateLoading} from "./app";
+import {authSuccess, logout, setCurrentUser, stateLoading} from "./app";
 import {getCurrentUser, getUserData, login, registration} from "../services/userApi";
 
 const initialState = {
@@ -60,6 +60,11 @@ export const getUser = () => async dispatch => {
     }finally {
         dispatch(stateLoading(false))
     }
+}
+
+export const logoutAction = () => async dispatch => {
+    dispatch(logout())
+    dispatch(setCurrentUser(null))
 }
 
 

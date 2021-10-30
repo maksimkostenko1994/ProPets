@@ -22,10 +22,10 @@ function App() {
             <MainPageNav/>
             <Switch>
                 <Route exact path="/" component={MainPageContent}/>
-                <Route path="/posts" component={Home}/>
                 <Route path="/signin" component={ModalWindow}/>
             </Switch>
-            {auth ? <Redirect exact from="/" to="/posts"/> : <Redirect t to="/"/>}
+            {auth && <Home/>}
+            {auth ? <Redirect exact from="/" to="/posts"/> : <Redirect to="/"/>}
             {loading && <Loader/>}
         </>
     );

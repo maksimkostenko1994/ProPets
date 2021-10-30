@@ -1,12 +1,11 @@
-import Image from '../../assets/img/dog2.png'
-import Image2 from '../../assets/img/dog3_full.png'
+import Image from "../../../assets/img/dog2.png"
+import Image2 from '../../../assets/img/dog3_full.png'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faThumbsUp} from "@fortawesome/free-regular-svg-icons";
-import "../../sass/post_template/Post-full-info.scss"
+import "../../../sass/post_template/Post-full-info.scss"
 import Comment from './Comment';
-import { useContext } from 'react';
 const PostFullInfo = ({post}) => {
-    const {addEvolution}=useContext(PostContext)
+
     return (
         <div className='post'>
             <div className='post-header'>
@@ -27,7 +26,7 @@ const PostFullInfo = ({post}) => {
                 <div className='add-like-btn-box'>
                     <p>{ post.like}</p>
                     <FontAwesomeIcon icon={faThumbsUp} />
-                    <button onClick={()=>{addEvolution(post.id,'like')}}>add like</button>
+                    <button>add like</button>
                 </div>
             </div>
             <Comment/>

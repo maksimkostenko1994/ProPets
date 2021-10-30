@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import LeftNavBar from "../leftNavBar/LeftNavBar";
 import Content from "../content/Content";
 import RightNavBar from "../rightNavBar/RightNavBar";
