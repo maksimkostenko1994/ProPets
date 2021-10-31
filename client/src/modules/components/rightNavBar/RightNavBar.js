@@ -10,15 +10,19 @@ const RightNavBar = () => {
 
     const user = getCurrentUser()
     const dispatch = useDispatch()
+    const [firstName, secondName] = user.full_name.split(' ');
 
     return (
-        <div>
-            {user && <Link to={'/profile'} className="user-profile-btn">
-                {user.avatar ? <img src={user.avatar} alt="avatar"/> :
-                    <div className="user-avatar"><FontAwesomeIcon size="2x" icon={faUser}/></div>}
-                <h4>{user.full_name}</h4>
-            </Link>}
-            <Link to={'/'} onClick={() => dispatch(logoutAction())} className="user-logout-btn"><FontAwesomeIcon icon={faSignOutAlt}/>Logout</Link>
+        <div className="right-nav-bar">
+            <div className="right-nav-user">
+                {user && <Link to={'/profile'} className="user-profile-btn">
+                    {user.avatar ? <img src={user.avatar} alt="avatar"/> :
+                        <div className="user-avatar"><FontAwesomeIcon size="2x" icon={faUser}/></div>}
+                    <h4>{firstName} <br/>{secondName}</h4>
+                </Link>}
+            </div>
+            <Link to={'/'} onClick={() => dispatch(logoutAction())} className="user-logout-btn"><FontAwesomeIcon
+                icon={faSignOutAlt}/>Logout</Link>
         </div>
     );
 };

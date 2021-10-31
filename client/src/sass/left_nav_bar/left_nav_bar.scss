@@ -1,25 +1,5 @@
 @import "../variables";
 
-.user-profile-btn {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  h4 {
-    width: 75px;
-  }
-}
-
-.user-avatar {
-  border: 1px solid snow;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 @mixin menu-nav {
   color: $whiteText;
   margin: 5px 0;
