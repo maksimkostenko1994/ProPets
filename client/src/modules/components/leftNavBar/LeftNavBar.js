@@ -7,12 +7,12 @@ const LeftNavBar = () => {
 
     return (
         <div className="left-nav-bar">
-            <div>
+            <div className="left-menu">
                 <NavLink to={'/posts'}><Button text={'Home'} icon={faHome} color={"btn"}/></NavLink>
                 <NavLink to={'/lost'}><Button text={'Lost'} icon={faSearch} color={"btn"}/></NavLink>
                 <NavLink to={'/found'}><Button text={'Found'} icon={faPaw} color={"btn"}/></NavLink>
             </div>
-            <div>
+            <div className="left-menu-services">
                 <h3>Services</h3>
                 <div>
                     <NavLink to={'/hotels'}><Button text={'Hotels'} icon={faHotel} color={"btn"}/></NavLink>
