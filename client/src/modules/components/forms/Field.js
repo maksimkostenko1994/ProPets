@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 import Error from "../error/Error";
 
-const Field = ({error, ...rest}) => {
+const Field = ({ error, ...rest }) => {
     return (
         <>
-         <input {...rest}/>
-            {error && <Error text={error}/>}
+            <input {...rest} />
+            {error && <Error text={error} />}
         </>
     );
 };
