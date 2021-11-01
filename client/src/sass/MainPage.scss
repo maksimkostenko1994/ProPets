@@ -44,118 +44,121 @@
   height: 100%;
   width: 80%;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
 
-  .mainLeftContainer, .mainRightContainer {
-    height: calc(100% - 70px);
+  .mainPageJoinLink {
+    font-size: 1.6rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: Montserrat, sans-serif;
+
+    a {
+      color: $textColor;
+      text-decoration: underline;
+      font-weight: $textBolder;
+    }
   }
 
-  .mainLeftContainer {
-    h1 {
-      font-size: $text56;
-      margin: 100px 0 30px 0;
-      width: 500px;
+  .header-container {
+    display: flex;
+    justify-content: space-between;
 
-      span {
-        color: $textColor;
-      }
+    .mainLeftContainer, .mainRightContainer {
+      height: calc(100% - 70px);
     }
 
-    .btnContainer {
-      position: absolute;
-      left: 0;
+    .mainLeftContainer {
+      h1 {
+        font-size: $text56;
+        margin: 100px 0 30px 0;
+        width: 500px;
 
-      .btnLost {
-        @include btnMainPage();
-        position: relative;
-        z-index: 1;
-        background-color: $redBtn;
-        width: 544px;
-        overflow: hidden;
+        span {
+          color: $textColor;
+        }
+      }
 
-        .btn-lost-hover {
-          white-space: nowrap;
-          top: 0;
-          width: 0;
-          height: 100%;
-          position: absolute;
-          z-index: 3;
+      .btnContainer {
+        position: absolute;
+        left: 0;
+
+        .btnLost {
+          @include btnMainPage();
+          position: relative;
+          z-index: 1;
+          background-color: $redBtn;
+          width: 544px;
           overflow: hidden;
-          background-color: $btnHover;
-          transition: width 0.2s ease;
-        }
-
-        .btn-lost-state {
-          top: 0;
-          z-index: 2;
-          position: absolute;
-        }
-
-        &:hover {
 
           .btn-lost-hover {
-            width: 100%;
+            white-space: nowrap;
+            top: 0;
+            width: 0;
+            height: 100%;
+            position: absolute;
+            z-index: 3;
+            overflow: hidden;
+            background-color: $btnHover;
+            transition: width 0.2s ease;
+          }
+
+          .btn-lost-state {
+            top: 0;
+            z-index: 2;
+            position: absolute;
+          }
+
+          &:hover {
+
+            .btn-lost-hover {
+              width: 100%;
+            }
+          }
+
+          img {
+            position: absolute;
+            right: 0;
+            bottom: -2px;
+            z-index: 4;
           }
         }
 
-        img {
-          position: absolute;
-          right: 0;
-          bottom: -2px;
-          z-index: 4;
-        }
-      }
-
-      .btnFound {
-        @include btnMainPage();
-        position: relative;
-        background-color: $btn;
-        width: 470px;
-        overflow: hidden;
-
-        .btn-found-hover {
-          height: 100%;
-          transform: translateY(-100%);
+        .btnFound {
+          @include btnMainPage();
+          position: relative;
+          background-color: $btn;
+          width: 470px;
           overflow: hidden;
-          transition: transform 0.2s ease;
-        }
-
-        .btn-found-state {
-          height: 100%;
-          transform: translateY(-100%);
-          transition: transform 0.2s ease;
-        }
-
-        &:hover {
 
           .btn-found-hover {
-            transform: translateY(0);
+            height: 100%;
+            transform: translateY(-100%);
+            overflow: hidden;
+            transition: transform 0.2s ease;
           }
 
           .btn-found-state {
-            transform: translateY(50%);
+            height: 100%;
+            transform: translateY(-100%);
+            transition: transform 0.2s ease;
+          }
+
+          &:hover {
+
+            .btn-found-hover {
+              transform: translateY(0);
+            }
+
+            .btn-found-state {
+              transform: translateY(50%);
+            }
+          }
+
+          h3 {
+            color: $whiteText;
           }
         }
-
-        h3 {
-          color: $whiteText;
-        }
       }
-    }
 
-    .mainPageJoinLink {
-      position: absolute;
-      bottom: 10px;
-      font-size: $text16;
-      font-weight: 500;
-      cursor: pointer;
-
-      a {
-        color: $textColor;
-        text-decoration: underline;
-        font-weight: $textBolder;
-      }
     }
   }
 
@@ -165,6 +168,131 @@
 
     img {
       height: 100%;
+    }
+  }
+}
+
+.section-title {
+  background-color: $mainBgColor;
+  color: $whiteText;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 75px;
+
+  h1 {
+    font-family: Montserrat, sans-serif;
+    text-align: center;
+    font-size: 40px;
+    font-weight: $textLighter;
+  }
+}
+
+.section-info {
+  width: 80%;
+  margin: 35px auto;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  align-items: center;
+
+  .info-image {
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .info-items {
+    width: 100%;
+    padding: 40px;
+
+    h2 {
+      color: $textColor;
+      font-family: Montserrat, sans-serif;
+      font-size: 1.6rem;
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 50px;
+
+      li {
+        display: flex;
+        align-items: flex-start;
+        font-size: 1.3rem;
+        font-weight: 500;
+        font-family: Montserrat, sans-serif;
+        margin: 5px 0;
+
+        span {
+          display: block;
+          height: 15px;
+          width: 15px;
+          border-radius: 50%;
+          background-color: $mainBgColor;
+          margin: 6px 20px 20px 0;
+        }
+
+        &:last-child {
+          line-height: 40px;
+          margin-top: -10px;
+
+          span {
+            margin-top: 15px;
+          }
+        }
+      }
+    }
+
+    p {
+      font-family: Montserrat, sans-serif;
+      font-size: 20px;
+      margin-top: 40px;
+      display: flex;
+      letter-spacing: 1px;
+
+      span {
+        display: block;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        margin: 10px;
+      }
+
+      a {
+        color: $textColor;
+        margin: 0 5px;
+        text-decoration: underline;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+.section-footer {
+  background-color: $mainBgColor;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  .footer-container {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 30px;
+    justify-content: space-between;
+    width: 80%;
+
+    p {
+      color: $whiteText;
+      font-size: 1.2rem;
+      text-align: right;
+      font-family: Montserrat, sans-serif;
+      font-weight: 200;
     }
   }
 }

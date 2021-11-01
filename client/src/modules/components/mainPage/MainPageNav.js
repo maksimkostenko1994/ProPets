@@ -12,7 +12,7 @@ export default function MainPageNav() {
     const auth = useSelector(authSelector)
 
     return (
-        <div className="navMainPage" style={{
+        <div id="top" className="navMainPage" style={{
             background: auth && "snow"
         }}>
             <div className="navContainer">
