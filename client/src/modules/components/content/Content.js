@@ -17,6 +17,7 @@ import VetHelpFullInfo from "../services/vet_help/VetHelpFullInfo";
 import UserProfile from "../user/UserProfile";
 import AddPost from "../post/AddPost";
 import AddService from "../services/AddService";
+import Services from "../services/Services";
 
 const Content = () => {
     return (
@@ -28,14 +29,7 @@ const Content = () => {
                 <Route path="/lost/:id" component={LostFullInfo} />
                 <Route path="/found" component={FoundList} />
                 <Route path="/found/:id" component={FoundFullInfo} />
-                <Route path="/hotels" component={HotelList} />
-                <Route path="/hotels/:id" component={HotelFullInfo} />
-                <Route path="/walking" component={WalkingList} />
-                <Route path="/walking/:id" component={WalkingFullInfo} />
-                <Route path="/fostering" component={FosteringList} />
-                <Route path="/fostering/:id" component={FosteringFullInfo} />
-                <Route path="/vet-help" component={VetHelpList} />
-                <Route path="/vet-help/:id" component={VetHelpFullInfo} />
+                <Route path="/services/:type" component={Services} />
                 <Route path="/profile" component={UserProfile} />
                 <Route path="/posts/add" component={AddPost} />
                 <Route path="/services/add" component={AddService} />

@@ -15,10 +15,10 @@ const LeftNavBar = () => {
             <div className="left-menu-services">
                 <h3>Services</h3>
                 <div>
-                    <NavLink to={'/hotels'}><Button text={'Hotels'} icon={faHotel} color={"btn"}/></NavLink>
-                    <NavLink to={'/walking'}><Button text={'Walking'} icon={faWalking} color={"btn"}/></NavLink>
-                    <NavLink to={'/fostering'}><Button text={'Fostering'} icon={faDog} color={"btn"}/></NavLink>
-                    <NavLink to={'/vet-help'}><Button text={'VetHelp'} icon={faStethoscope} color={"btn"}/></NavLink>
+                    <NavLink to={`/services/Hotels`}><Button text={'Hotels'} icon={faHotel} color={"btn"}/></NavLink>
+                    <NavLink to={'/services/Walking'}><Button text={'Walking'} icon={faWalking} color={"btn"}/></NavLink>
+                    <NavLink to={'/services/Fostering'}><Button text={'Fostering'} icon={faDog} color={"btn"}/></NavLink>
+                    <NavLink to={'/services/VetHelp'}><Button text={'VetHelp'} icon={faStethoscope} color={"btn"}/></NavLink>
                 </div>
             </div>
         </div>
