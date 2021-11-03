@@ -29,10 +29,10 @@ const Content = () => {
                 <Route path="/lost/:id" component={LostFullInfo} />
                 <Route path="/found" component={FoundList} />
                 <Route path="/found/:id" component={FoundFullInfo} />
+                <Route path="/services/add" component={AddService} />
                 <Route path="/services/:type" component={Services} />
                 <Route path="/profile" component={UserProfile} />
                 <Route path="/posts/add" component={AddPost} />
-                <Route path="/services/add" component={AddService} />
             </Switch>
         </div>
     );
