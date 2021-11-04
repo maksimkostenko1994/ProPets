@@ -2,10 +2,24 @@
 .post {
     display: flex;
     flex-direction: column;
+    width: 60%;
+    margin: 0 auto;
+    padding-top: 10px;
+
     .post-header {
         display: flex;
         flex-direction: row;
-        .post-left {
+        .post-header-img {
+            width: 15%;
+
+            img {
+                border-radius: 50%;
+                width: 60%;
+            }
+        }
+        .post-header-author {
+            margin-left: -20px;
+            align-self: center;
             h3 {
                 font-size: $text16;
                 color: $textColor;
@@ -16,32 +30,36 @@
             }
         }
     }
-    .logo-img {
-        border-radius: 50%;
-        width: 60%;
-    }
-    .post-img {
-        width: 100%;
+    .post-body {
+        height: 224px;
+        display: flex;
+        img {
+            width: 100%;
+        }
     }
     .post-footer {
         position: relative;
         margin-top: 15px;
-        border-bottom: 1px solid $darkText;
-    }
-    h4 {
-        font-size: $text16;
-    }
-    .post-like-box {
-        display: flex;
-        justify-content: flex-end;
-        align-items: baseline;
-        p {
-            padding-left: 10px;
+        border-bottom: 1px solid $textGrey;
+        h4 {
+            font-size: $text16;
         }
-    }
-    button {
-        background: transparent;
-        border: none;
-        color: $textColor;
+        .post-footer-more {
+            color: $textColor;
+            border: none;
+            background: none;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        .post-footer-like-box {
+            display: flex;
+            justify-content: flex-end;
+            align-items: baseline;
+            padding-bottom: 10px;
+            p {
+                padding-left: 10px;
+            }
+        }
     }
 }

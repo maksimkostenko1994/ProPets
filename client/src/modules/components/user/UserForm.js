@@ -6,16 +6,66 @@ import Field from "../forms/Field";
 import { useDispatch, useSelector } from "react-redux";
 import { userSelector } from "../../../store/app";
 import { useEffect } from "react";
-import { getUser } from "../../../store/auth";
-import DogImg from "../../../assets/img/dog1_min.png";
+import { getUser, updateAction } from "../../../store/auth";
+import { useForm, set } from "react-cool-form";
+import * as yup from "yup";
 
 const UserForm = () => {
     const user = useSelector(userSelector);
     const dispatch = useDispatch();
-    console.log(user);
+
     useEffect(() => {
         dispatch(getUser());
     }, [dispatch]);
+
+    console.log(user);
+    const yupSchema = yup.object().shape({
+        full_name: yup.string().min(2).required(),
+        avatar: yup.string().min(2).required(),
+        email: yup.string().email().required(),
+        phone: yup.number().min(6).required(),
+        user_pet: yup.string().min(2).required(),
+        nick: yup.string().min(2).required(),
+        pet_photo: yup.string().min(2).required(),
+    });
+    const validateWithYup = (schema) => async (values) => {
+        let errors = {};
+        try {
+            await schema.validate(values, { abortEarly: false });
+        } catch (yupError) {
+            yupError.inner.forEach(({ path, message }) =>
+                set(errors, path, message)
+            );
+        }
+        return errors;
+    };
+    const { form, use } = useForm({
+        defaultValues: user
+            ? {
+                  full_name: `${user.full_name}`,
+                  avatar: `${user.avatar}`,
+                  email: `${user.email}`,
+                  phone: `${user.phone}`,
+                  user_pet: `${user.user_pet}`,
+                  nick: `${user.nick}`,
+                  pet_photo: `${user.pet_photo}`,
+              }
+            : {
+                  full_name: ``,
+                  avatar: ``,
+                  email: ``,
+                  phone: ``,
+                  user_pet: ``,
+                  nick: ``,
+                  pet_photo: ``,
+              },
+
+        validate: validateWithYup(yupSchema),
+        onSubmit: (values) => {
+            dispatch(updateAction({ ...values, id: user.id }));
+        },
+    });
+    const errors = use("errors", { errorWithTouched: true });
 
     return (
         <div id="user-form">
@@ -24,76 +74,98 @@ const UserForm = () => {
             <div className="user-form-title">
                 <h2>My profile</h2>
             </div>
-            <form className="user-profile-form">
-                <div className="user-form-header">
-                    {user && user.avatar ? (
-                        <div className="user-avatar">
-                            <img src={user.avatar} alt="avatar" />
+            {user && (
+                <form className="user-profile-form" ref={form} noValidate>
+                    <div className="user-form-header">
+                        {user.avatar ? (
+                            <div className="user-avatar">
+                                <img
+                                    src={`http://localhost:5000/${user.avatar}`}
+                                    alt="avatar"
+                                />
+                            </div>
+                        ) : (
+                            <div className="user-avatar">
+                                <FontAwesomeIcon size="3x" icon={faUser} />
+                            </div>
+                        )}
+                        <h3>{user.full_name}</h3>
+                        <button className="user-form-edit-btn">
+                            <FontAwesomeIcon icon={faPencilAlt} />
+                        </button>
+                    </div>
+                    <div className="form-item">
+                        <label>Email:</label>
+                        <Field
+                            name="email"
+                            placeholder="Email"
+                            error={errors.email}
+                        />
+                    </div>
+                    <div className="form-item">
+                        <label>Phone:</label>
+                        <Field
+                            name="phone"
+                            placeholder="Phone"
+                            error={errors.phone}
+                        />
+                    </div>
+                    <div className="form-item">
+                        <label>Avatar:</label>
+                        <Field
+                            name="avatar"
+                            placeholder="Avatar"
+                            error={errors.avatar}
+                            type="file"
+                        />
+                    </div>
+                    <div className="form-body">
+                        <div className="form-body-items">
+                            <div className="form-item">
+                                <label>My pet:</label>
+                                <Field
+                                    name="user_pet"
+                                    placeholder="My pet"
+                                    className="label-pet"
+                                    error={errors.user_pet}
+                                />
+                            </div>
+                            <div className="form-item">
+                                <label>Nick:</label>
+                                <Field
+                                    name="nick"
+                                    placeholder="Nick"
+                                    className="label-nick"
+                                    error={errors.nick}
+                                />
+                            </div>
+                            <div className="form-item">
+                                <label>Photo:</label>
+                                <Field
+                                    name="pet_photo"
+                                    placeholder="Photo"
+                                    error={errors.pet_photo}
+                                    type="file"
+                                />
+                            </div>
                         </div>
-                    ) : (
-                        <div className="user-avatar">
-                            <FontAwesomeIcon size="3x" icon={faUser} />
-                        </div>
-                    )}
-                    <h3>user name</h3>
-                    <button className="user-form-edit-btn">
-                        <FontAwesomeIcon icon={faPencilAlt} />
-                    </button>
-                </div>
-                <div className="form-item">
-                    <label>Email:</label>
-                    <Field name="email" type="email" placeholder="Email" />
-                </div>
-                <div className="form-item">
-                    <label>Phone:</label>
-                    <Field name="phone" type="phone" placeholder="Phone" />
-                </div>
-                <div className="form-item">
-                    <label>Avatar:</label>
-                    <Field name="avatar" type="img" placeholder="Avatar" />
-                </div>
-                <div className="form-body">
-                    <div className="form-body-items">
-                        <div className="form-item">
-                            <label>My pet:</label>
-                            <Field
-                                name="myPet"
-                                type="text"
-                                placeholder="My pet"
-                                className="label-pet"
-                            />
-                        </div>
-                        <div className="form-item">
-                            <label>Nick:</label>
-                            <Field
-                                name="nick"
-                                type="text"
-                                placeholder="Nick"
-                                className="label-nick"
-                            />
-                        </div>
-                        <div className="form-item">
-                            <label>Photo:</label>
-                            <Field
-                                name="photo"
-                                type="img"
-                                placeholder="Photo"
+                        <div className="form-body-pet-img">
+                            <img
+                                src={`http://localhost:5000/${user.pet_photo}`}
+                                alt="pet-icon"
                             />
                         </div>
                     </div>
-                    <div className="form-body-pet-img">
-                        <img src={DogImg} alt="pet-icon" />
+                    <div className="form-footer">
+                        <Button
+                            text="save changes"
+                            icon={faSave}
+                            color={"btn"}
+                            className="form-save-btn"
+                        ></Button>
                     </div>
-                </div>
-                <div className="form-footer">
-                    <Button
-                        text="save changes"
-                        icon={faSave}
-                        color={"btn"}
-                        className="form-save-btn"
-                    ></Button>
-                </div>
-            </form>
+                </form>
+            )}
         </div>
     );
 };
