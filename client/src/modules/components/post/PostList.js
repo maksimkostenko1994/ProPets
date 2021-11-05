@@ -9,13 +9,11 @@ import { getUser } from "../../../store/auth";
 const PostList = () => {
     const posts = useSelector(postsSelector);
     const user = useSelector(userSelector);
-    console.log(posts);
-    console.log(user);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getUser(), getPostsAction());
+        dispatch(getUser());
     }, [dispatch]);
     useEffect(() => {
         dispatch(getPostsAction());

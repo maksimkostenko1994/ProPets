@@ -4,8 +4,11 @@ import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { useSelector } from "react-redux";
 import { postsSelector } from "../../../store/post";
 import TestImg from "../../../assets/img/dog3_full.png";
+import { useHistory } from "react-router";
 const PostFullInfo = () => {
     const posts = useSelector(postsSelector);
+    const history = useHistory();
+    const id = history.location.pathname.slice(15) - 1;
     console.log(posts);
     return (
         <div className="post">
@@ -14,18 +17,19 @@ const PostFullInfo = () => {
                     <img src={Image} alt="dog" />
                 </div>
                 <div className="post-header-author">
-                    <h3>post.author</h3>
-                    <p>post.date</p>
+                    <h3>author name</h3>
+                    <p>{posts[id].createdAt}</p>
                 </div>
             </div>
             <div className="post-body">
                 <img className="post-img" src={TestImg} alt="dog" />
             </div>
             <div className="post-footer">
-                <h4>{posts.title}</h4>
+                <h4>{posts[id].title}</h4>
+                <p>{posts[id].text}</p>
                 <div className="post-footer-like-box">
                     <FontAwesomeIcon icon={faThumbsUp} />
-                    <p>{posts.likes}</p>
+                    <p>{posts[id].likes}</p>
                 </div>
             </div>
         </div>

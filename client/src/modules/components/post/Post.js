@@ -3,9 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import TestImg from "../../../assets/img/dog3_full.png";
 import { NavLink } from "react-router-dom";
+import moment from "moment";
 
 const Post = ({ post, user }) => {
-    console.log(user);
+    const postTime = post.createdAt;
+    const date = moment(postTime).format("D MMMM, HH:MM");
+
     return (
         <div className="post">
             <div className="post-header">
@@ -17,7 +20,7 @@ const Post = ({ post, user }) => {
                 </div>
                 <div className="post-header-author">
                     <h3>{user.full_name}</h3>
-                    <p>{user.createdAt}</p>
+                    <p>{date}</p>
                 </div>
             </div>
             <div className="post-body">
