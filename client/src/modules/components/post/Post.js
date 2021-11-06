@@ -13,10 +13,7 @@ const Post = ({ post, user }) => {
         <div className="post">
             <div className="post-header">
                 <div className="post-header-img">
-                    <img
-                        src={`http://localhost:5000/${user.avatar}`}
-                        alt="dog"
-                    />
+                    <img src="" alt="user-avatar" />
                 </div>
                 <div className="post-header-author">
                     <h3>{user.full_name}</h3>
@@ -43,3 +40,5 @@ const Post = ({ post, user }) => {
     );
 };
 export default Post;
+
+//  src={`http://localhost:5000/${user.avatar}`}

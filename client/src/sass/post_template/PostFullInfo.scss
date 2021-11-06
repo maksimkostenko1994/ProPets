@@ -1,5 +1,5 @@
 @import "./src/sass/variables";
-.post {
+.fullPost {
     display: flex;
     flex-direction: column;
     width: 60%;
@@ -7,11 +7,11 @@
     padding-top: 10px;
     font-family: Montserrat, sans-serif;
 
-    .post-header {
+    .fullPost-header {
         display: flex;
         flex-direction: row;
         padding-bottom: 10px;
-        .post-header-img {
+        .fullPost-header-img {
             width: 15%;
 
             img {
@@ -19,7 +19,7 @@
                 width: 60%;
             }
         }
-        .post-header-author {
+        .fullPost-header-author {
             margin-left: -20px;
             align-self: center;
             h3 {
@@ -32,21 +32,20 @@
             }
         }
     }
-    .post-body {
+    .fullPost-body {
         height: 224px;
         img {
             width: 100%;
         }
     }
-    .post-footer {
+    .fullPost-footer {
         position: relative;
         margin-top: 15px;
-        border-bottom: 1px solid $textGrey;
         h4 {
             font-size: $text16;
             color: $darkText !important;
         }
-        .post-footer-more {
+        .fullPost-footer-more {
             color: $textColor;
             border: none;
             background: none;
@@ -54,13 +53,40 @@
                 cursor: pointer;
             }
         }
-        .post-footer-like-box {
+        .fullPost-footer-like-box {
             display: flex;
             justify-content: flex-end;
             align-items: baseline;
             padding-bottom: 10px;
             p {
                 padding-left: 10px;
+            }
+        }
+    }
+    .comments {
+        padding-bottom: 0px;
+    }
+    .comments-p {
+        color: $textColor;
+        font-size: $text16;
+    }
+
+    .commentArea {
+        border: 1px solid $textColor;
+        resize: none;
+        justify-self: center;
+        outline-color: $textColor;
+    }
+    .comment-footer {
+        text-align: end;
+        padding-top: 10px;
+        button {
+            border: none;
+            background: none;
+            color: $textColor;
+            padding-left: 10px;
+            &:hover {
+                cursor: pointer;
             }
         }
     }
