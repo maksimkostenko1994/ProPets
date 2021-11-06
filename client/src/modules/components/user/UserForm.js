@@ -18,15 +18,14 @@ const UserForm = () => {
         dispatch(getUser());
     }, [dispatch]);
 
-    console.log(user);
     const yupSchema = yup.object().shape({
-        full_name: yup.string().min(2).required(),
-        avatar: yup.string().min(2).required(),
-        email: yup.string().email().required(),
-        phone: yup.number().min(6).required(),
-        user_pet: yup.string().min(2).required(),
-        nick: yup.string().min(2).required(),
-        pet_photo: yup.string().min(2).required(),
+        full_name: yup.string(),
+        avatar: yup.string(),
+        email: yup.string().email(),
+        phone: yup.number(),
+        user_pet: yup.string(),
+        nick: yup.string(),
+        pet_photo: yup.string(),
     });
     const validateWithYup = (schema) => async (values) => {
         let errors = {};
@@ -62,7 +61,8 @@ const UserForm = () => {
 
         validate: validateWithYup(yupSchema),
         onSubmit: (values) => {
-            dispatch(updateAction({ ...values, id: user.id }));
+            const data = {id: user.id, ...values}
+            dispatch(updateAction(data));
         },
     });
     const errors = use("errors", { errorWithTouched: true });
@@ -162,7 +162,7 @@ const UserForm = () => {
                             icon={faSave}
                             color={"btn"}
                             className="form-save-btn"
-                        ></Button>
+                        />
                     </div>
                 </form>
             )}

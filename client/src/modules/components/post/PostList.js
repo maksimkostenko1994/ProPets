@@ -15,6 +15,7 @@ const PostList = () => {
     useEffect(() => {
         dispatch(getUser());
     }, [dispatch]);
+
     useEffect(() => {
         dispatch(getPostsAction());
     }, [dispatch]);

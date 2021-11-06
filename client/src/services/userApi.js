@@ -1,9 +1,9 @@
-import { $host, $authHost } from "./api";
+import {$host, $authHost} from "./api";
 import jwtDecode from "jwt-decode";
 
-export const registration = async ({ name, email, password }) => {
+export const registration = async ({name, email, password}) => {
     try {
-        const { data } = await $host.post(`/api/users/registration`, {
+        const {data} = await $host.post(`/api/users/registration`, {
             full_name: name,
             email,
             password,
@@ -16,9 +16,9 @@ export const registration = async ({ name, email, password }) => {
     }
 };
 
-export const login = async ({ email, password }) => {
+export const login = async ({email, password}) => {
     try {
-        const { data } = await $host.post(`/api/users/login`, {
+        const {data} = await $host.post(`/api/users/login`, {
             email,
             password,
         });
@@ -31,7 +31,7 @@ export const login = async ({ email, password }) => {
 
 export const check = async () => {
     try {
-        const { data } = await $authHost.get(`/api/users/auth`);
+        const {data} = await $authHost.get(`/api/users/auth`);
         localStorage.setItem("token", data.token);
         return jwtDecode(data.token);
     } catch (e) {
@@ -47,16 +47,27 @@ export const getCurrentUser = () => {
 
 export const getUserData = async (id) => {
     try {
-        const { data } = await $authHost.get(`/api/users/${id}`);
+        const {data} = await $authHost.get(`/api/users/${id}`);
         return data;
     } catch (e) {
         return await Promise.reject(e);
     }
 };
-export const updateUser = async ({ id, ...rest }) => {
+export const updateUser = async ({id, ...rest}) => {
     try {
-        const { data } = await $authHost.put(`/api/users/${id}`, { ...rest });
-        return data;
+        const formData = new FormData()
+        formData.append("full_name", rest.full_name)
+        formData.append("avatar", rest.avatar[0])
+        formData.append('email', rest.email)
+        formData.append('phone', rest.phone)
+        formData.append('pet', rest.user_pet)
+        formData.append('nick', rest.nick)
+        formData.append('pet_photo', rest.pet_photo[0])
+        const {data} = await $authHost.put(`/api/users/${id}`, formData, {headers: {
+                'Content-Type': 'multipart/form-data'
+        }});
+        console.log(data)
+        return data
     } catch (e) {
         return await Promise.reject(e);
     }
