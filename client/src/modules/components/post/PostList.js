@@ -3,18 +3,11 @@ import { getPostsAction, postsSelector } from "../../../store/post";
 import Post from "./Post";
 import styled from "styled-components";
 import { useEffect } from "react";
-import { userSelector } from "../../../store/app";
-import { getUser } from "../../../store/auth";
 
 const PostList = () => {
     const posts = useSelector(postsSelector);
-    const user = useSelector(userSelector);
 
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getUser());
-    }, [dispatch]);
 
     useEffect(() => {
         dispatch(getPostsAction());
@@ -25,7 +18,9 @@ const PostList = () => {
     ) : (
         <PostsBox>
             {posts.map((post) => (
-                <li key={post.id}>{<Post post={post} user={user} />}</li>
+                <li key={post.id}>
+                    <Post post={post} />
+                </li>
             ))}
         </PostsBox>
     );

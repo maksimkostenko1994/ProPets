@@ -8,3 +8,12 @@ export const getPosts = async () => {
         return await Promise.reject(e);
     }
 };
+
+export const getPost = async (id) => {
+    try {
+        const { data } = await $authHost.get(`/api/posts/${id}`);
+        return data;
+    } catch (e) {
+        return await Promise.reject(e);
+    }
+};
