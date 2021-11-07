@@ -1,9 +1,30 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {getServicesAction, serviceSelector} from "../../../../store/service";
+import {Link, useParams} from "react-router-dom";
 
 const FosteringList = () => {
-    return (
+
+    const {services: {rows}} = useSelector(serviceSelector)
+    const {type} = useParams()
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getServicesAction(type))
+    }, [dispatch, type])
+
+    return rows !== undefined && (
         <div>
-            <h1>Fostering List</h1>
+            {rows.map(service => <li key={service.id}>
+                <div>
+                    <img src={`http://localhost:5000/${service.photo}`} alt="service fostering"/>
+                </div>
+                <div>
+                    <h2>{service.title}</h2>
+                    <Link to={`/services/${service.id}`}>...view details</Link>
+                </div>
+            </li>)}
         </div>
     );
 };
