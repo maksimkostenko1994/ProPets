@@ -21,23 +21,23 @@ const PostFullInfo = () => {
                 </div>
                 <div className="fullPost-header-author">
                     <h3>author name</h3>
-                    <p>{post[id].createdAt}</p>
+                    <p>{post.createdAt}</p>
                 </div>
             </div>
             <div className="fullPost-body">
                 <img className="fullPost-img" src={TestImg} alt="dog" />
             </div>
             <div className="fullPost-footer">
-                <h4>{post[id].title}</h4>
-                <p>{post[id].text}</p>
+                <h4>{post.title}</h4>
+                <p>{post.text}</p>
                 <div className="fullPost-footer-like-box">
                     <FontAwesomeIcon icon={faThumbsUp} />
-                    <p>{post[id].likes}</p>
+                    <p>{post.likes}</p>
                 </div>
             </div>
             <div className="comments">
                 <p className="comments-p">Comments</p>
-                <hr></hr>
+                <hr/>
                 <Comment />
             </div>
             <textarea
