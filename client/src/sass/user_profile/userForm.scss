@@ -24,8 +24,13 @@
         display: flex;
         flex-direction: row;
         padding-top: 20px;
+        width: 150px;
         .user-avatar {
             padding-right: 20px;
+            img {
+                width: 100%;
+                border-radius: 50%;
+            }
         }
         .user-form-edit-btn {
             background: none;
@@ -69,7 +74,8 @@
                 width: 85%;
             }
 
-            .form-body-pet-img {
+            .form-body-pet-img,
+            .user-pet-photo {
                 width: 15%;
                 text-align: center;
                 padding-top: 20px;

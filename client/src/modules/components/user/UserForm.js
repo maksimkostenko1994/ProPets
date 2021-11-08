@@ -1,5 +1,10 @@
 import Button from "../button/Button";
-import { faSave, faPencilAlt, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+    faSave,
+    faPencilAlt,
+    faUser,
+    faPaw,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../../sass/user_profile/userForm.scss";
 import Field from "../forms/Field";
@@ -22,7 +27,7 @@ const UserForm = () => {
         full_name: yup.string(),
         avatar: yup.string(),
         email: yup.string().email(),
-        phone: yup.number(),
+        phone: yup.string(),
         user_pet: yup.string(),
         nick: yup.string(),
         pet_photo: yup.string(),
@@ -61,7 +66,7 @@ const UserForm = () => {
 
         validate: validateWithYup(yupSchema),
         onSubmit: (values) => {
-            const data = {id: user.id, ...values}
+            const data = { id: user.id, ...values };
             dispatch(updateAction(data));
         },
     });
@@ -90,7 +95,10 @@ const UserForm = () => {
                             </div>
                         )}
                         <h3>{user.full_name}</h3>
-                        <button className="user-form-edit-btn">
+                        <button
+                            className="user-form-edit-btn"
+                            name="changeName"
+                        >
                             <FontAwesomeIcon icon={faPencilAlt} />
                         </button>
                     </div>
@@ -150,10 +158,16 @@ const UserForm = () => {
                             </div>
                         </div>
                         <div className="form-body-pet-img">
-                            <img
-                                src={`http://localhost:5000/${user.pet_photo}`}
-                                alt="pet-icon"
-                            />
+                            {user.pet_photo ? (
+                                <img
+                                    src={`http://localhost:5000/${user.pet_photo}`}
+                                    alt="pet-icon"
+                                />
+                            ) : (
+                                <div className="user-pet-photo">
+                                    <FontAwesomeIcon size="3x" icon={faPaw} />
+                                </div>
+                            )}
                         </div>
                     </div>
                     <div className="form-footer">
@@ -162,6 +176,7 @@ const UserForm = () => {
                             icon={faSave}
                             color={"btn"}
                             className="form-save-btn"
+                            name="update"
                         />
                     </div>
                 </form>

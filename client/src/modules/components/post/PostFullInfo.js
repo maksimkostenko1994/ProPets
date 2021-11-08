@@ -1,13 +1,13 @@
-import Image from "../../../assets/img/dog2.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faComments } from "@fortawesome/free-regular-svg-icons";
-import TestImg from "../../../assets/img/dog3_full.png";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
 import { getPostAction, postSelector } from "../../../store/post";
 import { useDispatch, useSelector } from "react-redux";
 import "./../../../sass/post_template/PostFullInfo.scss";
 import Comment from "./Comment";
 import { useEffect } from "react";
+import moment from "moment";
 
 const PostFullInfo = () => {
     const post = useSelector(postSelector);
@@ -19,27 +19,42 @@ const PostFullInfo = () => {
         dispatch(getPostAction(id));
     }, [dispatch, id]);
 
+    const date = post ? moment(post.createdAt).format("D MMMM, HH:mm") : false;
+
     return (
         post && (
             <div className="fullPost">
                 <div className="fullPost-header">
-                    <div className="fullPost-header-img">
-                        <img src={Image} alt="dog" />
-                    </div>
+                    {post.avatar ? (
+                        <div className="fullPost-header-img">
+                            <img
+                                src={`http://localhost:5000/${post.avatar}`}
+                                alt="user-avatar"
+                            />
+                        </div>
+                    ) : (
+                        <div className="fullPost-header-img">
+                            <FontAwesomeIcon size="2x" icon={faUser} />
+                        </div>
+                    )}
                     <div className="fullPost-header-author">
-                        <h3>author name</h3>
-                        <p>{post.createdAt}</p>
+                        <h3>{post.full_name}</h3>
+                        <p>{date ? date : ""}</p>
                     </div>
                 </div>
                 <div className="fullPost-body">
-                    <img className="fullPost-img" src={TestImg} alt="dog" />
+                    <img
+                        className="fullPost-img"
+                        src={`http://localhost:5000/${post.photo}`}
+                        alt="dog"
+                    />
                 </div>
                 <div className="fullPost-footer">
                     <h4>{post.title}</h4>
                     <p>{post.text}</p>
                     <div className="fullPost-footer-like-box">
                         <FontAwesomeIcon icon={faThumbsUp} />
-                        <p>{post.likes}</p>
+                        <p>{post.count}</p>
                     </div>
                 </div>
                 <div className="comments">

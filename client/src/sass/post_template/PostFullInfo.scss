@@ -12,15 +12,14 @@
         flex-direction: row;
         padding-bottom: 10px;
         .fullPost-header-img {
-            width: 15%;
+            width: 10%;
 
             img {
                 border-radius: 50%;
-                width: 60%;
+                width: 100%;
             }
         }
         .fullPost-header-author {
-            margin-left: -20px;
             align-self: center;
             h3 {
                 font-size: $text16;
@@ -34,6 +33,7 @@
     }
     .fullPost-body {
         height: 224px;
+        display: flex;
         img {
             width: 100%;
         }
