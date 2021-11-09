@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getPosts, getPost } from "../services/postApi";
+import { getPosts, getPost, addNewPost } from "../services/postApi";
 import { stateLoading } from "./app";
 import { resetError, setError } from "./auth";
 
@@ -15,7 +15,7 @@ const postsReducer = createSlice({
             state.posts = payload;
         },
         addPost: (state, { payload }) => {
-            state.posts = state.posts.push(payload);
+            state.posts.posts.push(payload);
         },
         setCurrentPost: (state, { payload }) => {
             state.post = payload;
@@ -43,6 +43,19 @@ export const getPostAction = (id) => async (dispatch) => {
     try {
         const post = await getPost(id);
         dispatch(setCurrentPost(post));
+    } catch (e) {
+        dispatch(setError(e.message));
+    } finally {
+        dispatch(stateLoading(false));
+    }
+};
+
+export const addPostAction = (post) => async (dispatch) => {
+    dispatch(stateLoading(true));
+    dispatch(resetError());
+    try {
+        const response = await addNewPost(post);
+        dispatch(addPost({ post: response }));
     } catch (e) {
         dispatch(setError(e.message));
     } finally {

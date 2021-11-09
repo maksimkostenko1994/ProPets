@@ -32,7 +32,7 @@
             border: 1px solid $textColor;
             resize: none;
             height: 300px;
-            padding: 30px 15px;
+            padding: 10px 15px;
             &::placeholder {
                 color: $textGrey;
             }
@@ -83,6 +83,11 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    img {
+                        border-radius: 50%;
+                        height: 50px;
+                        width: 50px;
+                    }
 
                     svg {
                         height: 20px;

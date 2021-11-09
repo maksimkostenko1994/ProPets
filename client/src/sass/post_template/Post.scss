@@ -12,12 +12,12 @@
         flex-direction: row;
         padding-bottom: 10px;
         .post-header-img {
-            width: 15%;
-            height: 43px;
-            margin-right: -35px;
+            width: 50px;
+            height: 50px;
             img {
                 border-radius: 50%;
-                width: 60%;
+                width: 50px;
+                height: 50px;
             }
         }
         .user-avatar {
@@ -25,6 +25,7 @@
         }
         .post-header-author {
             align-self: center;
+            padding-left: 10px;
             h3 {
                 font-size: $text16;
                 color: $textColor;
@@ -36,7 +37,6 @@
         }
     }
     .post-body {
-        height: 224px;
         display: flex;
         img {
             width: 100%;
