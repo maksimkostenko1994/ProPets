@@ -1,20 +1,13 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import FosteringCard from "./FosteringCard";
 
 const FosteringList = ({rows}) => {
 
     return rows !== undefined && (
-        <div>
-            {rows.map(service => <li key={service.id}>
-                <div>
-                    <img src={`http://localhost:5000/${service.photo}`} alt="service fostering"/>
-                </div>
-                <div>
-                    <h2>{service.title}</h2>
-                    <Link to={`/services/${service.id}`}>...view details</Link>
-                </div>
-            </li>)}
-        </div>
+        <ul className="service-list">
+            <p className="service-title">Fostering. In adoption we trust.</p>
+            {rows.map(service => <FosteringCard key={service.id} service={service}/>)}
+        </ul>
     );
 };
 

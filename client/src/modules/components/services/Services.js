@@ -9,7 +9,7 @@ import {getServicesAction, serviceSelector} from "../../../store/service";
 
 const Services = () => {
 
-    const {services: {rows}} = useSelector(serviceSelector)
+    const {services:{rows}} = useSelector(serviceSelector)
     const {type} = useParams()
 
     const dispatch = useDispatch()
