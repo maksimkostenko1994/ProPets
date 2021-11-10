@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Button from "../button/Button";
 import { faPaw, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../../../store/auth";
+import {useDispatch, useSelector} from "react-redux";
 import { userSelector } from "../../../store/app";
 import "../../../sass/post_template/AddPost.scss";
 import { addPostAction, postSelector } from "../../../store/post";
@@ -14,10 +13,6 @@ const AddPost = () => {
     const dispatch = useDispatch();
     const user = useSelector(userSelector);
     const post = useSelector(postSelector);
-
-    useEffect(() => {
-        dispatch(getUser());
-    }, [dispatch]);
 
     const yupSchema = yup.object().shape({
         title: yup.string().min(2),

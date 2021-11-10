@@ -1,0 +1,66 @@
+.service-list {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+
+  .service-title {
+    color: #06B2BB;
+    font-weight: 700;
+    align-self: flex-start;
+    margin-top: 20px;
+    font-size: 1.3rem;
+  }
+
+  hr {
+    width: 100%;
+    background-color: lightgray;
+    border: none;
+    height: 1px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+  }
+
+  .service-card {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 300px 300px;
+    border: 1px solid black;
+
+    .service-card-img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .service-card-info {
+      display: flex;
+      flex-direction: column;
+      padding-left: 10px;
+
+      div {
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+
+        span {
+          display: inline-block;
+          height: 25px;
+          width: 25px;
+          border-radius: 50%;
+          border: 1px solid black;
+        }
+      }
+
+      h2 {
+
+      }
+    }
+  }
+}

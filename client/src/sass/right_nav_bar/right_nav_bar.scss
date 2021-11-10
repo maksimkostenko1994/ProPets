@@ -36,10 +36,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        overflow: hidden;
 
         svg {
           height: 25px;
           width: 25px;
+        }
+
+        img {
+          width: 100%;
         }
       }
     }

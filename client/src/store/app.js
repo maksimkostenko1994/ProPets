@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     auth: false,
@@ -13,14 +13,14 @@ const appReducer = createSlice({
         authSuccess: (state) => {
             state.auth = localStorage.getItem("token") !== null;
         },
-        stateLoading: (state, { payload }) => {
+        stateLoading: (state, {payload}) => {
             state.loading = payload;
         },
         logout: (state) => {
             localStorage.removeItem("token");
             state.auth = false;
         },
-        setCurrentUser: (state, { payload }) => {
+        setCurrentUser: (state, {payload}) => {
             state.currentUser = payload;
         },
     },
@@ -28,7 +28,7 @@ const appReducer = createSlice({
 
 export default appReducer.reducer;
 
-export const { authSuccess, stateLoading, logout, setCurrentUser } =
+export const {authSuccess, stateLoading, logout, setCurrentUser} =
     appReducer.actions;
 
 export const appSelector = (state) => state.app;

@@ -7,6 +7,7 @@ import {appSelector, authSuccess} from "../store/app";
 import {useEffect} from "react";
 import Loader from "./components/loader/Loader";
 import Home from "./components/home/Home";
+import {checkAuthAction} from "../store/auth";
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(authSuccess())
+        dispatch(checkAuthAction())
     }, [dispatch])
 
     return (

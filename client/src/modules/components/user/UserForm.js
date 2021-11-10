@@ -10,18 +10,13 @@ import "../../../sass/user_profile/userForm.scss";
 import Field from "../forms/Field";
 import { useDispatch, useSelector } from "react-redux";
 import { userSelector } from "../../../store/app";
-import { useEffect } from "react";
-import { getUser, updateAction } from "../../../store/auth";
+import { updateAction } from "../../../store/auth";
 import { useForm, set } from "react-cool-form";
 import * as yup from "yup";
 
 const UserForm = () => {
     const user = useSelector(userSelector);
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getUser());
-    }, [dispatch]);
 
     const yupSchema = yup.object().shape({
         full_name: yup.string(),

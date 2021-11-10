@@ -1,13 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignOutAlt, faUser } from "@fortawesome/free-solid-svg-icons";
-import { getCurrentUser } from "../../../services/userApi";
-import { logoutAction } from "../../../store/auth";
-import { useDispatch } from "react-redux";
+import {Link} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSignOutAlt, faUser} from "@fortawesome/free-solid-svg-icons";
+import {logoutAction} from "../../../store/auth";
+import {useDispatch, useSelector} from "react-redux";
+import {userSelector} from "../../../store/app";
 
 const RightNavBar = () => {
-    const user = getCurrentUser();
+    const user = useSelector(userSelector);
+
     const dispatch = useDispatch();
     const [firstName, secondName] = user.full_name.split(" ");
 
@@ -17,14 +18,16 @@ const RightNavBar = () => {
                 {user && (
                     <Link to={"/profile"} className="user-profile-btn">
                         {user.avatar ? (
-                            <img src={user.avatar} alt="avatar" />
+                            <div className="user-avatar">
+                                <img src={`http://localhost:5000/${user.avatar}`} alt="avatar"/>
+                            </div>
                         ) : (
                             <div className="user-avatar">
-                                <FontAwesomeIcon size="2x" icon={faUser} />
+                                <FontAwesomeIcon size="2x" icon={faUser}/>
                             </div>
                         )}
                         <h4>
-                            {firstName} <br />
+                            {firstName} <br/>
                             {secondName}
                         </h4>
                     </Link>
@@ -35,7 +38,7 @@ const RightNavBar = () => {
                 onClick={() => dispatch(logoutAction())}
                 className="user-logout-btn"
             >
-                <FontAwesomeIcon icon={faSignOutAlt} />
+                <FontAwesomeIcon icon={faSignOutAlt}/>
                 Logout
             </Link>
         </div>

@@ -1,31 +1,14 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {getServicesAction, serviceSelector} from "../../../../store/service";
-import {Link, useParams} from "react-router-dom";
+import React from 'react';
+import HotelCard from "./HotelCard";
 
-const HotelList = () => {
-
-    const {services: {rows}} = useSelector(serviceSelector)
-    const {type} = useParams()
-
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(getServicesAction(type))
-    }, [dispatch, type])
+const HotelList = ({rows}) => {
 
     return rows !== undefined && (
-        <div>
-            {rows.map(service => <li key={service.id}>
-                <div>
-                    <img src={`http://localhost:5000/${service.photo}`} alt="service fostering"/>
-                </div>
-                <div>
-                    <h2>{service.title}</h2>
-                    <Link to={`/services/${service.id}`}>...view details</Link>
-                </div>
-            </li>)}
-        </div>
+        <ul className="service-list">
+            <p className="service-title">Walking. No have time tonight? We have a solution!</p>
+            <hr/>
+            {rows.map(service => <HotelCard key={service.id} service={service}/>)}
+        </ul>
     );
 };
 
