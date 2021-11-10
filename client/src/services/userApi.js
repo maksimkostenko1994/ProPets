@@ -10,9 +10,9 @@ export const registration = async ({name, email, password}) => {
             role: "USER",
         });
         localStorage.setItem("token", data.token);
-        return jwtDecode(data.token);
+        return data.user;
     } catch (e) {
-        return await Promise.reject(e);
+        return await Promise.reject(e.response.data.message);
     }
 };
 
@@ -23,9 +23,9 @@ export const login = async ({email, password}) => {
             password,
         });
         localStorage.setItem("token", data.token);
-        return jwtDecode(data.token);
+        return data.user;
     } catch (e) {
-        return await Promise.reject(e);
+        return await Promise.reject(e.response.data.message);
     }
 };
 
@@ -33,9 +33,11 @@ export const check = async () => {
     try {
         const {data} = await $authHost.get(`/api/users/auth`);
         localStorage.setItem("token", data.token);
-        return jwtDecode(data.token);
+        return {token: jwtDecode(data.token), user: data.user};
     } catch (e) {
-        return await Promise.reject(e);
+        if (e.response.status === 401)
+            localStorage.removeItem('token')
+        return await Promise.reject(e.response.data.message)
     }
 };
 
@@ -45,14 +47,6 @@ export const getCurrentUser = () => {
         : null;
 };
 
-export const getUserData = async (id) => {
-    try {
-        const {data} = await $authHost.get(`/api/users/${id}`);
-        return data;
-    } catch (e) {
-        return await Promise.reject(e);
-    }
-};
 export const updateUser = async ({id, ...rest}) => {
     try {
         const formData = new FormData()
@@ -63,12 +57,13 @@ export const updateUser = async ({id, ...rest}) => {
         formData.append('pet', rest.user_pet)
         formData.append('nick', rest.nick)
         formData.append('pet_photo', rest.pet_photo[0])
-        const {data} = await $authHost.put(`/api/users/${id}`, formData, {headers: {
+        const {data} = await $authHost.put(`/api/users/${id}`, formData, {
+            headers: {
                 'Content-Type': 'multipart/form-data'
-        }});
-        console.log(data)
+            }
+        });
         return data
     } catch (e) {
-        return await Promise.reject(e);
+        return await Promise.reject(e.response.data.message);
     }
 };

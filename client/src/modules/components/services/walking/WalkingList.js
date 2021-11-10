@@ -1,18 +1,7 @@
-import {useDispatch, useSelector} from "react-redux";
-import {getServicesAction, serviceSelector} from "../../../../store/service";
-import {Link, useParams} from "react-router-dom";
-import React, {useEffect} from "react";
+import {Link} from "react-router-dom";
+import React from "react";
 
-const WalkingList = () => {
-
-    const {services: {rows}} = useSelector(serviceSelector)
-    const {type} = useParams()
-
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(getServicesAction(type))
-    }, [dispatch, type])
+const WalkingList = ({rows}) => {
 
     return rows !== undefined && (
         <div>

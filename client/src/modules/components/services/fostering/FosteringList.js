@@ -1,18 +1,7 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {getServicesAction, serviceSelector} from "../../../../store/service";
-import {Link, useParams} from "react-router-dom";
+import React from 'react';
+import {Link} from "react-router-dom";
 
-const FosteringList = () => {
-
-    const {services: {rows}} = useSelector(serviceSelector)
-    const {type} = useParams()
-
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(getServicesAction(type))
-    }, [dispatch, type])
+const FosteringList = ({rows}) => {
 
     return rows !== undefined && (
         <div>

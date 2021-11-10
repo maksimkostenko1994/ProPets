@@ -1,18 +1,12 @@
-import React, { useEffect } from "react";
+import React  from "react";
 import Button from "../button/Button";
 import { faPaw, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { userSelector } from "../../../store/app";
-import { getUser } from "../../../store/auth";
 
 const AddService = () => {
     const user = useSelector(userSelector);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getUser());
-    }, [dispatch]);
 
     return (
         <div className="add-service">
