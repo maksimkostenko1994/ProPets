@@ -58,16 +58,32 @@
             align-items: baseline;
             padding-bottom: 10px;
             p {
+                padding-right: 10px;
+            }
+            button {
+                color: $textColor;
+                border: none;
+                background: none;
                 padding-left: 10px;
+                font-size: $text10;
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
     }
     .comments {
-        padding-bottom: 0px;
-    }
-    .comments-p {
-        color: $textColor;
-        font-size: $text16;
+        .comments-p {
+            color: $textColor;
+            font-size: $text16;
+        }
+        h3 {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        li {
+            list-style: none;
+        }
     }
 
     .commentArea {
@@ -84,6 +100,7 @@
             background: none;
             color: $textColor;
             padding-left: 10px;
+            font-size: $text10;
             &:hover {
                 cursor: pointer;
             }

@@ -1,9 +1,11 @@
 import "../../../sass/post_template/Comment.scss";
+
 const Comment = ({ comment }) => {
+    console.log(comment);
     return (
         <div className="user-comment">
-            <h5>Author| Date</h5>
-            <p>comment text</p>
+            <span>Author | Date</span>
+            <p></p>
         </div>
     );
 };

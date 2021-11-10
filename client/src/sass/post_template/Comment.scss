@@ -2,10 +2,13 @@
 
 .user-comment {
     padding-top: 12px;
-    h5 {
-        padding-bottom: 10px;
+    width: 100%;
+    span {
+        font-size: $text12;
+        font-weight: $textBolder;
     }
     p {
-        padding-bottom: 20px;
+        padding-bottom: 10px;
+        font-family: Montserrat;
     }
 }

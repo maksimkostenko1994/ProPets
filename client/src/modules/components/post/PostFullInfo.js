@@ -2,7 +2,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faComments } from "@fortawesome/free-regular-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
-import { getPostAction, postSelector } from "../../../store/post";
+import {
+    commentsSelector,
+    getPostAction,
+    postSelector,
+} from "../../../store/post";
 import { useDispatch, useSelector } from "react-redux";
 import "./../../../sass/post_template/PostFullInfo.scss";
 import Comment from "./Comment";
@@ -11,6 +15,7 @@ import moment from "moment";
 
 const PostFullInfo = () => {
     const post = useSelector(postSelector);
+    const comments = useSelector(commentsSelector);
     const dispatch = useDispatch();
 
     const { id } = useParams();
@@ -53,14 +58,25 @@ const PostFullInfo = () => {
                     <h4>{post.title}</h4>
                     <p>{post.text}</p>
                     <div className="fullPost-footer-like-box">
-                        <FontAwesomeIcon icon={faThumbsUp} />
                         <p>{post.count}</p>
+                        <FontAwesomeIcon icon={faThumbsUp} />
+                        <button>add like</button>
                     </div>
                 </div>
                 <div className="comments">
                     <p className="comments-p">Comments</p>
                     <hr />
-                    <Comment />
+                    {comments.length === 0 ? (
+                        <h3>No comments yet</h3>
+                    ) : (
+                        <div>
+                            {comments.map((comment, index) => (
+                                <li key={index}>
+                                    <Comment comment={comment} />
+                                </li>
+                            ))}
+                        </div>
+                    )}
                 </div>
                 <textarea
                     placeholder="type your comment"

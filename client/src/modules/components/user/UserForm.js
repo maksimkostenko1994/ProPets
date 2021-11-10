@@ -57,11 +57,11 @@ const UserForm = () => {
             : {
                   full_name: ``,
                   avatar: ``,
-                  email: ``,
-                  phone: ``,
-                  user_pet: ``,
-                  nick: ``,
-                  pet_photo: ``,
+                  email: `${"email"}`,
+                  phone: `${"phone"}`,
+                  user_pet: `${"user_pet"}`,
+                  nick: `${"pet_nick"}`,
+                  pet_photo: `${"pet_avatar"}`,
               },
 
         validate: validateWithYup(yupSchema),

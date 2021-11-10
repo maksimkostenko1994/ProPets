@@ -6,6 +6,7 @@ import { resetError, setError } from "./auth";
 const initialState = {
     posts: [],
     post: null,
+    comments: [],
 };
 const postsReducer = createSlice({
     name: "posts",
@@ -15,10 +16,13 @@ const postsReducer = createSlice({
             state.posts = payload;
         },
         addPost: (state, { payload }) => {
-            state.posts.posts.push(payload);
+            state.posts = state.posts.posts.push(payload);
         },
         setCurrentPost: (state, { payload }) => {
             state.post = payload;
+        },
+        addComment: (state, { payload }) => {
+            state.comments = state.comments.push(payload);
         },
     },
 });
@@ -63,6 +67,8 @@ export const addPostAction = (post) => async (dispatch) => {
     }
 };
 
-export const { setPosts, addPost, setCurrentPost } = postsReducer.actions;
+export const { setPosts, addPost, setCurrentPost, addComment } =
+    postsReducer.actions;
 export const postsSelector = (state) => state.posts.posts;
 export const postSelector = (state) => state.posts.post;
+export const commentsSelector = (state) => state.posts.comments;
