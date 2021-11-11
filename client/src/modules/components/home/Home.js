@@ -1,11 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import LeftNavBar from "../leftNavBar/LeftNavBar";
 import Content from "../content/Content";
 import RightNavBar from "../rightNavBar/RightNavBar";
-import {checkAuthAction} from "../../../store/auth";
-import {useDispatch, useSelector} from "react-redux";
-import {userSelector} from "../../../store/app";
-
 const Home = () => {
 
     return (

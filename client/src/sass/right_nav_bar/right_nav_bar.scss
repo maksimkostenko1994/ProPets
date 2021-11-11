@@ -27,26 +27,6 @@
           color: #15939B;
         }
       }
-
-      .user-avatar {
-        border: 1px solid snow;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-
-        svg {
-          height: 25px;
-          width: 25px;
-        }
-
-        img {
-          width: 100%;
-        }
-      }
     }
   }
 
@@ -64,5 +44,25 @@
     svg {
       margin-right: 10px;
     }
+  }
+}
+
+.user-avatar {
+  border: 1px solid snow;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  svg {
+    height: 25px;
+    width: 25px;
+  }
+
+  img {
+    width: 100%;
   }
 }

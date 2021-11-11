@@ -5,8 +5,7 @@ const HotelList = ({rows}) => {
 
     return rows !== undefined && (
         <ul className="service-list">
-            <p className="service-title">Walking. No have time tonight? We have a solution!</p>
-            <hr/>
+            <p className="service-title">Hotels. The best hotels in the world!</p>
             {rows.map(service => <HotelCard key={service.id} service={service}/>)}
         </ul>
     );

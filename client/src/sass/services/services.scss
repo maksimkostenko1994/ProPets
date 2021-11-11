@@ -1,3 +1,5 @@
+@import "../variables.scss";
+
 .service-list {
   margin: 0 auto;
   display: flex;
@@ -14,20 +16,13 @@
     font-size: 1.3rem;
   }
 
-  hr {
-    width: 100%;
-    background-color: lightgray;
-    border: none;
-    height: 1px;
-    margin-bottom: 20px;
-    margin-top: 5px;
-  }
-
   .service-card {
     list-style-type: none;
     display: grid;
     grid-template-columns: 300px 300px;
-    border: 1px solid black;
+    border-top: 1px solid lightgray;
+    margin-top: 10px;
+    padding-top: 20px;
 
     .service-card-img {
       display: flex;
@@ -42,25 +37,37 @@
     .service-card-info {
       display: flex;
       flex-direction: column;
-      padding-left: 10px;
+      padding: 0 0 0 15px;
+      justify-content: space-between;
 
-      div {
+      .service-card-profile {
         display: flex;
         align-items: center;
-        margin-top: 15px;
+        color: $textColor;
 
-        span {
-          display: inline-block;
-          height: 25px;
-          width: 25px;
-          border-radius: 50%;
-          border: 1px solid black;
+        h4 {
+          margin-left: 10px;
+          font-family: Montserrat, sans-serif;
         }
       }
 
-      h2 {
+      .service-card-content {
+        margin-bottom: 60px;
+        margin-left: 10px;
 
+        h2 {
+          font-size: 1.6rem;
+          &:first-letter {
+            text-transform: uppercase;
+          }
+        }
+
+        a {
+          color: $textColor;
+        }
       }
     }
+
+
   }
 }

@@ -1,20 +1,13 @@
-import {Link} from "react-router-dom";
 import React from "react";
+import WalkingCard from "./WalkingCard";
 
 const WalkingList = ({rows}) => {
 
     return rows !== undefined && (
-        <div>
-            {rows.map(service => <li key={service.id}>
-                <div>
-                    <img src={`http://localhost:5000/${service.photo}`} alt="service fostering"/>
-                </div>
-                <div>
-                    <h2>{service.title}</h2>
-                    <Link to={`/services/${service.id}`}>...view details</Link>
-                </div>
-            </li>)}
-        </div>
+        <ul className="service-list">
+            <p className="service-title">Walking. No have time tonight? We have a solution!</p>
+            {rows.map(service => <WalkingCard key={service.id} service={service}/>)}
+        </ul>
     );
 };
 
