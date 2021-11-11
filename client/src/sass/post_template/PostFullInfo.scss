@@ -85,25 +85,4 @@
             list-style: none;
         }
     }
-
-    .commentArea {
-        border: 1px solid $textColor;
-        resize: none;
-        justify-self: center;
-        outline-color: $textColor;
-    }
-    .comment-footer {
-        text-align: end;
-        padding-top: 10px;
-        button {
-            border: none;
-            background: none;
-            color: $textColor;
-            padding-left: 10px;
-            font-size: $text10;
-            &:hover {
-                cursor: pointer;
-            }
-        }
-    }
 }

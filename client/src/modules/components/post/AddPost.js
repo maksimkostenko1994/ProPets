@@ -2,18 +2,16 @@ import React from "react";
 import Button from "../button/Button";
 import { faPaw, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userSelector } from "../../../store/app";
 import "../../../sass/post_template/AddPost.scss";
-import { addPostAction, postSelector } from "../../../store/post";
+import { addPostAction } from "../../../store/post";
 import { useForm, set } from "react-cool-form";
 import * as yup from "yup";
 
 const AddPost = () => {
     const dispatch = useDispatch();
     const user = useSelector(userSelector);
-    const post = useSelector(postSelector);
-
     const yupSchema = yup.object().shape({
         title: yup.string().min(2),
         text: yup.string().min(2),
@@ -31,20 +29,14 @@ const AddPost = () => {
         return errors;
     };
     const { form, use } = useForm({
-        defaultValues: post
-            ? {
-                  title: `${post.title}`,
-                  text: `${post.text}`,
-                  photo: `${post.photo}`,
-              }
-            : {
-                  title: ``,
-                  text: ``,
-                  photo: ``,
-              },
+        defaultValues: {
+            title: ``,
+            text: ``,
+            photo: ``,
+        },
         validate: validateWithYup(yupSchema),
         onSubmit: (values, { reset }) => {
-            dispatch(addPostAction(values));
+            dispatch(addPostAction({ ...values, userId: user.id }));
             reset();
         },
     });
@@ -75,7 +67,7 @@ const AddPost = () => {
                 <div>
                     <div className="user-data-post">
                         {user && user.avatar ? (
-                            <div className="user-avatar">
+                            <div className="add-post-user-avatar">
                                 <img
                                     src={`http://localhost:5000/${user.avatar}`}
                                     alt="avatar"

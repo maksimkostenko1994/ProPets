@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { addNewComment } from "../services/commentApi";
 import { getPosts, getPost, addNewPost } from "../services/postApi";
 import { stateLoading } from "./app";
 import { resetError, setError } from "./auth";
@@ -16,13 +17,18 @@ const postsReducer = createSlice({
             state.posts = payload;
         },
         addPost: (state, { payload }) => {
-            state.posts = state.posts.posts.push(payload);
+            state.posts.push({ ...payload });
         },
         setCurrentPost: (state, { payload }) => {
             state.post = payload;
         },
+        setPostComments: (state, { payload }) => {
+            state.comments = payload;
+        },
         addComment: (state, { payload }) => {
-            state.comments = state.comments.push(payload);
+            //getState
+            // state.comments = [{ payload }];
+            state.comments = [...state.posts.comments, { payload }];
         },
     },
 });
@@ -59,7 +65,7 @@ export const addPostAction = (post) => async (dispatch) => {
     dispatch(resetError());
     try {
         const response = await addNewPost(post);
-        dispatch(addPost({ post: response }));
+        dispatch(addPost(response));
     } catch (e) {
         dispatch(setError(e.message));
     } finally {
@@ -67,8 +73,27 @@ export const addPostAction = (post) => async (dispatch) => {
     }
 };
 
-export const { setPosts, addPost, setCurrentPost, addComment } =
-    postsReducer.actions;
+export const addCommentAction = (comment) => async (dispatch) => {
+    dispatch(stateLoading(true));
+    dispatch(resetError());
+    try {
+        const response = await addNewComment(comment);
+
+        dispatch(addComment({ comment: response }));
+    } catch (e) {
+        dispatch(setError(e.message));
+    } finally {
+        dispatch(stateLoading(false));
+    }
+};
+
+export const {
+    setPosts,
+    addPost,
+    setCurrentPost,
+    addComment,
+    setPostComments,
+} = postsReducer.actions;
 export const postsSelector = (state) => state.posts.posts;
 export const postSelector = (state) => state.posts.post;
 export const commentsSelector = (state) => state.posts.comments;

@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp, faComments } from "@fortawesome/free-regular-svg-icons";
+import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
 import {
@@ -13,9 +13,12 @@ import Comment from "./Comment";
 import { useEffect } from "react";
 import moment from "moment";
 
+import AddComment from "./AddComment";
+
 const PostFullInfo = () => {
     const post = useSelector(postSelector);
     const comments = useSelector(commentsSelector);
+
     const dispatch = useDispatch();
 
     const { id } = useParams();
@@ -78,15 +81,7 @@ const PostFullInfo = () => {
                         </div>
                     )}
                 </div>
-                <textarea
-                    placeholder="type your comment"
-                    className="commentArea"
-                    rows={3}
-                />
-                <div className="comment-footer">
-                    <FontAwesomeIcon icon={faComments} />
-                    <button>add comments</button>
-                </div>
+                <AddComment />
             </div>
         )
     );

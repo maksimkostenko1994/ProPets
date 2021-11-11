@@ -78,7 +78,7 @@ const UserForm = () => {
                 <form className="user-profile-form" ref={form} noValidate>
                     <div className="user-form-header">
                         {user.avatar ? (
-                            <div className="user-avatar">
+                            <div className="user-form-avatar">
                                 <img
                                     src={`http://localhost:5000/${user.avatar}`}
                                     alt="avatar"
@@ -154,13 +154,15 @@ const UserForm = () => {
                         </div>
                         <div className="form-body-pet-img">
                             {user.pet_photo ? (
-                                <img
-                                    src={`http://localhost:5000/${user.pet_photo}`}
-                                    alt="pet-icon"
-                                />
+                                <div className="user-pet-avatar">
+                                    <img
+                                        src={`http://localhost:5000/${user.pet_photo}`}
+                                        alt="pet-icon"
+                                    />
+                                </div>
                             ) : (
                                 <div className="user-pet-photo">
-                                    <FontAwesomeIcon size="3x" icon={faPaw} />
+                                    <FontAwesomeIcon size="2x" icon={faPaw} />
                                 </div>
                             )}
                         </div>

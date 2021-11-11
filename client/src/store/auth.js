@@ -1,21 +1,17 @@
-import {createSlice} from "@reduxjs/toolkit";
-import {authSuccess, logout, setCurrentUser, stateLoading} from "./app";
-import {
-    check,
-    login,
-    registration,
-    updateUser,
-} from "../services/userApi";
+import { createSlice } from "@reduxjs/toolkit";
+import { authSuccess, logout, setCurrentUser, stateLoading } from "./app";
+import { check, login, registration, updateUser } from "../services/userApi";
 
 const initialState = {
-    error: null
+    error: null,
 };
 
 const authReducer = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        setError: (state, {payload}) => {
+        setError: (state, { payload }) => {
+            console.error(payload);
             state.error = payload;
         },
         resetError: (state) => {
@@ -26,28 +22,28 @@ const authReducer = createSlice({
 
 export default authReducer.reducer;
 
-export const {setError, resetError} = authReducer.actions;
+export const { setError, resetError } = authReducer.actions;
 
-export const checkAuthAction = () => async dispatch => {
-    dispatch(stateLoading(true))
-    dispatch(resetError())
+export const checkAuthAction = () => async (dispatch) => {
+    dispatch(stateLoading(true));
+    dispatch(resetError());
     try {
-        const {user} = await check()
-        dispatch(setCurrentUser(user))
-        dispatch(authSuccess())
+        const { user } = await check();
+        dispatch(setCurrentUser(user));
+        dispatch(authSuccess());
     } catch (e) {
-        dispatch(setError(e))
+        dispatch(setError(e));
     } finally {
-        dispatch(stateLoading(false))
+        dispatch(stateLoading(false));
     }
-}
+};
 
 export const loginAction = (data) => async (dispatch) => {
     dispatch(stateLoading(true));
     dispatch(resetError());
     try {
         const user = await login(data);
-        dispatch(setCurrentUser(user))
+        dispatch(setCurrentUser(user));
         dispatch(authSuccess());
     } catch (error) {
         dispatch(setError(error));
@@ -62,7 +58,7 @@ export const registrationAction = (data) => async (dispatch) => {
     try {
         const user = await registration(data);
         dispatch(authSuccess());
-        dispatch(setCurrentUser(user))
+        dispatch(setCurrentUser(user));
     } catch (error) {
         dispatch(setError(error));
     } finally {

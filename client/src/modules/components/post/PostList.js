@@ -6,7 +6,6 @@ import { useEffect } from "react";
 
 const PostList = () => {
     const posts = useSelector(postsSelector);
-
     const dispatch = useDispatch();
 
     useEffect(() => {
