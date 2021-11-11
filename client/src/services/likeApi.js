@@ -1,0 +1,36 @@
+import { $authHost } from "./api";
+
+export const getLikes = async () => {
+    try {
+        const { data } = await $authHost.get(`/api/likes`);
+        return data;
+    } catch (e) {
+        return await Promise.reject(e);
+    }
+};
+
+// export const addNewLike = async (postId, userId) => {
+//     try {
+//         const { data } = await $authHost.post(`/api/likes`, postId, userId);
+//         console.log(data);
+//         return data;
+//     } catch (e) {
+//         return await Promise.reject(e);
+//     }
+// };
+
+export const addNewLike = async (postId, userId) => {
+    try {
+        const formData = new FormData();
+        formData.append("userId", userId);
+        formData.append("postId", postId);
+        const { data } = await $authHost.post(`/api/likes/`, formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+        });
+        return data;
+    } catch (e) {
+        return await Promise.reject(e);
+    }
+};

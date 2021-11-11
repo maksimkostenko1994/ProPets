@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { addNewComment } from "../services/commentApi";
+import { addNewLike } from "../services/likeApi";
 import { getPosts, getPost, addNewPost } from "../services/postApi";
 import { stateLoading } from "./app";
 import { resetError, setError } from "./auth";
@@ -8,6 +9,7 @@ const initialState = {
     posts: [],
     post: null,
     comments: [],
+    likes: [],
 };
 const postsReducer = createSlice({
     name: "posts",
@@ -24,6 +26,9 @@ const postsReducer = createSlice({
         },
         setPostComments: (state, { payload }) => {
             state.comments = payload;
+        },
+        addLike: (state, { payload }) => {
+            state.likes.push(payload);
         },
         addComment: (state, { payload }) => {
             //getState
@@ -73,6 +78,19 @@ export const addPostAction = (post) => async (dispatch) => {
     }
 };
 
+export const addLikeAction = (postId, userId, post) => async (dispatch) => {
+    dispatch(resetError());
+    try {
+        const response = await addNewLike(postId, userId);
+        console.log("action", response);
+        console.log("action", post);
+        dispatch(addLike(response));
+        dispatch(setCurrentPost(post));
+    } catch (e) {
+        dispatch(setError(e.message));
+    }
+};
+
 export const addCommentAction = (comment) => async (dispatch) => {
     dispatch(stateLoading(true));
     dispatch(resetError());
@@ -93,6 +111,7 @@ export const {
     setCurrentPost,
     addComment,
     setPostComments,
+    addLike,
 } = postsReducer.actions;
 export const postsSelector = (state) => state.posts.posts;
 export const postSelector = (state) => state.posts.post;

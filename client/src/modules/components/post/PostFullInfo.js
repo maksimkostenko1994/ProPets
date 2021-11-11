@@ -3,6 +3,7 @@ import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
 import {
+    addLikeAction,
     commentsSelector,
     getPostAction,
     postSelector,
@@ -14,10 +15,12 @@ import { useEffect } from "react";
 import moment from "moment";
 
 import AddComment from "./AddComment";
+import { userSelector } from "../../../store/app";
 
 const PostFullInfo = () => {
     const post = useSelector(postSelector);
     const comments = useSelector(commentsSelector);
+    const user = useSelector(userSelector);
 
     const dispatch = useDispatch();
 
@@ -63,7 +66,13 @@ const PostFullInfo = () => {
                     <div className="fullPost-footer-like-box">
                         <p>{post.count}</p>
                         <FontAwesomeIcon icon={faThumbsUp} />
-                        <button>add like</button>
+                        <button
+                            onClick={() =>
+                                dispatch(addLikeAction(post.id, user.id, post))
+                            }
+                        >
+                            add like
+                        </button>
                     </div>
                 </div>
                 <div className="comments">
