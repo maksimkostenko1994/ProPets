@@ -78,14 +78,11 @@ export const addPostAction = (post) => async (dispatch) => {
     }
 };
 
-export const addLikeAction = (postId, userId, post) => async (dispatch) => {
+export const addLikeAction = (postId, userId) => async (dispatch) => {
     dispatch(resetError());
     try {
         const response = await addNewLike(postId, userId);
-        console.log("action", response);
-        console.log("action", post);
         dispatch(addLike(response));
-        dispatch(setCurrentPost(post));
     } catch (e) {
         dispatch(setError(e.message));
     }
