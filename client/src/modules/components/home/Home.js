@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <div className="home-box" style={{
             backgroundColor: "#06B2BB",
-            height: "92.7vh"
+            minHeight: "92.7vh"
         }}>
             <LeftNavBar/>
             <Content/>
