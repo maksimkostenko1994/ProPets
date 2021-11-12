@@ -8,9 +8,9 @@ export const getComments = async () => {
         return await Promise.reject(e);
     }
 };
-export const addNewComment = async (formData) => {
+export const addNewComment = async (comment) => {
     try {
-        const { data } = await $authHost.post("/api/comments", formData);
+        const { data } = await $authHost.post("/api/comments", comment);
         return data;
     } catch (e) {
         return await Promise.reject(e);

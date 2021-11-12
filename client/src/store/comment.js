@@ -15,9 +15,7 @@ const commentsReducer = createSlice({
             state.comments = payload;
         },
         addComment: (state, { payload }) => {
-            //getState
-            // state.comments = [{ payload }];
-            state.comments = [...state.posts.comments, { payload }];
+            state.comments.push({ ...payload });
         },
     },
 });
@@ -31,8 +29,7 @@ export const addCommentAction = (comment) => async (dispatch) => {
     dispatch(resetError());
     try {
         const response = await addNewComment(comment);
-
-        dispatch(addComment({ comment: response }));
+        dispatch(addComment(response));
     } catch (e) {
         dispatch(setError(e.message));
     } finally {
