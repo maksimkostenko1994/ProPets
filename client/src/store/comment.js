@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { addNewComment } from "../services/commentApi";
 import { stateLoading } from "./app";
 import { resetError, setError } from "./auth";
+import { getPostAction } from "./post";
 
 const initialState = {
     comments: [],
@@ -15,7 +16,7 @@ const commentsReducer = createSlice({
             state.comments = payload;
         },
         addComment: (state, { payload }) => {
-            state.comments.push({ ...payload });
+            state.comments.push(payload);
         },
     },
 });
@@ -25,11 +26,11 @@ export const { setPostComments, addComment } = commentsReducer.actions;
 export const commentsSelector = (state) => state.comments.comments;
 
 export const addCommentAction = (comment) => async (dispatch) => {
-    dispatch(stateLoading(true));
     dispatch(resetError());
     try {
         const response = await addNewComment(comment);
         dispatch(addComment(response));
+        dispatch(getPostAction(response.postId));
     } catch (e) {
         dispatch(setError(e.message));
     } finally {

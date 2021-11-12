@@ -22,11 +22,10 @@ const PostFullInfo = () => {
     const post = useSelector(postSelector);
     const comments = useSelector(commentsSelector);
     const user = useSelector(userSelector);
-
+    console.log(comments);
     const dispatch = useDispatch();
     const like = post && post.likes.find((like) => like.userId === user.id);
     const { id } = useParams();
-
     useEffect(() => {
         dispatch(getPostAction(id));
     }, [dispatch, id]);
@@ -69,7 +68,6 @@ const PostFullInfo = () => {
                     <p>{post.text}</p>
                     <div className="fullPost-footer-like-box">
                         <p>{post.count}</p>
-
                         {!isLiked ? (
                             <>
                                 <FontAwesomeIcon icon={faThumbsUp} />
