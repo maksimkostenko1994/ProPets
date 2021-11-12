@@ -26,7 +26,7 @@ const PostFullInfo = () => {
     const dispatch = useDispatch();
     const like = post && post.likes.find((like) => like.userId === user.id);
     const { id } = useParams();
-    console.log(like);
+    console.log("like", like);
 
     useEffect(() => {
         dispatch(getPostAction(id));

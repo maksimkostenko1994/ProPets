@@ -22,12 +22,11 @@ const postsReducer = createSlice({
         setCurrentPost: (state, { payload }) => {
             state.post = payload;
         },
-
         addLike: (state, { payload }) => {
             state.likes.push(payload);
         },
         addDislike: (state, { payload }) => {
-            state.likes.delete(payload);
+            state.likes.splice(payload);
         },
     },
 });
@@ -86,9 +85,8 @@ export const addLikeAction = (postId, userId) => async (dispatch) => {
 export const addDislikeAction = (like) => async (dispatch) => {
     dispatch(resetError());
     try {
-        const response = await addNewDislike(like);
-        dispatch(addDislike(response));
-        dispatch(getPostAction(response.postId));
+        await addNewDislike(like);
+        dispatch(getPostAction(like.postId));
     } catch (e) {
         dispatch(setError(e.message));
     }

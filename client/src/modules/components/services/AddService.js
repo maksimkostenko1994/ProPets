@@ -46,7 +46,6 @@ const AddService = () => {
         try {
             await schema.validate(values, {abortEarly: false})
         } catch (yupError) {
-            console.log(yupError)
             yupError.inner.forEach(({path, message}) =>
                 set(errors, path, message)
             )
