@@ -5,7 +5,7 @@ import { useForm } from "react-cool-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { userSelector } from "../../../store/app";
-import { addCommentAction } from "../../../store/post";
+import { addCommentAction } from "../../../store/comment";
 
 const AddComment = () => {
     const user = useSelector(userSelector);

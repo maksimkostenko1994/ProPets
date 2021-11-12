@@ -8,17 +8,6 @@ export const getLikes = async () => {
         return await Promise.reject(e);
     }
 };
-
-// export const addNewLike = async (postId, userId) => {
-//     try {
-//         const { data } = await $authHost.post(`/api/likes`, postId, userId);
-//         console.log(data);
-//         return data;
-//     } catch (e) {
-//         return await Promise.reject(e);
-//     }
-// };
-
 export const addNewLike = async (postId, userId) => {
     try {
         const formData = new FormData();
@@ -29,6 +18,15 @@ export const addNewLike = async (postId, userId) => {
                 "Content-Type": "multipart/form-data",
             },
         });
+        return data;
+    } catch (e) {
+        return await Promise.reject(e);
+    }
+};
+export const addNewDislike = async (like) => {
+    try {
+        const { data } = await $authHost.delete(`/api/likes/`, { like });
+        console.log(data);
         return data;
     } catch (e) {
         return await Promise.reject(e);

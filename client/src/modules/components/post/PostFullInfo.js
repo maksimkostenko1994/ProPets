@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
 import {
+    addDislikeAction,
     addLikeAction,
-    commentsSelector,
     getPostAction,
     postSelector,
 } from "../../../store/post";
@@ -16,6 +16,7 @@ import moment from "moment";
 
 import AddComment from "./AddComment";
 import { userSelector } from "../../../store/app";
+import { commentsSelector } from "../../../store/comment";
 
 const PostFullInfo = () => {
     const post = useSelector(postSelector);
@@ -23,14 +24,18 @@ const PostFullInfo = () => {
     const user = useSelector(userSelector);
 
     const dispatch = useDispatch();
-
+    const like = post && post.likes.find((like) => like.userId === user.id);
     const { id } = useParams();
+    console.log(like);
 
     useEffect(() => {
         dispatch(getPostAction(id));
     }, [dispatch, id]);
 
     const date = post ? moment(post.createdAt).format("D MMMM, HH:mm") : false;
+
+    const isLiked =
+        post && post.likes.find((like) => like.userId === user.id) && true;
 
     return (
         post && (
@@ -65,14 +70,32 @@ const PostFullInfo = () => {
                     <p>{post.text}</p>
                     <div className="fullPost-footer-like-box">
                         <p>{post.count}</p>
-                        <FontAwesomeIcon icon={faThumbsUp} />
-                        <button
-                            onClick={() =>
-                                dispatch(addLikeAction(post.id, user.id, post))
-                            }
-                        >
-                            add like
-                        </button>
+
+                        {!isLiked ? (
+                            <>
+                                <FontAwesomeIcon icon={faThumbsUp} />
+                                <button
+                                    onClick={() =>
+                                        dispatch(
+                                            addLikeAction(post.id, user.id)
+                                        )
+                                    }
+                                >
+                                    add like
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <FontAwesomeIcon icon={faThumbsDown} />
+                                <button
+                                    onClick={() =>
+                                        dispatch(addDislikeAction(like))
+                                    }
+                                >
+                                    add dislike
+                                </button>
+                            </>
+                        )}
                     </div>
                 </div>
                 <div className="comments">

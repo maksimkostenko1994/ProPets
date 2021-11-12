@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addNewComment } from "../services/commentApi";
-import { addNewLike } from "../services/likeApi";
+import { addNewDislike, addNewLike } from "../services/likeApi";
 import { getPosts, getPost, addNewPost } from "../services/postApi";
 import { stateLoading } from "./app";
 import { resetError, setError } from "./auth";
@@ -8,7 +7,6 @@ import { resetError, setError } from "./auth";
 const initialState = {
     posts: [],
     post: null,
-    comments: [],
     likes: [],
 };
 const postsReducer = createSlice({
@@ -24,16 +22,12 @@ const postsReducer = createSlice({
         setCurrentPost: (state, { payload }) => {
             state.post = payload;
         },
-        setPostComments: (state, { payload }) => {
-            state.comments = payload;
-        },
+
         addLike: (state, { payload }) => {
             state.likes.push(payload);
         },
-        addComment: (state, { payload }) => {
-            //getState
-            // state.comments = [{ payload }];
-            state.comments = [...state.posts.comments, { payload }];
+        addDislike: (state, { payload }) => {
+            state.likes.delete(payload);
         },
     },
 });
@@ -83,33 +77,24 @@ export const addLikeAction = (postId, userId) => async (dispatch) => {
     try {
         const response = await addNewLike(postId, userId);
         dispatch(addLike(response));
+        dispatch(getPostAction(response.postId));
     } catch (e) {
         dispatch(setError(e.message));
     }
 };
 
-export const addCommentAction = (comment) => async (dispatch) => {
-    dispatch(stateLoading(true));
+export const addDislikeAction = (like) => async (dispatch) => {
     dispatch(resetError());
     try {
-        const response = await addNewComment(comment);
-
-        dispatch(addComment({ comment: response }));
+        const response = await addNewDislike(like);
+        dispatch(addDislike(response));
+        dispatch(getPostAction(response.postId));
     } catch (e) {
         dispatch(setError(e.message));
-    } finally {
-        dispatch(stateLoading(false));
     }
 };
 
-export const {
-    setPosts,
-    addPost,
-    setCurrentPost,
-    addComment,
-    setPostComments,
-    addLike,
-} = postsReducer.actions;
+export const { setPosts, addPost, setCurrentPost, addLike, addDislike } =
+    postsReducer.actions;
 export const postsSelector = (state) => state.posts.posts;
 export const postSelector = (state) => state.posts.post;
-export const commentsSelector = (state) => state.posts.comments;
