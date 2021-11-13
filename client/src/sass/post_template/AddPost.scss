@@ -21,6 +21,9 @@
             color: $darkText;
             cursor: pointer;
         }
+        input {
+            padding-top: 4px;
+        }
 
         span {
             color: $textColor;

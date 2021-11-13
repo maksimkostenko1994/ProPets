@@ -7,7 +7,7 @@ const Comment = ({ comment }) => {
     return (
         <div className="user-comment">
             <span>
-                {comment.user.full_name}|{date}
+                {comment.user.full_name} | {date}
             </span>
             <p>{comment.text}</p>
         </div>

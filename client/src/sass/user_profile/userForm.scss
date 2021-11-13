@@ -9,6 +9,7 @@
         text-align: center;
         padding: 10px 0;
     }
+
     h3 {
         color: $textColor;
         align-self: center;
@@ -24,21 +25,27 @@
         display: flex;
         flex-direction: row;
         padding-top: 20px;
-        width: 150px;
+        width: 100%;
         .user-form-avatar {
+            width: 15%;
             padding-right: 20px;
-            width: 100%;
             img {
                 width: 100%;
                 border-radius: 50%;
             }
         }
+        .user-form-full-name {
+            display: flex;
+        }
         .user-form-edit-btn {
+            width: 10%;
             background: none;
             border: none;
-            padding-left: 20px;
             &:hover {
                 cursor: pointer;
+            }
+            svg {
+                color: gray;
             }
         }
     }
@@ -46,7 +53,20 @@
         @include formControl;
         display: flex;
         flex-direction: column;
-
+        .form-item-email {
+            p {
+                color: red;
+                margin-left: 50px;
+            }
+            input {
+                margin-left: 15px;
+                width: 90%;
+            }
+            label {
+                font-size: $text12;
+                color: $darkText;
+            }
+        }
         .form-item {
             display: flex;
             align-items: center;
@@ -77,9 +97,9 @@
 
             .form-body-pet-img {
                 align-self: center;
+                width: 15%;
 
                 .user-pet-avatar {
-                    width: 65%;
                     margin: 0 auto;
                 }
 
@@ -87,14 +107,13 @@
                     border-radius: 50%;
                     width: 100%;
                 }
-            }
-            .user-pet-photo {
-                width: 15%;
-                text-align: center;
-                padding-top: 20px;
-                img {
-                    border-radius: 50%;
-                    width: 100%;
+                .user-pet-photo {
+                    width: 65%;
+                    margin: 0 auto;
+                    svg {
+                        width: 100%;
+                        height: auto;
+                    }
                 }
             }
         }

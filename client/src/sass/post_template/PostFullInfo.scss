@@ -43,22 +43,24 @@
         h4 {
             font-size: $text16;
             color: $darkText !important;
+            padding-bottom: 10px;
         }
-        .fullPost-footer-more {
-            color: $textColor;
-            border: none;
-            background: none;
-            &:hover {
-                cursor: pointer;
-            }
+        .fullPost-post-text {
+            font-size: $text16;
+            font-family: Montserrat, serif;
+            color: $darkText;
         }
         .fullPost-footer-like-box {
             display: flex;
             justify-content: flex-end;
             align-items: baseline;
             padding-bottom: 10px;
+            padding-top: 15px;
             p {
                 padding-right: 10px;
+            }
+            svg {
+                align-self: self-end;
             }
             button {
                 color: $textColor;
@@ -74,8 +76,9 @@
     }
     .comments {
         .comments-p {
-            color: $textColor;
             font-size: $text16;
+            color: $textColor;
+            font-weight: $textBolder;
         }
         h3 {
             padding-top: 10px;
