@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {stateLoading} from "./app";
 import {resetError, setError} from "./auth";
-import {getServices} from "../services/serviceApi";
+import {addService, getServices} from "../services/serviceApi";
 
 const initialState = {
     services: [],
@@ -32,8 +32,20 @@ export const getServicesAction = type => async dispatch => {
         const services = await getServices(type)
         dispatch(setServices(services))
     } catch (e) {
-        dispatch(setError(e.message))
+        dispatch(setError(e))
     } finally {
+        dispatch(stateLoading(false))
+    }
+}
+
+export const addServiceAction = service => async dispatch=> {
+    dispatch(stateLoading(true))
+    dispatch(resetError())
+    try {
+        await addService(service)
+    }catch (e) {
+        dispatch(setError(e))
+    }finally {
         dispatch(stateLoading(false))
     }
 }
