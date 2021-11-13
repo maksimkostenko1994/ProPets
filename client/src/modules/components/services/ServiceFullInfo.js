@@ -48,8 +48,29 @@ const ServiceFullInfo = () => {
                 <img src={`http://localhost:5000/${currentService.photo}`} alt="service"/>
             </div>
             <h2>{currentService.title}</h2>
-            <p className="service-full-text">{currentService.text}</p>
-            <p className="service-full-contacts"><span>Contacts:</span> {currentService.location && currentService.location} {currentService.contacts}</p>
+            <div className="service-full-text">{currentService.text[0] !== "{" ? currentService.text :
+                <>
+                    <p key={1}>{JSON.parse(currentService.text).street}<br/>{currentService.location}</p>
+                    <p key={2}>
+                        Telephone: {JSON.parse(currentService.text).phone}<br/>
+                        Telefax: {JSON.parse(currentService.text).fax}<br/>
+                        {JSON.parse(currentService.text).email}
+                    </p>
+                    <p key={3}>
+                        <span>Working hours:</span><br/>
+                        {JSON.parse(currentService.text).workhours}
+                    </p>
+                </>
+            }
+            </div>
+            <p className="service-full-contacts">
+                {(currentService.type === "Hotels" || currentService.type === "VetHelp") ?
+                    <span>{currentService.contacts}</span> :
+                    <>
+                        <span>Contacts:</span> {currentService.location && currentService.location} {currentService.contacts}
+                    </>
+                }
+            </p>
         </div>
     );
 };

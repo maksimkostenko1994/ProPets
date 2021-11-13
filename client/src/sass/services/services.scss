@@ -52,8 +52,8 @@
       }
 
       .service-card-content {
-        margin-bottom: 60px;
         margin-left: 10px;
+        height: 100%;
 
         h2 {
           font-size: 1.6rem;
@@ -138,6 +138,16 @@
     &:first-letter {
       text-transform: uppercase;
     }
+
+    p {
+      margin: 30px 0;
+      font-size: 0.9rem;
+      font-family: Montserrat, sans-serif;
+
+      span {
+        font-weight: 700;
+      }
+    }
   }
 
   .service-full-contacts{
@@ -146,10 +156,6 @@
     margin: 10px 0;
     color: $textGrey;
     font-size: 0.8rem;
-
-    &:first-letter {
-      text-transform: uppercase;
-    }
 
     span {
       color: $textColor;

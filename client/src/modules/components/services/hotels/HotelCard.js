@@ -1,9 +1,8 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUser} from "@fortawesome/free-solid-svg-icons";
-
 const HotelCard = ({service}) => {
+
+    const [firstDay, secondDay] = JSON.parse(service.text).workhours.split("\n")
 
     return (
         <li className="service-card">
@@ -11,20 +10,10 @@ const HotelCard = ({service}) => {
                 <img src={`http://localhost:5000/${service.photo}`} alt="service fostering"/>
             </div>
             <div className="service-card-info">
-                <Link to={"/profile"} className="service-card-profile">
-                    {service.avatar ? (
-                        <div className="user-avatar">
-                            <img src={`http://localhost:5000/${service.avatar}`} alt="avatar"/>
-                        </div>
-                    ) : (
-                        <div className="user-avatar">
-                            <FontAwesomeIcon size="2x" icon={faUser}/>
-                        </div>
-                    )}
-                    <h4>{service.full_name}</h4>
-                </Link>
                 <div className="service-card-content">
-                    <h2>{service.title}</h2>
+                    <h2 style={{color: `#06B2BB`}}>{service.title}</h2>
+                    <p style={{marginTop: "20px"}}><span style={{fontWeight: 700}}>Address:</span><br/>{JSON.parse(service.text).street} {service.location}</p>
+                    <p style={{marginTop: "20px"}}><span style={{fontWeight: 700}}>Working days:</span><br/>{firstDay} <br/>{secondDay}</p>
                     <Link to={`/service/${service.id}`}>...view detail</Link>
                 </div>
             </div>
