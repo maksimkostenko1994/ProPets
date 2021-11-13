@@ -25,7 +25,7 @@ const FosteringCard = ({service}) => {
                 </Link>
                 <div className="service-card-content">
                     <h2>{service.title}</h2>
-                    <Link to={`/services/${service.id}`}>...view detail</Link>
+                    <Link to={`/service/${service.id}`}>...view detail</Link>
                 </div>
             </div>
         </li>

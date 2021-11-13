@@ -11,13 +11,12 @@ export const getServices = async type => {
 
 export const addService = async service => {
     try {
-        console.log(new Date(`${service.date} ${service.dateTime}:00`))
         const formData = new FormData()
         formData.append("title", service.title)
         formData.append("type", service.type)
         formData.append("text", typeof service.text === "object" ? JSON.stringify(service.text) : service.text)
         formData.append("photo", service.photo[0])
-        formData.append("contacts", service.contacts)
+        formData.append("contacts", JSON.stringify(service.contacts))
         formData.append("date", service.date ? `${new Date(`${service.date} ${service.dateTime}:00`)}` : `${new Date()}`)
         formData.append("location", service.location)
         formData.append("userId", service.userId)
@@ -30,5 +29,13 @@ export const addService = async service => {
     } catch (e) {
         return await Promise.reject(e.response.data.message)
     }
+}
 
+export const getService = async id => {
+    try {
+        const {data} = await $authHost.get(`/api/services/id/${id}`)
+        return data
+    }catch (e) {
+        return await Promise.reject(e.response.data.message)
+    }
 }

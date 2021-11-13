@@ -57,6 +57,7 @@
 
         h2 {
           font-size: 1.6rem;
+
           &:first-letter {
             text-transform: uppercase;
           }
@@ -67,7 +68,91 @@
         }
       }
     }
+  }
+}
 
+.service-full-info {
+  width: 80%;
+  margin: 20px auto;
+  font-family: Montserrat, sans-serif;
 
+  .service-title {
+    font-size: 1.3rem;
+    color: $textColor;
+    padding: 0 5px;
+  }
+
+  hr {
+    border: none;
+    background-color: lightgray;
+    height: 2px;
+    margin: 10px 0;
+  }
+
+  .service-user-info {
+    display: flex;
+
+    .service-user-text {
+      display: flex;
+      flex-direction: column;
+      color: $textColor;
+      font-weight: 700;
+      font-size: 0.9rem;
+      justify-content: center;
+      padding-left: 10px;
+
+      span {
+        color: $textGrey;
+        font-size: 0.7rem;
+        font-weight: 200;
+      }
+    }
+  }
+
+  .service-full-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  h2 {
+    font-family: Montserrat, sans-serif;
+    margin: 10px 0;
+    padding-left: 5px;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  .service-full-text {
+    width: 100%;
+    padding: 0 5px;
+    margin: 10px 0;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  .service-full-contacts{
+    width: 100%;
+    padding: 0 5px;
+    margin: 10px 0;
+    color: $textGrey;
+    font-size: 0.8rem;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+
+    span {
+      color: $textColor;
+    }
   }
 }

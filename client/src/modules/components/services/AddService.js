@@ -15,18 +15,16 @@ const AddService = () => {
 
         const dispatch = useDispatch()
 
-        const [serviceType, setType] = useState("Hotels")
+        const [serviceType, setType] = useState("Walking")
 
-        const onTypeHandler = ({target}) => {
-            setType(target.value)
-        }
+        const onTypeHandler = ({target}) => setType(target.value)
 
         const yupSchema = yup.object().shape({
             title: yup.string().required(),
             type: yup.string(),
             text: yup.string().required(),
             photo: yup.string().required(),
-            contacts: yup.string().required(),
+            place: yup.string().required(),
             location: yup.string()
         })
 
@@ -35,7 +33,7 @@ const AddService = () => {
             type: yup.string(),
             text: yup.string().required(),
             photo: yup.string().required(),
-            contacts: yup.string().required(),
+            place: yup.string().required(),
             date: yup.string().required(),
             dateTime: yup.string().required(),
             location: yup.string()
@@ -51,7 +49,7 @@ const AddService = () => {
             email: yup.string().email().required(),
             workhours: yup.string().required(),
             photo: yup.string().required(),
-            contacts: yup.string().required(),
+            place: yup.string().required(),
             location: yup.string()
         })
 
@@ -71,9 +69,9 @@ const AddService = () => {
             defaultValues:
                 serviceType === "Hotels" || serviceType === "VetHelp" ? {
                         title: ``,
-                        type: `Hotels`,
+                        type: `Walking`,
                         photo: ``,
-                        contacts: ``,
+                        place: ``,
                         location: ``,
                         phone: ``,
                         street: ``,
@@ -85,10 +83,10 @@ const AddService = () => {
                     serviceType === "Walking" ?
                         {
                             title: ``,
-                            type: ``,
+                            type: `Walking`,
                             text: ``,
                             photo: ``,
-                            contacts: ``,
+                            place: ``,
                             date: ``,
                             location: ``
                         }
@@ -98,7 +96,7 @@ const AddService = () => {
                             type: ``,
                             text: ``,
                             photo: ``,
-                            contacts: ``,
+                            place: ``,
                             location: ``
                         },
             validate: serviceType === "Hotels" || serviceType === "VetHelp" ?
@@ -118,14 +116,30 @@ const AddService = () => {
                             workhours: `${values.workhours}`
                         },
                         photo: values.photo,
-                        contacts: values.contacts,
+                        contacts: {
+                            address: values.place,
+                            email: user.email,
+                            userPhone: user.phone
+                        },
                         location: values.location,
                         userId: user.id
                     }))
                 else
-                    dispatch(addServiceAction({...values, userId: user.id}))
+                    dispatch(addServiceAction({
+                        title: values.title,
+                        type: values.type,
+                        text: values.text,
+                        photo: values.photo,
+                        contacts: {
+                            address: values.place,
+                            email: user.email,
+                            userPhone: user.phone
+                        },
+                        location: values.location,
+                        userId: user.id
+                    }))
                 reset()
-                setType("Hotels")
+                setType("Walking")
             }
         })
 
@@ -140,10 +154,10 @@ const AddService = () => {
                     <Field type="text" name="title" error={errors.title}/>
                     <label htmlFor="">Type</label>
                     <select name="type" onChange={onTypeHandler} error={errors.type}>
-                        <option value="Hotels">Hotels</option>
+                        {user.role === "ADMIN" && <option value="Hotels">Hotels</option>}
                         <option value="Walking">Walking</option>
                         <option value="Fostering">Fostering</option>
-                        <option value="VetHelp">VetHelp</option>
+                        {user.role === "ADMIN" && <option value="VetHelp">VetHelp</option>}
                     </select>
                     {serviceType === "VetHelp" || serviceType === "Hotels" ?
                         <VetHelpForm errors={errors}/>
@@ -156,8 +170,8 @@ const AddService = () => {
                     }
                     <label htmlFor="photo">Photo</label>
                     <Field type="file" name="photo" error={errors.photo}/>
-                    <label htmlFor="contacts">Contacts</label>
-                    <Field type="text" name="contacts" error={errors.contacts}/>
+                    <label htmlFor="place">Place</label>
+                    <Field type="text" name="place" error={errors.place}/>
                     {serviceType === "Walking" &&
                     <>
                         <label htmlFor="date">Date</label>
@@ -171,7 +185,7 @@ const AddService = () => {
                     <div>
                         <div className="user-data-service">
                             {user && user.avatar ? (
-                                <img src={user.avatar} alt="avatar"/>
+                                <img src={`http://localhost:5000/${user.avatar}`} alt="avatar"/>
                             ) : (
                                 <div className="user-avatar">
                                     <FontAwesomeIcon size="2x" icon={faUser}/>
