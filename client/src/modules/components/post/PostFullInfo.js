@@ -62,7 +62,7 @@ const PostFullInfo = () => {
                 </div>
                 <div className="fullPost-footer">
                     <h4>{post.title}</h4>
-                    <p>{post.text}</p>
+                    <p className="fullPost-post-text">{post.text}</p>
                     <div className="fullPost-footer-like-box">
                         <p>{post.count}</p>
                         {!isLiked ? (

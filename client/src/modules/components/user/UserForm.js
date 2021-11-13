@@ -74,30 +74,30 @@ const UserForm = () => {
             <div className="user-form-title">
                 <h2>My profile</h2>
             </div>
+            <div className="user-form-header">
+                {user.avatar ? (
+                    <div className="user-form-avatar">
+                        <img
+                            src={`http://localhost:5000/${user.avatar}`}
+                            alt="avatar"
+                        />
+                    </div>
+                ) : (
+                    <div className="user-avatar">
+                        <FontAwesomeIcon size="2x" icon={faUser} />
+                    </div>
+                )}
+                <div className="user-form-full-name">
+                    <h3>{user.full_name}</h3>
+                </div>
+
+                <button className="user-form-edit-btn" name="changeName">
+                    <FontAwesomeIcon icon={faPencilAlt} />
+                </button>
+            </div>
             {user && (
                 <form className="user-profile-form" ref={form} noValidate>
-                    <div className="user-form-header">
-                        {user.avatar ? (
-                            <div className="user-form-avatar">
-                                <img
-                                    src={`http://localhost:5000/${user.avatar}`}
-                                    alt="avatar"
-                                />
-                            </div>
-                        ) : (
-                            <div className="user-avatar">
-                                <FontAwesomeIcon size="3x" icon={faUser} />
-                            </div>
-                        )}
-                        <h3>{user.full_name}</h3>
-                        <button
-                            className="user-form-edit-btn"
-                            name="changeName"
-                        >
-                            <FontAwesomeIcon icon={faPencilAlt} />
-                        </button>
-                    </div>
-                    <div className="form-item">
+                    <div className="form-item-email">
                         <label>Email:</label>
                         <Field
                             name="email"
@@ -162,7 +162,7 @@ const UserForm = () => {
                                 </div>
                             ) : (
                                 <div className="user-pet-photo">
-                                    <FontAwesomeIcon size="2x" icon={faPaw} />
+                                    <FontAwesomeIcon icon={faPaw} />
                                 </div>
                             )}
                         </div>
