@@ -10,9 +10,14 @@ export const getComments = async () => {
 };
 export const addNewComment = async (comment) => {
     try {
-        const { data } = await $authHost.post("/api/comments", {
-            data: { ...comment },
+        const formData = new FormData();
+        formData.append("userId", comment.userId);
+        formData.append("postId", comment.postId);
+        formData.append("text", comment.text);
+        const { data } = await $authHost.post("/api/comments", formData, {
+            headers: { "Content-Type": "multipart/form-data" },
         });
+
         return data;
     } catch (e) {
         return await Promise.reject(e);

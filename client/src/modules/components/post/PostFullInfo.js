@@ -16,13 +16,10 @@ import moment from "moment";
 
 import AddComment from "./AddComment";
 import { userSelector } from "../../../store/app";
-import { commentsSelector } from "../../../store/comment";
 
 const PostFullInfo = () => {
     const post = useSelector(postSelector);
-    const comments = useSelector(commentsSelector);
     const user = useSelector(userSelector);
-    console.log(comments);
     const dispatch = useDispatch();
     const like = post && post.likes.find((like) => like.userId === user.id);
     const { id } = useParams();
@@ -98,11 +95,11 @@ const PostFullInfo = () => {
                 <div className="comments">
                     <p className="comments-p">Comments</p>
                     <hr />
-                    {comments.length === 0 ? (
+                    {post.comments.length === 0 ? (
                         <h3>No comments yet</h3>
                     ) : (
                         <div>
-                            {comments.map((comment, index) => (
+                            {post.comments.map((comment, index) => (
                                 <li key={index}>
                                     <Comment comment={comment} />
                                 </li>

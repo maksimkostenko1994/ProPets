@@ -27,6 +27,7 @@ export const commentsSelector = (state) => state.comments.comments;
 
 export const addCommentAction = (comment) => async (dispatch) => {
     dispatch(resetError());
+    dispatch(stateLoading(true));
     try {
         const response = await addNewComment(comment);
         dispatch(addComment(response));
