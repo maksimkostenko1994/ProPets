@@ -1,0 +1,20 @@
+@import "../variables.scss";
+
+.found-container {
+    width: 70%;
+    margin: 30px auto;
+
+    .found-title {
+        color: $textColor;
+        font-weight: $textBolder;
+        font-size: $text16;
+    }
+
+    .found-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        justify-content: space-between;
+        align-content: space-evenly;
+    }
+}

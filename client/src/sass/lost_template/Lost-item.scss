@@ -1,0 +1,44 @@
+@import "./../variables.scss";
+.lost-item {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-right: 15px;
+
+    .lost-nick {
+        font-size: $text20;
+        color: $darkText;
+        font-weight: $textBolder;
+    }
+
+    .lost-header {
+        display: flex;
+        align-items: center;
+        span {
+            margin-right: 10px;
+            color: $textColor;
+        }
+        p {
+            font-size: $text12;
+        }
+    }
+
+    .lost-body {
+        width: 100%;
+        img {
+            width: 100%;
+        }
+    }
+
+    .lost-footer {
+        font-size: $text12;
+        .lost-details-btn {
+            border: none;
+            background: none;
+            color: $textColor;
+            margin-right: 2px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

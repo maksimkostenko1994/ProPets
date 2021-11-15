@@ -1,75 +1,77 @@
 // landing page; background-color
-$mainBgColor: #06B2BB;
+$mainBgColor: #06b2bb;
 $whiteBgColor: white;
 
 .mainBgColor {
-  background-color: $mainBgColor;
+    background-color: $mainBgColor;
 }
 
 .whiteBgColor {
-  background-color: $whiteBgColor;
+    background-color: $whiteBgColor;
 }
 
 //buttons background-color
-$redBtn: #FA5456;
-$btn: #06B2BB;
+$redBtn: #fa5456;
+$btn: #06b2bb;
 $btnBorder: #1a9399;
 $btnWhite: snow;
 
-$btnHover: #FFD219;
+$btnHover: #ffd219;
 
 .redBtn {
-  background-color: $redBtn;
+    background-color: $redBtn;
 }
 
 .btn {
-  background-color: $btn;
+    background-color: $btn;
 }
 
 .btnBorder {
-  border-color: $btnBorder;
+    border-color: $btnBorder;
 }
 
 .btnWhite {
-  background-color: $btnWhite;
+    background-color: $btnWhite;
 }
 
 .btnHover {
-  background-color: $btnHover;
+    background-color: $btnHover;
 }
 
 //text color
 $whiteText: snow;
-$textColor: #06B2BB;
+$textColor: #06b2bb;
 $darkText: #393939;
 $textGrey: #bababa;
 
-$textActive: #15939B;
+$textActive: #15939b;
 
 .whiteText {
-  color: $whiteText;
+    color: $whiteText;
 }
 
 .darkText {
-  color: $darkText;
+    color: $darkText;
 }
 
 .textGrey {
-  color: $textGrey;
+    color: $textGrey;
 }
 
 .textActive {
-  color: $textActive;
+    color: $textActive;
 }
 
 .textColor {
-  color: $textColor;
+    color: $textColor;
 }
 
 //text size
 $text10: 10px;
 $text12: 12px;
 $text16: 16px;
+$text20: 20px;
+$text22: 22px;
 $text32: 32px;
 $text56: 56px;
 
@@ -77,5 +79,3 @@ $text56: 56px;
 $textSuperBolder: 900;
 $textBolder: 700;
 $textLighter: lighter;
-
-

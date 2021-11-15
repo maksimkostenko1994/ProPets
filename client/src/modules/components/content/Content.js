@@ -1,5 +1,5 @@
 import React from "react";
-import {Route, Switch} from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import PostList from "../post/PostList";
 import LostList from "../lost/LostList";
 import PostFullInfo from "../post/PostFullInfo";
@@ -16,17 +16,17 @@ const Content = () => {
     return (
         <div className="content">
             <Switch>
-                <Route path="/postsFullInfo/:id" component={PostFullInfo}/>
-                <Route path="/lost" component={LostList}/>
-                <Route path="/lost/:id" component={LostFullInfo}/>
-                <Route path="/found" component={FoundList}/>
-                <Route path="/found/:id" component={FoundFullInfo}/>
-                <Route path="/services/add" component={AddService}/>
-                <Route path="/service/:id" component={ServiceFullInfo}/>
-                <Route path="/services/:type" component={Services}/>
-                <Route path="/profile" component={UserProfile}/>
-                <Route path="/posts/add" component={AddPost}/>
-                <Route path="/posts" component={PostList}/>
+                <Route path="/postsFullInfo/:id" component={PostFullInfo} />
+                <Route path="/lost/:id" component={LostFullInfo} />
+                <Route path="/lost" component={LostList} />
+                <Route path="/found/:id" component={FoundFullInfo} />
+                <Route path="/found" component={FoundList} />
+                <Route path="/services/add" component={AddService} />
+                <Route path="/service/:id" component={ServiceFullInfo} />
+                <Route path="/services/:type" component={Services} />
+                <Route path="/profile" component={UserProfile} />
+                <Route path="/posts/add" component={AddPost} />
+                <Route path="/posts" component={PostList} />
             </Switch>
         </div>
     );

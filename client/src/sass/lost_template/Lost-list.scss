@@ -1,0 +1,20 @@
+@import "../variables.scss";
+
+.lost-container {
+    width: 70%;
+    margin: 30px auto;
+
+    .lost-title {
+        color: $textColor;
+        font-weight: $textBolder;
+        font-size: $text16;
+    }
+
+    .lost-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        justify-content: space-between;
+        align-content: space-evenly;
+    }
+}

@@ -1,0 +1,70 @@
+@import "../variables.scss";
+
+#lost-full-info-container {
+    width: 70%;
+    margin: 30px auto;
+
+    .lfi-header {
+        display: inline-block;
+        margin-bottom: 10px;
+
+        .lfi-header-title {
+            color: $textColor;
+            font-weight: $textBolder;
+
+            .lfi-header-title-nick {
+                color: $darkText;
+                font-weight: $textSuperBolder;
+                font-size: $text22;
+                margin-left: 10 px;
+            }
+        }
+        span {
+            margin-right: 10px;
+        }
+    }
+
+    .lfi-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 25px;
+
+        .lfi-body-left {
+            img {
+                width: 100%;
+            }
+        }
+
+        .lfi-body-right {
+            padding-left: 10px;
+            .lfi-body-right-header {
+                margin-bottom: 30px;
+
+                h3 {
+                    color: $textColor;
+                    letter-spacing: 1px;
+                }
+                .lfi-body-date {
+                    color: $textGrey;
+                    margin-bottom: 10px;
+                }
+            }
+            span {
+                color: $textColor;
+            }
+        }
+    }
+    .lfi-description {
+        margin-top: 20px;
+        margin-bottom: 50px;
+        span {
+            color: $textColor;
+        }
+    }
+    .lfi-footer {
+        span {
+            color: $textColor;
+            margin-right: 10px;
+        }
+    }
+}

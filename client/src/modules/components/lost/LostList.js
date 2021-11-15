@@ -1,9 +1,15 @@
-import React from 'react';
+import React from "react";
+import LostItem from "./LostItem";
+import "./../../../sass/lost_template/Lost-list.scss";
 
 const LostList = () => {
     return (
-        <div>
-            <h1>Lost list</h1>
+        <div className="lost-container">
+            <p className="lost-title">Lost pets</p>
+            <hr />
+            <div className="lost-list">
+                <LostItem />
+            </div>
         </div>
     );
 };
