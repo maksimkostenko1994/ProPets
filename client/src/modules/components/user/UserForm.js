@@ -1,10 +1,5 @@
 import Button from "../button/Button";
-import {
-    faSave,
-    faPencilAlt,
-    faUser,
-    faPaw,
-} from "@fortawesome/free-solid-svg-icons";
+import { faSave, faUser, faPaw } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../../sass/user_profile/userForm.scss";
 import Field from "../forms/Field";
@@ -13,13 +8,14 @@ import { userSelector } from "../../../store/app";
 import { updateAction } from "../../../store/auth";
 import { useForm, set } from "react-cool-form";
 import * as yup from "yup";
+import { useState } from "react";
 
 const UserForm = () => {
     const user = useSelector(userSelector);
     const dispatch = useDispatch();
+    const [userFullName, setUserName] = useState(user.full_name);
 
     const yupSchema = yup.object().shape({
-        full_name: yup.string(),
         avatar: yup.string(),
         email: yup.string().email(),
         phone: yup.string(),
@@ -39,33 +35,26 @@ const UserForm = () => {
         return errors;
     };
     const { form, use } = useForm({
-        defaultValues: user
-            ? {
-                  full_name: `${user.full_name}`,
-                  avatar: `${user.avatar}`,
-                  email: `${user.email}`,
-                  phone: `${user.phone}`,
-                  user_pet: `${user.user_pet}`,
-                  nick: `${user.nick}`,
-                  pet_photo: `${user.pet_photo}`,
-              }
-            : {
-                  full_name: ``,
-                  avatar: ``,
-                  email: `${"email"}`,
-                  phone: `${"phone"}`,
-                  user_pet: `${"user_pet"}`,
-                  nick: `${"pet_nick"}`,
-                  pet_photo: `${"pet_avatar"}`,
-              },
+        defaultValues: {
+            avatar: `${user.avatar}`,
+            email: `${user.email}`,
+            phone: `${user.phone}`,
+            user_pet: `${user.user_pet}`,
+            nick: `${user.nick}`,
+            pet_photo: `${user.pet_photo}`,
+        },
 
         validate: validateWithYup(yupSchema),
         onSubmit: (values) => {
-            const data = { id: user.id, ...values };
+            const data = { id: user.id, full_name: userFullName, ...values };
             dispatch(updateAction(data));
         },
     });
     const errors = use("errors", { errorWithTouched: true });
+
+    const onChangeHandler = (e) => {
+        setUserName(e.target.value);
+    };
 
     return (
         <div id="user-form">
@@ -88,12 +77,12 @@ const UserForm = () => {
                     </div>
                 )}
                 <div className="user-form-full-name">
-                    <h3>{user.full_name}</h3>
+                    <Field
+                        defaultValue={user.full_name}
+                        className="user-full-name"
+                        onChange={onChangeHandler}
+                    />
                 </div>
-
-                <button className="user-form-edit-btn" name="changeName">
-                    <FontAwesomeIcon icon={faPencilAlt} />
-                </button>
             </div>
             {user && (
                 <form className="user-profile-form" ref={form} noValidate>
@@ -115,12 +104,19 @@ const UserForm = () => {
                     </div>
                     <div className="form-item">
                         <label>Avatar:</label>
-                        <Field
-                            name="avatar"
-                            placeholder="Avatar"
-                            error={errors.avatar}
-                            type="file"
-                        />
+                        <div className="avatar-container">
+                            <Field
+                                error={errors.avatar}
+                                type="file"
+                                name="avatar"
+                                className="hide-input"
+                            />
+                            <input
+                                placeholder={user.avatar}
+                                name="avatar-hide"
+                                className="avatar-hide-input"
+                            />
+                        </div>
                     </div>
                     <div className="form-body">
                         <div className="form-body-items">
@@ -144,12 +140,20 @@ const UserForm = () => {
                             </div>
                             <div className="form-item">
                                 <label>Photo:</label>
-                                <Field
-                                    name="pet_photo"
-                                    placeholder="Photo"
-                                    error={errors.pet_photo}
-                                    type="file"
-                                />
+                                <div className="avatar-container">
+                                    <Field
+                                        placeholder="Photo"
+                                        error={errors.pet_photo}
+                                        type="file"
+                                        name="pet_photo"
+                                        className="hide-input"
+                                    />
+                                    <input
+                                        placeholder={user.pet_photo}
+                                        name="pet-photo-hide"
+                                        className="avatar-hide-input"
+                                    />
+                                </div>
                             </div>
                         </div>
                         <div className="form-body-pet-img">

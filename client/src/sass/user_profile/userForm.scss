@@ -36,6 +36,14 @@
         }
         .user-form-full-name {
             display: flex;
+
+            .user-full-name {
+                border: none;
+                color: $textColor;
+                font-size: $text16;
+                font-weight: $textBolder;
+                outline: none;
+            }
         }
         .user-form-edit-btn {
             width: 10%;
@@ -86,6 +94,23 @@
             }
             .label-nick {
                 margin-left: 22px;
+            }
+            .avatar-container {
+                position: relative;
+                width: 100%;
+                .hide-input {
+                    position: absolute;
+                    opacity: 0;
+                    left: -115px;
+                }
+                input {
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                .avatar-hide-input {
+                    width: 94%;
+                }
             }
         }
         .form-body {
