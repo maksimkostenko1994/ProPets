@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarker } from "@fortawesome/free-solid-svg-icons";
 import "../../../sass/lost_template/Lost-full-info.scss";
 import testPhoto from "./../../../assets/img/cat.png";
-const LostFullInfo = () => {
+const PetFullInfo = () => {
     return (
         <div id="lost-full-info-container">
             <div className="lfi-header">
                 <span className="lfi-header-title">
-                    Lost pet:
+                    Status pet:
                     <span className="lfi-header-title-nick">Nick</span>
                     <span>
                         | <FontAwesomeIcon icon={faMapMarker} />
@@ -66,4 +66,4 @@ const LostFullInfo = () => {
     );
 };
 
-export default LostFullInfo;
+export default PetFullInfo;

@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../button/Button";
-import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {authSelector} from "../../../store/app";
+import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { authSelector } from "../../../store/app";
 
-import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import { faPaw, faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../logo/Logo";
 
 export default function MainPageNav() {
     const auth = useSelector(authSelector);
+    const { pathname } = useLocation();
+    const path = pathname.slice(1);
 
     return (
         <div
@@ -21,41 +23,62 @@ export default function MainPageNav() {
             <div className="navContainer">
                 {auth ? (
                     <Link to="/posts">
-                        <Logo color={"textColor"}/>
+                        <Logo color={"textColor"} />
                     </Link>
                 ) : (
                     <Link to="/" className="logo">
-                        <Logo color={"whiteText"}/>
+                        <Logo color={"whiteText"} />
                     </Link>
                 )}
                 {auth ? (
                     <>
                         <div
                             style={{
-                                width: "300px",
+                                width: "320px",
                                 display: "flex",
                                 justifyContent: "space-between",
                             }}
                         >
-                            <Link to="/posts/add">
-                                <Button
-                                    text={"Add new"}
-                                    icon={faPlus}
-                                    color={"btn"}
-                                />
-                            </Link>
-                            <Link to="/services/add">
-                                <Button
-                                    text={"Add service"}
-                                    icon={faPlus}
-                                    color={"btn"}
-                                />
-                            </Link>
+                            {path === "lost" || path === "found" ? (
+                                <>
+                                    <Link to="/posts/add">
+                                        <Button
+                                            text={"I lost my pet"}
+                                            icon={faSearch}
+                                            color={"redBtn"}
+                                        />
+                                    </Link>
+                                    <Link to="/services/add">
+                                        <Button
+                                            text={"I found a pet"}
+                                            icon={faPaw}
+                                            color={"btn"}
+                                        />
+                                    </Link>
+                                </>
+                            ) : (
+                                <>
+                                    <Link to="/posts/add">
+                                        <Button
+                                            text={"Add new"}
+                                            icon={faPlus}
+                                            color={"btn"}
+                                        />
+                                    </Link>
+                                    <Link to="/services/add">
+                                        <Button
+                                            text={"Add service"}
+                                            icon={faPlus}
+                                            color={"btn"}
+                                        />
+                                    </Link>
+                                </>
+                            )}
                         </div>
                     </>
                 ) : (
                     <Link to="/signin">
-                        <Button color="btn" text="Sign in"/>
+                        <Button color="btn" text="Sign in" />
                     </Link>
                 )}
             </div>

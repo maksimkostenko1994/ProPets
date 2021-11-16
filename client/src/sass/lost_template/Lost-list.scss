@@ -8,6 +8,9 @@
         color: $textColor;
         font-weight: $textBolder;
         font-size: $text16;
+        &::first-letter {
+            text-transform: uppercase;
+        }
     }
 
     .lost-list {

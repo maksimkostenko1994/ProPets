@@ -1,26 +1,23 @@
-import testPhoto from "./../../../assets/img/dog3.png";
-import "../../../sass/found_tempalte/Found-item.scss";
+import testPhoto from "./../../../assets/img/cat.png";
+import "../../../sass/lost_template/Lost-item.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarker, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
-const FoundItem = () => {
+const PetItem = () => {
     return (
-        <div className="found-item">
-            <p className="found-nick"> Nick</p>
-            <div className="found-header">
+        <div className="lost-item">
+            <p className="lost-nick"> Nick</p>
+            <div className="lost-header">
                 <span>
                     <FontAwesomeIcon icon={faMapMarker} />
                 </span>
                 <p>address</p>
             </div>
-            <div className="found-body">
+            <div className="lost-body">
                 <img src={testPhoto} alt="imgPhoto" />
             </div>
-            <div className="found-footer">
-                <NavLink
-                    to={`/found/foundFullInfo/1`}
-                    className="found-details-btn"
-                >
+            <div className="lost-footer">
+                <NavLink to={`/pet/1`} className="lost-details-btn">
                     view details
                 </NavLink>
                 <span>
@@ -31,4 +28,4 @@ const FoundItem = () => {
         </div>
     );
 };
-export default FoundItem;
+export default PetItem;
