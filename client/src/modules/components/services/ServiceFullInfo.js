@@ -65,7 +65,7 @@ const ServiceFullInfo = () => {
             </div>
             <p className="service-full-contacts">
                 {(currentService.type === "Hotels" || currentService.type === "VetHelp") ?
-                    <span>{currentService.contacts}</span> :
+                    <span>{currentService.contacts[0] === "{" ? <>{JSON.parse(currentService.contacts)}</> : currentService.contacts}</span> :
                     <>
                         <span>Contacts:</span> {currentService.location && currentService.location} {currentService.contacts}
                     </>

@@ -11,12 +11,13 @@ export const getServices = async type => {
 
 export const addService = async service => {
     try {
+        console.log(service)
         const formData = new FormData()
         formData.append("title", service.title)
         formData.append("type", service.type)
         formData.append("text", typeof service.text === "object" ? JSON.stringify(service.text) : service.text)
         formData.append("photo", service.photo[0])
-        formData.append("contacts", JSON.stringify(service.contacts))
+        formData.append("contacts", typeof service.contacts === "object" ? JSON.stringify(service.contacts) : service.contacts)
         formData.append("date", service.date ? `${new Date(`${service.date} ${service.dateTime}:00`)}` : `${new Date()}`)
         formData.append("location", service.location)
         formData.append("userId", service.userId)

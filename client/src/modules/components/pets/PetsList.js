@@ -5,7 +5,6 @@ import { NavLink, useLocation } from "react-router-dom";
 
 const PetsList = () => {
     const { pathname } = useLocation();
-    console.log(pathname.slice(1)); //lost
     return (
         <div className="lost-container">
             <p className="lost-title">{pathname.slice(1)} pets</p>
