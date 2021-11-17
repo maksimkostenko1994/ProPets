@@ -48,7 +48,7 @@ export default function MainPageNav() {
                                             color={"redBtn"}
                                         />
                                     </Link>
-                                    <Link to="/services/add">
+                                    <Link to="/lost/add">
                                         <Button
                                             text={"I found a pet"}
                                             icon={faPaw}

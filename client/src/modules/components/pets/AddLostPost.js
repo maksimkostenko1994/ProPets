@@ -5,9 +5,13 @@ import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import * as yup from "yup";
 import { useForm, set } from "react-cool-form";
 import Field from "../forms/Field";
-// import addLostPost from "../../../store/pets";
+import { useDispatch, useSelector } from "react-redux";
+import { addLostPetPost } from "../../../store/pets";
+import { userSelector } from "../../../store/app";
 
 const AddLostPost = () => {
+    const user = useSelector(userSelector);
+    const dispatch = useDispatch();
     const yupSchema = yup.object().shape({
         nick: yup.string().min(2),
         type: yup.string().min(1),
@@ -35,6 +39,8 @@ const AddLostPost = () => {
     };
     const { form, use } = useForm({
         defaultValues: {
+            userId: `${user.id}`,
+            status: `lost`,
             nick: ``,
             type: ``,
             sex: ``,
@@ -50,8 +56,8 @@ const AddLostPost = () => {
         },
         validate: validateWithYup(yupSchema),
         onSubmit: (values, { reset }) => {
-            console.log(values);
-            // dispatch(addLostPost({ ...values, userId: user.id }));
+            console.log("post value from form", values);
+            dispatch(addLostPetPost({ ...values }));
             reset();
         },
     });
