@@ -8,6 +8,10 @@
         margin-bottom: 20px;
         color: $textColor;
     }
+    select {
+        width: 70px;
+    }
+
     .add-post-form {
         @include formControl;
         margin-top: 20px;
