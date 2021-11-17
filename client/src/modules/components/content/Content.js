@@ -16,7 +16,7 @@ const Content = () => {
         <div className="content">
             <Switch>
                 <Route path="/postsFullInfo/:id" component={PostFullInfo} />
-                <Route path="/lostPost/add" component={AddLostPost} />
+                <Route path="/lost/add" component={AddLostPost} />
                 <Route path="/lost" component={PetsList} />
                 <Route path="/pet/:id" component={PetFullInfo} />
                 <Route path="/found" component={PetsList} />

@@ -1,7 +1,7 @@
 import React from "react";
 import PetItem from "./PetItem";
 import "./../../../sass/lost_template/Lost-list.scss";
-import { NavLink, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const PetsList = () => {
     const { pathname } = useLocation();
@@ -12,7 +12,6 @@ const PetsList = () => {
             <div className="lost-list">
                 <PetItem />
             </div>
-            <NavLink to={"/lostPost/add"}>Add lost</NavLink>
         </div>
     );
 };

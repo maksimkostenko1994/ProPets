@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import Button from "../button/Button";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -41,7 +41,7 @@ export default function MainPageNav() {
                         >
                             {path === "lost" || path === "found" ? (
                                 <>
-                                    <Link to="/posts/add">
+                                    <Link to="/lost/add">
                                         <Button
                                             text={"I lost my pet"}
                                             icon={faSearch}

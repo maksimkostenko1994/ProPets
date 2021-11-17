@@ -1,0 +1,29 @@
+@import "../variables.scss";
+@import "../form_template/form.scss";
+
+.add-lost-post-container {
+    width: 70%;
+    margin: 40px auto;
+    h3 {
+        margin-bottom: 20px;
+        color: $textColor;
+    }
+    .add-post-form {
+        @include formControl;
+        margin-top: 20px;
+        #table {
+            width: 100%;
+            border-collapse: separate;
+            input {
+                width: 90%;
+            }
+            .table-td {
+                text-align: end;
+                padding-right: 20px;
+            }
+            .table-photo {
+                text-align: center;
+            }
+        }
+    }
+}
