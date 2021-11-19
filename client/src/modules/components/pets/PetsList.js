@@ -16,8 +16,6 @@ const PetsList = () => {
         dispatch(getPetsAction(path))
     }, [dispatch, path])
 
-    console.log(pets)
-
     return (
         <div className="lost-container">
             <p className="lost-title">{pathname.slice(1)} pets</p>

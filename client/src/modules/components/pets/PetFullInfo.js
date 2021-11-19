@@ -2,16 +2,14 @@ import React, {useEffect} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMapMarker} from "@fortawesome/free-solid-svg-icons";
 import "../../../sass/lost_template/Lost-full-info.scss";
-import {useParams} from "react-router";
+import {useParams} from "react-router-dom";
 import {getOnePetAction, petsSelector} from "../../../store/pet";
 import {useDispatch, useSelector} from "react-redux";
-import {userSelector} from "../../../store/app";
 
 const PetFullInfo = () => {
     const {id} = useParams();
 
     const {currentPet} = useSelector(petsSelector)
-    const user = useSelector(userSelector)
 
     const dispatch = useDispatch()
 
@@ -76,16 +74,15 @@ const PetFullInfo = () => {
             <div className="lfi-footer">
                 <p>
                     <span>Owner:</span>
-                    {user.full_name}
+                    {currentPet.contacts.split(' ')[2]} {currentPet.contacts.split(' ')[3]}
                 </p>
-                {user.phone && user.phone !== "null" &&
                 <p>
                     <span>Phone:</span>
-                    {user.phone}
-                </p>}
+                    {currentPet.contacts.split(' ')[0]}
+                </p>
                 <p>
                     <span>e-mail:</span>
-                    {user.email}
+                    {currentPet.contacts.split(' ')[1]}
                 </p>
             </div>
         </div>

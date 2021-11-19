@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit"
 import {stateLoading} from "./app";
 import {resetError, setError} from "./auth";
-import {getOnePet, getPets} from "../services/petApi";
+import {addFoundPet, addNewLostPost, getOnePet, getPets} from "../services/petApi";
 
 const initialState = {
     pets: [],
@@ -43,9 +43,33 @@ export const getOnePetAction = id => async dispatch => {
     try {
         const pet = await getOnePet(id)
         dispatch(setCurrentPet(pet))
-    }catch (e) {
+    } catch (e) {
         setError(e)
-    }finally {
+    } finally {
+        dispatch(stateLoading(false))
+    }
+}
+
+export const addLostPetPost = pet => async dispatch => {
+    dispatch(stateLoading(true))
+    dispatch(resetError())
+    try {
+        await addNewLostPost(pet)
+    } catch (e) {
+        dispatch(setError(e))
+    } finally {
+        dispatch(stateLoading(false))
+    }
+}
+
+export const addFoundPetAction = pet => async dispatch => {
+    dispatch(stateLoading(true))
+    dispatch(resetError())
+    try {
+        await addFoundPet(pet)
+    } catch (e) {
+        dispatch(setError(e))
+    } finally {
         dispatch(stateLoading(false))
     }
 }

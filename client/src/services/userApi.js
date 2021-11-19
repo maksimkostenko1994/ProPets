@@ -40,11 +40,11 @@ export const check = async () => {
     }
 };
 
-export const getCurrentUser = () => {
-    return localStorage.getItem("token")
-        ? jwtDecode(localStorage.getItem("token"))
-        : null;
-};
+// export const getCurrentUser = () => {
+//     return localStorage.getItem("token")
+//         ? jwtDecode(localStorage.getItem("token"))
+//         : null;
+// };
 
 export const updateUser = async ({ id, full_name, ...rest }) => {
     try {

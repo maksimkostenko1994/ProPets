@@ -26,7 +26,7 @@ export const addNewLostPost = async (post) => {
         formData.append("location", post.location);
         formData.append("phone", post.phone);
         formData.append("email", post.email);
-        const { data } = await $authHost.post(`/api/pets/`, formData, {
+        const {data} = await $authHost.post(`/api/pets/`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
             },
@@ -39,9 +39,35 @@ export const addNewLostPost = async (post) => {
 
 export const getOnePet = async (id) => {
     try {
-        const { data } = await $authHost.get(`api/pets/id/${id}`);
+        const {data} = await $authHost.get(`api/pets/id/${id}`);
         return data;
     } catch (e) {
-        return await Promise.reject(e);
+        return await Promise.reject(e.response.data.message);
     }
 };
+
+export const addFoundPet = async pet => {
+    try {
+        const formData = new FormData()
+        formData.append("type", pet.type)
+        formData.append("sex", pet.sex)
+        formData.append("breed", pet.breed)
+        formData.append("color", pet.color)
+        formData.append("height", pet.height)
+        formData.append("features", pet.features)
+        formData.append("description", pet.description)
+        formData.append("image", pet.image[0])
+        formData.append("location", pet.location)
+        formData.append("contacts", pet.contacts)
+        formData.append("userId", pet.userId)
+        formData.append("status", pet.status)
+        const {data} = $authHost.post(`/api/pets`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        return data
+    } catch (e) {
+        return await Promise.reject(e.response.data.message)
+    }
+}
