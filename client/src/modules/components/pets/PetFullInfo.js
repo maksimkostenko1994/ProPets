@@ -3,11 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarker } from "@fortawesome/free-solid-svg-icons";
 import "../../../sass/lost_template/Lost-full-info.scss";
 import { useParams } from "react-router";
-import { getOnePetById } from "../../../store/pets";
+import { getOnePetById } from "../../../store/pet";
 
 const PetFullInfo = () => {
     const { id } = useParams();
-    const pet = getOnePetById(id);
+    //const pet = getOnePetById(id);
+    const pet = {}
 
     return (
         <div id="lost-full-info-container">

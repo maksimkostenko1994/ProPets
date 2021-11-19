@@ -1,13 +1,13 @@
-import { $authHost } from "./api";
+import {$authHost} from "./api";
 
-export const getAllPets = async () => {
+export const getPets = async status => {
     try {
-        const { data } = await $authHost.get(`/api/pets`);
-        return data;
+        const {data} = await $authHost.get(`/api/pets/${status}`)
+        return data
     } catch (e) {
-        return await Promise.reject(e);
+        return await Promise.reject(e.response.data.message)
     }
-};
+}
 
 export const addNewLostPost = async (post) => {
     console.log("post from api", post);
@@ -36,6 +36,7 @@ export const addNewLostPost = async (post) => {
         return await Promise.reject(e);
     }
 };
+
 export const getOnePet = async (id) => {
     try {
         const { data } = await $authHost.get(`api/pets/:${id}`);

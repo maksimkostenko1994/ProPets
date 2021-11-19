@@ -6,7 +6,7 @@ import * as yup from "yup";
 import { useForm, set } from "react-cool-form";
 import Field from "../forms/Field";
 import { useDispatch, useSelector } from "react-redux";
-import { addLostPetPost } from "../../../store/pets";
+import {  } from "../../../store/pet";
 import { userSelector } from "../../../store/app";
 
 const AddLostPost = () => {
@@ -57,7 +57,7 @@ const AddLostPost = () => {
         validate: validateWithYup(yupSchema),
         onSubmit: (values, { reset }) => {
             console.log("post value from form", values);
-            dispatch(addLostPetPost({ ...values }));
+            //dispatch(addLostPetPost({ ...values }));
             reset();
         },
     });
@@ -149,7 +149,7 @@ const AddLostPost = () => {
                                     rows="3"
                                     placeholder="blue collar with stars, no left ear, damaged tail."
                                     maxLength="60"
-                                ></textarea>
+                                />
                             </td>
                         </tr>
                         <tr>
@@ -166,7 +166,7 @@ const AddLostPost = () => {
                                     rows="6"
                                     maxLength="150"
                                     placeholder="blue collar with stars, no left ear, damaged tail."
-                                ></textarea>
+                                />
                             </td>
                         </tr>
                         <tr>

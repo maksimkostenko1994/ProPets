@@ -1,27 +1,36 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PetItem from "./PetItem";
 import "./../../../sass/lost_template/Lost-list.scss";
-import { useLocation } from "react-router-dom";
-import { petsSelector } from "../../../store/pets";
-import { useSelector } from "react-redux";
+import {useLocation} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {getPetsAction, petsSelector} from "../../../store/pet";
 
 const PetsList = () => {
-    const { pathname } = useLocation();
-    const pets = useSelector(petsSelector);
-    const lostPets = pets.filter((pet) => pet.status === "lost");
-    const foundPets = pets.filter((pet) => pet.status === "found");
+    const {pathname} = useLocation();
+
+    const path = pathname.slice(1)
+    const {pets} = useSelector(petsSelector)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getPetsAction(path))
+    }, [dispatch, path])
+
+    console.log(pets)
+
     return (
         <div className="lost-container">
             <p className="lost-title">{pathname.slice(1)} pets</p>
-            <hr />
+            <hr/>
             <div className="lost-list">
                 {pathname.slice(1) === "lost"
-                    ? lostPets.map((pet, index) => (
-                          <PetItem key={index} pet={pet} index={pet.id} />
-                      ))
-                    : foundPets.map((pet, index) => (
-                          <PetItem key={index} pet={pet} index={pet.id} />
-                      ))}
+                    ? pets.map((pet, index) => (
+                        <PetItem key={index} pet={pet} index={pet.id}/>
+                    ))
+                    : pets.map((pet, index) => (
+                        <PetItem key={index} pet={pet} index={pet.id}/>
+                    ))
+                }
             </div>
         </div>
     );

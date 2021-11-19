@@ -1,0 +1,198 @@
+@import "../variables.scss";
+
+.found-box {
+  padding: 30px 50px;
+
+  h2 {
+    color: $textColor;
+  }
+
+  hr {
+    border: none;
+    height: 1px;
+    background-color: lightgray;
+    margin-top: 10px;
+  }
+
+  input {
+    outline: none;
+  }
+
+  form {
+    margin-top: 30px;
+
+    .found-container {
+      display: flex;
+
+      .found-add-left {
+        margin-right: 20px;
+        flex-grow: 2;
+
+        div {
+          display: grid;
+          grid-template-columns: 0.5fr 2fr;
+          align-items: center;
+          margin-bottom: 10px;
+
+          label {
+            justify-self: end;
+            margin-right: 10px;
+            text-align: right;
+            font-weight: 500;
+            font-size: 0.8rem;
+
+            &[for="description"] {
+              align-self: start;
+            }
+
+            &[for="location"] {
+              align-self: start;
+            }
+
+            span {
+              font-size: 10px;
+              color: $textColor;
+              font-weight: 200;
+            }
+          }
+
+          select {
+            outline: none;
+            border: none;
+            width: fit-content;
+          }
+
+          textarea {
+            resize: none;
+            border: 1px solid $btnBorder;
+            color: lightgray;
+            padding: 5px;
+
+            &:focus {
+              outline-color: #1a9399;
+            }
+
+            &[name="features"] {
+              height: 50px;
+            }
+
+            &[name="description"] {
+              height: 100px;
+            }
+
+            &[name="location"] {
+              height: 50px;
+            }
+          }
+
+          input {
+            outline: none;
+            border: none;
+            border-bottom: 1px solid $textColor;
+            color: lightgray;
+            height: 30px;
+          }
+        }
+      }
+
+      .found-add-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-left: 20px;
+
+        .found-add-image {
+          width: 200px;
+        }
+
+        .found-add-btn {
+          position: relative;
+
+          input {
+            outline: none;
+            border: none;
+            border-bottom: 2px solid rgba(189, 179, 179, 0.5);
+            padding-bottom: 5px;
+
+            &:disabled {
+              background:none;
+              color: lightgray;
+            }
+
+            &:first-child {
+              margin-top: 10px;
+            }
+          }
+
+          .found-load-btn {
+            position: relative;
+            margin-top: 10px;
+            height: 50px;
+
+            input {
+              position: absolute;
+            }
+
+            .btn-1 {
+              z-index: 2;
+              opacity: 0;
+              padding: 5px 0;
+              font-size: 1rem;
+              cursor: pointer;
+
+              &:hover ~ .btn-2 {
+                background-color: $mainBgColor;
+                color: white;
+              }
+            }
+
+            .btn-2 {
+              z-index: 1;
+              text-align: center;
+              color: $textColor;
+              background-color: $btnWhite;
+              border: 1px solid $textColor;
+              border-radius: 20px;
+              padding: 5px 0;
+              font-size: 1rem;
+              transition: all 0.5s ease;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  .found-contacts {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr 2fr;
+    margin-top: 20px;
+    align-items: center;
+
+    label {
+      text-align: right;
+    }
+
+    input {
+      margin-left: 10px;
+      height: 30px;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid $btnBorder;
+      color: lightgray;
+
+      &::placeholder {
+        color: lightgray;
+      }
+    }
+  }
+
+  .found-publish {
+    margin-top: 30px;
+
+    button {
+      margin-left: auto;
+    }
+  }
+}

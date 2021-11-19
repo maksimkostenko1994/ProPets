@@ -9,11 +9,16 @@
 @import "./home/home.scss";
 @import "./services/add-service.scss";
 @import "./services/services.scss";
+@import "./found/found.scss";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: Montserrat, sans-serif;
 }
 
 a {

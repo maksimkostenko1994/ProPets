@@ -5,7 +5,7 @@ import auth from "./auth";
 import posts from "./post";
 import services from "./service";
 import comments from "./comment";
-import pets from "./pets";
+import pets from "./pet"
 
 const rootReducer = combineReducers({
     app,
@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
     posts,
     services,
     comments,
-    pets,
+    pets
 });
 
 const store = configureStore({ reducer: rootReducer });

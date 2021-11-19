@@ -10,6 +10,7 @@ import ServiceFullInfo from "../services/ServiceFullInfo";
 import AddLostPost from "../pets/AddLostPost";
 import PetsList from "../pets/PetsList";
 import PetFullInfo from "../pets/PetFullInfo";
+import AddFoundPet from "../pets/AddFoundPet";
 
 const Content = () => {
     return (
@@ -17,6 +18,7 @@ const Content = () => {
             <Switch>
                 <Route path="/postsFullInfo/:id" component={PostFullInfo} />
                 <Route path="/lost/add" component={AddLostPost} />
+                <Route path="/found/add" component={AddFoundPet}/>
                 <Route path="/lost" component={PetsList} />
                 <Route path="/pet/:id" component={PetFullInfo} />
                 <Route path="/found" component={PetsList} />
