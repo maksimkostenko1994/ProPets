@@ -39,7 +39,7 @@ export const addNewLostPost = async (post) => {
 
 export const getOnePet = async (id) => {
     try {
-        const { data } = await $authHost.get(`api/pets/:${id}`);
+        const { data } = await $authHost.get(`api/pets/id/${id}`);
         return data;
     } catch (e) {
         return await Promise.reject(e);

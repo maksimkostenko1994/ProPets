@@ -1,81 +1,91 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarker } from "@fortawesome/free-solid-svg-icons";
+import React, {useEffect} from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faMapMarker} from "@fortawesome/free-solid-svg-icons";
 import "../../../sass/lost_template/Lost-full-info.scss";
-import { useParams } from "react-router";
-import { getOnePetById } from "../../../store/pet";
+import {useParams} from "react-router";
+import {getOnePetAction, petsSelector} from "../../../store/pet";
+import {useDispatch, useSelector} from "react-redux";
+import {userSelector} from "../../../store/app";
 
 const PetFullInfo = () => {
-    const { id } = useParams();
-    //const pet = getOnePetById(id);
-    const pet = {}
+    const {id} = useParams();
 
-    return (
+    const {currentPet} = useSelector(petsSelector)
+    const user = useSelector(userSelector)
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getOnePetAction(parseInt(id)))
+    }, [dispatch, id])
+
+    return currentPet && (
         <div id="lost-full-info-container">
             <div className="lfi-header">
                 <span className="lfi-header-title">
-                    {pet.status}:
-                    <span className="lfi-header-title-nick">{pet.nick}</span>
+                    {currentPet.status}:
+                    <span className="lfi-header-title-nick">{currentPet.nick}</span>
                     <span>
-                        | <FontAwesomeIcon icon={faMapMarker} />
+                        | <FontAwesomeIcon icon={faMapMarker}/>
                     </span>
-                    <span>{pet.location}</span>
+                    <span>{currentPet.location}</span>
                 </span>
             </div>
-            <hr />
+            <hr/>
             <div className="lfi-body">
                 <div className="lfi-body-left">
                     <img
-                        src={`http://localhost:5000/${pet.image}`}
+                        src={`http://localhost:5000/${currentPet.image}`}
                         alt="imgPhoto"
                     />
                 </div>
                 <div className="lfi-body-right">
                     <div className="lfi-body-right-header">
                         <h3>
-                            {pet.sex},{pet.breed}
+                            {currentPet.sex},{currentPet.breed}
                         </h3>
                         <p className="lfi-body-date">lost post date</p>
-                        <hr />
+                        <hr/>
                     </div>
                     <div>
                         <p>
                             <span>Color:</span>
-                            {pet.color}
+                            {currentPet.color}
                         </p>
                         <p>
                             <span>Sex:</span>
-                            {pet.sex}
+                            {currentPet.sex}
                         </p>
                         <p>
                             <span>Height:</span>
-                            {pet.height}
+                            {currentPet.height}
                         </p>
-                        <br />
-                        <br />
+                        <br/>
+                        <br/>
                         <p>
                             <span>Distinctive features:</span>
-                            {pet.distinctive}
+                            {currentPet.features}
                         </p>
                     </div>
                 </div>
             </div>
             <div className="lfi-description">
                 <span>Description: </span>
-                {pet.description}
+                {currentPet.description}
             </div>
             <div className="lfi-footer">
                 <p>
                     <span>Owner:</span>
-                    user.full_name
+                    {user.full_name}
                 </p>
+                {user.phone && user.phone !== "null" &&
                 <p>
                     <span>Phone:</span>
-                    user.phone
-                </p>
+                    {user.phone}
+                </p>}
                 <p>
                     <span>e-mail:</span>
-                    user.email
+                    {user.email}
                 </p>
             </div>
         </div>
