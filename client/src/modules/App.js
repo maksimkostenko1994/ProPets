@@ -1,4 +1,4 @@
-import {Redirect, Route, Switch} from "react-router-dom";
+import {Route, Switch, useLocation} from "react-router-dom";
 import MainPageNav from "./components/mainPage/MainPageNav";
 import MainPageContent from "./components/mainPage/MainPageContent";
 import ModalWindow from "./components/modal/ModalWindow";
@@ -14,6 +14,8 @@ function App() {
     const {loading, auth} = useSelector(appSelector)
     const dispatch = useDispatch()
 
+    const {pathname} = useLocation()
+
     useEffect(() => {
         dispatch(checkAuthAction())
     }, [dispatch])
@@ -25,8 +27,7 @@ function App() {
                 <Route exact path="/" component={MainPageContent}/>
                 <Route path="/signin" component={ModalWindow}/>
             </Switch>
-            {auth && <Home/>}
-            {auth ? <Redirect exact from="/" to="/posts"/> : <Redirect to="/"/>}
+            {(auth || pathname === "/lost" || pathname === "/found") && <Home/>}
             {loading && <Loader/>}
         </>
     );
