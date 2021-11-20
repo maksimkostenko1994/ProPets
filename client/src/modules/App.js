@@ -1,4 +1,4 @@
-import {Route, Switch, useLocation} from "react-router-dom";
+import {Redirect, Route, Switch, useLocation} from "react-router-dom";
 import MainPageNav from "./components/mainPage/MainPageNav";
 import MainPageContent from "./components/mainPage/MainPageContent";
 import ModalWindow from "./components/modal/ModalWindow";
@@ -7,11 +7,12 @@ import {appSelector} from "../store/app";
 import {useEffect} from "react";
 import Loader from "./components/loader/Loader";
 import Home from "./components/home/Home";
-import {checkAuthAction} from "../store/auth";
+import {checkAuthAction, errorSelector} from "../store/auth";
 
 function App() {
 
     const {loading, auth} = useSelector(appSelector)
+    const error = useSelector(errorSelector)
     const dispatch = useDispatch()
 
     const {pathname} = useLocation()
@@ -29,6 +30,7 @@ function App() {
             </Switch>
             {(auth || pathname === "/lost" || pathname === "/found") && <Home/>}
             {loading && <Loader/>}
+            {error === "Not authorized" && <Redirect to={`/`}/>}
         </>
     );
 }
