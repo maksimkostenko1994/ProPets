@@ -19,7 +19,7 @@ const UserForm = () => {
         avatar: yup.string(),
         email: yup.string().email(),
         phone: yup.string(),
-        user_pet: yup.string(),
+        user_pet: yup.string().nullable(),
         nick: yup.string(),
         pet_photo: yup.string(),
     });
@@ -36,18 +36,28 @@ const UserForm = () => {
     };
     const { form, use } = useForm({
         defaultValues: {
-            avatar: `${user.avatar}`,
-            email: `${user.email}`,
-            phone: `${user.phone}`,
-            user_pet: `${user.user_pet}`,
-            nick: `${user.nick}`,
-            pet_photo: `${user.pet_photo}`,
+            avatar: user.avatar,
+            email: user.email,
+            phone: user.phone,
+            user_pet: user.user_pet,
+            nick: user.nick,
+            pet_photo: user.pet_photo,
         },
 
         validate: validateWithYup(yupSchema),
         onSubmit: (values) => {
             const data = { id: user.id, full_name: userFullName, ...values };
-            dispatch(updateAction(data));
+            if (
+                user.full_name !== data.full_name ||
+                user.email !== data.email ||
+                user.avatar !== data.avatar ||
+                user.phone !== data.phone ||
+                user.user_pet !== data.user_pet ||
+                user.nick !== data.nick ||
+                user.pet_photo !== data.pet_photo
+            ) {
+                dispatch(updateAction(data));
+            }
         },
     });
     const errors = use("errors", { errorWithTouched: true });

@@ -11,7 +11,6 @@ export const getPets = async (status) => {
 
 export const addNewLostPost = async (post) => {
     try {
-        console.log("from api", post);
         const formData = new FormData();
         formData.append("status", post.status);
         formData.append("nick", post.nick);
