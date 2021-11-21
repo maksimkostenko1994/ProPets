@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { getOnePetAction, petsSelector } from "../../../store/pet";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../button/Button";
+import moment from "moment";
 
 const PetFullInfo = () => {
     const { id } = useParams();
@@ -18,6 +19,9 @@ const PetFullInfo = () => {
         dispatch(getOnePetAction(parseInt(id)));
     }, [dispatch, id]);
 
+    const date = currentPet
+        ? moment(currentPet.createdAt).format("D MMMM, YYYY")
+        : false;
     return (
         currentPet && (
             <div id="lost-full-info-container">
@@ -47,9 +51,9 @@ const PetFullInfo = () => {
                                 {currentPet.sex},{currentPet.breed}
                             </h3>
                             {currentPet.status === "lost" ? (
-                                <p className="lfi-body-date">lost post date</p>
+                                <p className="lfi-body-date">{date}</p>
                             ) : (
-                                <p className="lfi-body-date">found post date</p>
+                                <p className="lfi-body-date">{date}</p>
                             )}
                             <hr />
                         </div>
