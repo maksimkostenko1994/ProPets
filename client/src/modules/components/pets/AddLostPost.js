@@ -8,23 +8,27 @@ import Field from "../forms/Field";
 import { useDispatch, useSelector } from "react-redux";
 import { addLostPetPost } from "../../../store/pet";
 import { userSelector } from "../../../store/app";
+import { useState } from "react";
 
 const AddLostPost = () => {
+    const [file, loadFile] = useState(null);
+
     const user = useSelector(userSelector);
     const dispatch = useDispatch();
+
     const yupSchema = yup.object().shape({
-        nick: yup.string().min(2),
-        type: yup.string().min(1),
-        sex: yup.string().min(1),
-        breed: yup.string().min(2),
-        color: yup.string().min(2),
-        height: yup.string().min(1),
-        distinctive: yup.string().min(1),
-        description: yup.string().min(1),
-        location: yup.string().min(1),
-        phone: yup.string().min(2),
-        email: yup.string().min(2),
-        image: yup.string(),
+        nick: yup.string().min(2).required(),
+        type: yup.string().min(1).required(),
+        sex: yup.string().min(1).required(),
+        breed: yup.string().min(2).required(),
+        color: yup.string().min(2).required(),
+        height: yup.string().min(1).required(),
+        features: yup.string().min(1).required(),
+        description: yup.string().min(1).required(),
+        location: yup.string().min(1).required(),
+        phone: yup.string().min(2).required(),
+        email: yup.string().min(2).required(),
+        image: yup.string().required(),
     });
     const validateWithYup = (schema) => async (values) => {
         let errors = {};
@@ -39,35 +43,44 @@ const AddLostPost = () => {
     };
     const { form, use } = useForm({
         defaultValues: {
-            userId: `${user.id}`,
             status: `lost`,
             nick: ``,
-            type: ``,
-            sex: ``,
+            type: `Dog`,
+            sex: `Male`,
             breed: ``,
             color: ``,
-            height: ``,
-            distinctive: ``,
+            height: `45-70`,
+            features: ``,
             description: ``,
             location: ``,
-            phone: ``,
-            email: ``,
+            phone: user.phone,
+            email: user.email,
             image: ``,
         },
         validate: validateWithYup(yupSchema),
         onSubmit: (values, { reset }) => {
-            console.log("post value from form", values);
-            dispatch(addLostPetPost({ ...values }));
+            dispatch(
+                addLostPetPost({
+                    ...values,
+                    contacts: `${values.phone} ${values.email} ${user.full_name}`,
+                    userId: user.id,
+                    status: "lost",
+                })
+            );
             reset();
         },
     });
     const errors = use("errors", { errorWithTouched: true });
 
+    const onChangeHandler = ({ target }) => {
+        loadFile(target.value);
+    };
+
     return (
         <div className="add-lost-post-container">
             <h3>Lost your buddy? Keep calm and complete the form</h3>
             <hr />
-            <form className="add-post-form" ref={form}>
+            <form className="add-post-form" ref={form} noValidate>
                 <table id="table">
                     <tbody>
                         <tr>
@@ -143,8 +156,8 @@ const AddLostPost = () => {
                             </td>
                             <td>
                                 <textarea
-                                    name="distinctive"
-                                    error={errors.distinctive}
+                                    name="features"
+                                    error={errors.features}
                                     cols="30"
                                     rows="3"
                                     placeholder="blue collar with stars, no left ear, damaged tail."
@@ -182,8 +195,17 @@ const AddLostPost = () => {
                                 ></textarea>
                             </td>
                             <td className="loadImageSection" align="right">
-                                <Field type="file" name="image" />
-                                <Button text={"Load img"} color={"btn"} />
+                                <Field
+                                    type="file"
+                                    name="image"
+                                    value={file}
+                                    error={errors.image}
+                                />
+                                <Button
+                                    text={"Load img"}
+                                    color={"btn"}
+                                    onclick={onChangeHandler}
+                                />
                             </td>
                         </tr>
                         <tr className="contactSection">

@@ -1,77 +1,82 @@
-import {createSlice} from "@reduxjs/toolkit"
-import {stateLoading} from "./app";
-import {resetError, setError} from "./auth";
-import {addFoundPet, addNewLostPost, getOnePet, getPets} from "../services/petApi";
+import { createSlice } from "@reduxjs/toolkit";
+import { stateLoading } from "./app";
+import { resetError, setError } from "./auth";
+import {
+    addFoundPet,
+    addNewLostPost,
+    getOnePet,
+    getPets,
+} from "../services/petApi";
 
 const initialState = {
     pets: [],
-    currentPet: null
-}
+    currentPet: null,
+};
 
 const pet = createSlice({
-    name: 'pets',
+    name: "pets",
     initialState,
     reducers: {
-        setPets: (state, {payload}) => {
-            state.pets = payload
+        setPets: (state, { payload }) => {
+            state.pets = payload;
         },
-        setCurrentPet: (state, {payload}) => {
-            state.currentPet = payload
-        }
-    }
-})
+        setCurrentPet: (state, { payload }) => {
+            state.currentPet = payload;
+        },
+    },
+});
 
-export const {setPets, setCurrentPet} = pet.actions
-export const petsSelector = state => state.pets
+export const { setPets, setCurrentPet } = pet.actions;
+export const petsSelector = (state) => state.pets;
 
-export const getPetsAction = status => async dispatch => {
-    dispatch(stateLoading(true))
-    dispatch(resetError())
+export const getPetsAction = (status) => async (dispatch) => {
+    dispatch(stateLoading(true));
+    dispatch(resetError());
     try {
-        const pets = await getPets(status)
-        dispatch(setPets(pets))
+        const pets = await getPets(status);
+        dispatch(setPets(pets));
     } catch (e) {
-        dispatch(setError(e))
+        dispatch(setError(e));
     } finally {
-        dispatch(stateLoading(false))
+        dispatch(stateLoading(false));
     }
-}
+};
 
-export const getOnePetAction = id => async dispatch => {
-    dispatch(stateLoading(true))
-    dispatch(resetError())
+export const getOnePetAction = (id) => async (dispatch) => {
+    dispatch(stateLoading(true));
+    dispatch(resetError());
     try {
-        const pet = await getOnePet(id)
-        dispatch(setCurrentPet(pet))
+        const pet = await getOnePet(id);
+        dispatch(setCurrentPet(pet));
     } catch (e) {
-        setError(e)
+        setError(e);
     } finally {
-        dispatch(stateLoading(false))
+        dispatch(stateLoading(false));
     }
-}
+};
 
-export const addLostPetPost = pet => async dispatch => {
-    dispatch(stateLoading(true))
-    dispatch(resetError())
+export const addLostPetPost = (pet) => async (dispatch) => {
+    dispatch(stateLoading(true));
+    dispatch(resetError());
     try {
-        await addNewLostPost(pet)
+        await addNewLostPost(pet);
     } catch (e) {
-        dispatch(setError(e))
+        dispatch(setError(e));
     } finally {
-        dispatch(stateLoading(false))
+        dispatch(stateLoading(false));
     }
-}
+};
 
-export const addFoundPetAction = pet => async dispatch => {
-    dispatch(stateLoading(true))
-    dispatch(resetError())
+export const addFoundPetAction = (pet) => async (dispatch) => {
+    dispatch(stateLoading(true));
+    dispatch(resetError());
     try {
-        await addFoundPet(pet)
+        await addFoundPet(pet);
     } catch (e) {
-        dispatch(setError(e))
+        dispatch(setError(e));
     } finally {
-        dispatch(stateLoading(false))
+        dispatch(stateLoading(false));
     }
-}
+};
 
-export default pet.reducer
+export default pet.reducer;
