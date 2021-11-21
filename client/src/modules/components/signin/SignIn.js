@@ -47,7 +47,6 @@ const SignIn = ({ currentForm }) => {
 
     return (
         <div className="signup-box">
-            {error && <Error text={error} />}
             <form ref={form} className="signup-form" noValidate>
                 <div className="signup-div">
                     <div className="signup-form-field">
@@ -62,6 +61,9 @@ const SignIn = ({ currentForm }) => {
                             error={errors.password}
                         />
                     </div>
+                    {error && (
+                        <Error text={error} errorClass="not-auth-error" />
+                    )}
                 </div>
                 <ModalFooter currentForm={currentForm} user={"login"} />
             </form>
