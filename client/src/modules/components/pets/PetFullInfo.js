@@ -5,6 +5,7 @@ import "../../../sass/lost_template/Lost-full-info.scss";
 import { useParams } from "react-router-dom";
 import { getOnePetAction, petsSelector } from "../../../store/pet";
 import { useDispatch, useSelector } from "react-redux";
+import Button from "../button/Button";
 
 const PetFullInfo = () => {
     const { id } = useParams();
@@ -45,7 +46,11 @@ const PetFullInfo = () => {
                             <h3>
                                 {currentPet.sex},{currentPet.breed}
                             </h3>
-                            <p className="lfi-body-date">lost post date</p>
+                            {currentPet.status === "lost" ? (
+                                <p className="lfi-body-date">lost post date</p>
+                            ) : (
+                                <p className="lfi-body-date">found post date</p>
+                            )}
                             <hr />
                         </div>
                         <div>
@@ -75,19 +80,28 @@ const PetFullInfo = () => {
                     {currentPet.description}
                 </div>
                 <div className="lfi-footer">
-                    <p>
-                        <span>Owner:</span>
-                        {currentPet.contacts.split(" ")[2]}{" "}
-                        {currentPet.contacts.split(" ")[3]}
-                    </p>
-                    <p>
-                        <span>Phone:</span>
-                        {currentPet.contacts.split(" ")[0]}
-                    </p>
-                    <p>
-                        <span>e-mail:</span>
-                        {currentPet.contacts.split(" ")[1]}
-                    </p>
+                    <div>
+                        <p>
+                            <span>Owner:</span>
+                            {currentPet.contacts.split(" ")[2]}{" "}
+                            {currentPet.contacts.split(" ")[3]}
+                        </p>
+                        <p>
+                            <span>Phone:</span>
+                            {currentPet.contacts.split(" ")[0]}
+                        </p>
+                        <p>
+                            <span>e-mail:</span>
+                            {currentPet.contacts.split(" ")[1]}
+                        </p>
+                    </div>
+                    {currentPet.status === "lost" ? (
+                        <div>
+                            <Button text="I found a pet" color="btn" />
+                        </div>
+                    ) : (
+                        ""
+                    )}
                 </div>
             </div>
         )

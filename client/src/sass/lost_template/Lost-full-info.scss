@@ -62,6 +62,8 @@
         }
     }
     .lfi-footer {
+        display: flex;
+        justify-content: space-between;
         span {
             color: $textColor;
             margin-right: 10px;
