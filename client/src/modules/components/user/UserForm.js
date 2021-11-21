@@ -1,52 +1,54 @@
 import Button from "../button/Button";
-import { faSave, faUser, faPaw } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faSave, faUser, faPaw} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import "../../../sass/user_profile/userForm.scss";
 import Field from "../forms/Field";
-import { useDispatch, useSelector } from "react-redux";
-import { userSelector } from "../../../store/app";
-import { updateAction } from "../../../store/auth";
-import { useForm, set } from "react-cool-form";
+import {useDispatch, useSelector} from "react-redux";
+import {getUserAction, updateAction} from "../../../store/auth";
+import {useForm, set} from "react-cool-form";
 import * as yup from "yup";
-import { useState } from "react";
+import {useEffect, useState} from "react";
+import {userSelector} from "../../../store/app";
+import {getCurrentUser} from "../../../services/userApi";
 
 const UserForm = () => {
-    const user = useSelector(userSelector);
+    const user = useSelector(userSelector)
     const dispatch = useDispatch();
+
     const [userFullName, setUserName] = useState(user.full_name);
 
     const yupSchema = yup.object().shape({
-        avatar: yup.string(),
+        avatar: yup.string().nullable(),
         email: yup.string().email(),
-        phone: yup.string(),
+        phone: yup.string().nullable(),
         user_pet: yup.string().nullable(),
-        nick: yup.string(),
-        pet_photo: yup.string(),
+        nick: yup.string().nullable(),
+        pet_photo: yup.string().nullable(),
     });
+
     const validateWithYup = (schema) => async (values) => {
         let errors = {};
         try {
-            await schema.validate(values, { abortEarly: false });
+            await schema.validate(values, {abortEarly: false});
         } catch (yupError) {
-            yupError.inner.forEach(({ path, message }) =>
+            yupError.inner.forEach(({path, message}) =>
                 set(errors, path, message)
             );
         }
         return errors;
     };
-    const { form, use } = useForm({
+    const {form, use} = useForm({
         defaultValues: {
             avatar: user.avatar,
             email: user.email,
             phone: user.phone,
             user_pet: user.user_pet,
             nick: user.nick,
-            pet_photo: user.pet_photo,
+            pet_photo: user.pet_photo
         },
-
         validate: validateWithYup(yupSchema),
         onSubmit: (values) => {
-            const data = { id: user.id, full_name: userFullName, ...values };
+            const data = {id: user.id, full_name: userFullName, ...values};
             if (
                 user.full_name !== data.full_name ||
                 user.email !== data.email ||
@@ -58,18 +60,23 @@ const UserForm = () => {
             ) {
                 dispatch(updateAction(data));
             }
-        },
+        }
     });
-    const errors = use("errors", { errorWithTouched: true });
+
+    useEffect(() => {
+        dispatch(getUserAction(getCurrentUser().id))
+    }, [dispatch])
+
+    const errors = use("errors", {errorWithTouched: true});
 
     const onChangeHandler = (e) => {
         setUserName(e.target.value);
     };
 
-    return (
+    return user && (
         <div id="user-form">
             <h3>Your profile. Change, edit and manage your data.</h3>
-            <hr />
+            <hr/>
             <div className="user-form-title">
                 <h2>My profile</h2>
             </div>
@@ -83,7 +90,7 @@ const UserForm = () => {
                     </div>
                 ) : (
                     <div className="user-avatar">
-                        <FontAwesomeIcon size="2x" icon={faUser} />
+                        <FontAwesomeIcon size="2x" icon={faUser}/>
                     </div>
                 )}
                 <div className="user-form-full-name">
@@ -159,7 +166,7 @@ const UserForm = () => {
                                         className="hide-input"
                                     />
                                     <input
-                                        placeholder={user.pet_photo}
+                                        placeholder={user.pet_photo || "Photo"}
                                         name="pet-photo-hide"
                                         className="avatar-hide-input"
                                     />
@@ -176,7 +183,7 @@ const UserForm = () => {
                                 </div>
                             ) : (
                                 <div className="user-pet-photo">
-                                    <FontAwesomeIcon icon={faPaw} />
+                                    <FontAwesomeIcon icon={faPaw}/>
                                 </div>
                             )}
                         </div>
