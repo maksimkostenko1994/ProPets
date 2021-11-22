@@ -2,7 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import {stateLoading} from "./app";
 import {resetError, setError} from "./auth";
 import {addService, getService, getServices} from "../services/serviceApi";
-import {setPagination} from "./pagination";
+import {setCurrentPage, setPagination} from "./pagination";
 
 const initialState = {
     services: [],
@@ -33,6 +33,7 @@ export const getServicesAction = (type, page, limit) => async dispatch => {
         const services = await getServices(type, page, limit)
         dispatch(setServices(services))
         dispatch(setPagination({total: services.count, limit: 4}))
+        dispatch(setCurrentPage(page))
     } catch (e) {
         dispatch(setError(e))
     } finally {

@@ -1,12 +1,44 @@
 @import "../variables.scss";
 
+.service-pagination {
+  position: absolute;
+  right: -20px;
+  top: 220px;
+  border: 1px solid white;
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  border-radius: 0 5px 5px 0;
+
+  span {
+    border-bottom: 1px solid white;
+    padding: 5px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+    
+    &.active {
+      color: $textColor;
+      background-color: white;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
 .service-list {
-  margin: 10px auto;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 600px;
+  padding: 10px 0;
 
   .service-title {
     color: #06B2BB;
@@ -150,7 +182,7 @@
     }
   }
 
-  .service-full-contacts{
+  .service-full-contacts {
     width: 100%;
     padding: 0 5px;
     margin: 10px 0;
