@@ -11,12 +11,11 @@ const paginationReducer = createSlice({
     initialState,
     reducers: {
         setCurrentPage: (state, {payload}) => {
-            state.currentPage = payload.currentPage
+            state.currentPage = payload
         },
         setPagination: (state, {payload}) => {
-            console.log(payload)
             state.limit = payload.limit
-            state.pages = Math.ceil(payload.total/payload.limit)
+            state.pages = Math.ceil(payload.total / payload.limit)
         }
     }
 })
@@ -26,3 +25,7 @@ export default paginationReducer.reducer
 export const {setCurrentPage, setPagination} = paginationReducer.actions
 
 export const paginationSelector = state => state.pagination
+
+export const setCurrentPageAction = page => async dispatch => {
+    dispatch(setCurrentPage(page))
+}

@@ -6,14 +6,13 @@ import VetHelpList from "./vet_help/VetHelpList";
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getServicesAction, serviceSelector} from "../../../store/service";
-import {paginationSelector, setCurrentPage} from "../../../store/pagination";
+import {paginationSelector, setCurrentPageAction} from "../../../store/pagination";
 
 const Services = () => {
 
     const {currentPage, limit, pages} = useSelector(paginationSelector)
     const {services: {rows}} = useSelector(serviceSelector)
     const {type} = useParams()
-    console.log(currentPage)
 
     const pagesArr = (number) => {
         const res = []
@@ -27,10 +26,13 @@ const Services = () => {
         dispatch(getServicesAction(type, currentPage, limit))
     }, [dispatch, type, currentPage, limit])
 
+
     return (
         <div>
-            <div className="service-pagination">{pagesArr(pages).map(item => <span
-                onScroll={dispatch(setCurrentPage(item))} key={item}>{item}</span>)}</div>
+            <div className="service-pagination">{pagesArr(pages).map(item =>
+                <span onClick={() => dispatch(setCurrentPageAction(item))} key={item}>{item}</span>
+            )}
+            </div>
             {type === "Hotels" && <HotelList rows={rows}/>}
             {type === "Walking" && <WalkingList rows={rows}/>}
             {type === "Fostering" && <FosteringList rows={rows}/>}
