@@ -1,5 +1,10 @@
 @import "../variables.scss";
 
+.service-active-link {
+  background-color: white;
+  color: $textColor !important;
+}
+
 .service-pagination {
   position: absolute;
   right: -20px;
@@ -8,21 +13,16 @@
   border-left: none;
   display: flex;
   flex-direction: column;
-  color: white;
   border-radius: 0 5px 5px 0;
 
-  span {
+  a {
     border-bottom: 1px solid white;
     padding: 5px;
+    color: white;
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.1);
       cursor: pointer;
-    }
-    
-    &.active {
-      color: $textColor;
-      background-color: white;
     }
 
     &:last-child {
