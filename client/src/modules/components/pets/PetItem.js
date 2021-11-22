@@ -1,20 +1,25 @@
 import "../../../sass/lost_template/Lost-item.scss";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faMapMarker, faChevronRight} from "@fortawesome/free-solid-svg-icons";
-import {NavLink} from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarker, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { NavLink } from "react-router-dom";
 
-const PetItem = ({pet, index}) => {
-
-    const nickName = (pet.nick && pet.nick !== "null") ? pet.nick : "Nickname"
+const PetItem = ({ pet, index }) => {
+    const nickName = pet.nick && pet.nick !== "null" ? pet.nick : "Nickname";
 
     return (
         <div className="lost-item">
-            <p className="lost-nick"> {pet.status === "lost" ? nickName : pet.type}</p>
             <div className="lost-header">
-                <span>
-                    <FontAwesomeIcon icon={faMapMarker}/>
-                </span>
-                <p>{pet.location}</p>
+                <div>
+                    <p className="lost-nick">
+                        {pet.status === "lost" ? nickName : pet.type}
+                    </p>
+                </div>
+                <div className="lost-header-adress">
+                    <span>
+                        <FontAwesomeIcon icon={faMapMarker} />
+                    </span>
+                    <p>{pet.location}</p>
+                </div>
             </div>
             <div className="lost-body">
                 <img
@@ -27,8 +32,8 @@ const PetItem = ({pet, index}) => {
                     view details
                 </NavLink>
                 <span>
-                    <FontAwesomeIcon icon={faChevronRight}/>
-                    <FontAwesomeIcon icon={faChevronRight}/>
+                    <FontAwesomeIcon icon={faChevronRight} />
+                    <FontAwesomeIcon icon={faChevronRight} />
                 </span>
             </div>
         </div>
