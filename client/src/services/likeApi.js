@@ -8,6 +8,7 @@ export const getLikes = async () => {
         return await Promise.reject(e);
     }
 };
+
 export const addNewLike = async (postId, userId) => {
     try {
         const formData = new FormData();

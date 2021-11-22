@@ -1,17 +1,22 @@
-import React, { useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarker } from "@fortawesome/free-solid-svg-icons";
+import React, {useEffect} from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faMapMarker, faSearch} from "@fortawesome/free-solid-svg-icons";
 import "../../../sass/lost_template/Lost-full-info.scss";
-import { useParams } from "react-router-dom";
-import { getOnePetAction, petsSelector } from "../../../store/pet";
-import { useDispatch, useSelector } from "react-redux";
+import {useHistory, useParams} from "react-router-dom";
+import {getOnePetAction, petsSelector, updatePetAction} from "../../../store/pet";
+import {useDispatch, useSelector} from "react-redux";
 import Button from "../button/Button";
 import moment from "moment";
+import {userSelector} from "../../../store/app";
 
 const PetFullInfo = () => {
-    const { id } = useParams();
+    const {id} = useParams();
 
-    const { currentPet } = useSelector(petsSelector);
+    const user = useSelector(userSelector)
+
+    const {push} = useHistory()
+
+    const {currentPet} = useSelector(petsSelector);
 
     const dispatch = useDispatch();
 
@@ -22,6 +27,7 @@ const PetFullInfo = () => {
     const date = currentPet
         ? moment(currentPet.createdAt).format("D MMMM, YYYY")
         : false;
+
     return (
         currentPet && (
             <div id="lost-full-info-container">
@@ -32,12 +38,12 @@ const PetFullInfo = () => {
                             {currentPet.nick}
                         </span>
                         <span>
-                            | <FontAwesomeIcon icon={faMapMarker} />
+                            | <FontAwesomeIcon icon={faMapMarker}/>
                         </span>
                         <span>{currentPet.location}</span>
                     </span>
                 </div>
-                <hr />
+                <hr/>
                 <div className="lfi-body">
                     <div className="lfi-body-left">
                         <img
@@ -55,7 +61,7 @@ const PetFullInfo = () => {
                             ) : (
                                 <p className="lfi-body-date">{date}</p>
                             )}
-                            <hr />
+                            <hr/>
                         </div>
                         <div>
                             <p>
@@ -70,8 +76,8 @@ const PetFullInfo = () => {
                                 <span>Height:</span>
                                 {currentPet.height}
                             </p>
-                            <br />
-                            <br />
+                            <br/>
+                            <br/>
                             <p>
                                 <span>Distinctive features:</span>
                                 {currentPet.features}
@@ -99,13 +105,15 @@ const PetFullInfo = () => {
                             {currentPet.contacts.split(" ")[1]}
                         </p>
                     </div>
-                    {currentPet.status === "lost" ? (
-                        <div>
-                            <Button text="I found a pet" color="btn" />
-                        </div>
-                    ) : (
-                        ""
-                    )}
+                    {currentPet.status === "lost" &&
+                    <div>
+                        <Button click={() => {
+                            dispatch(updatePetAction(currentPet.id, 'found', `${user.phone} ${user.email} ${currentPet.contacts.split(' ')[2]} ${currentPet.contacts.split(' ')[3]}`))
+                            push(`/lost`)
+                        }
+                        } text="I found a pet" color="btn" icon={faSearch}/>
+                    </div>
+                    }
                 </div>
             </div>
         )

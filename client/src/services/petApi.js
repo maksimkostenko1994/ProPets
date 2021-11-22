@@ -70,3 +70,12 @@ export const addFoundPet = async (pet) => {
         return await Promise.reject(e.response.data.message);
     }
 };
+
+export const updatePet = async (id, status, contacts) => {
+    try {
+        const {data} = await $authHost.put(`/api/pets/${id}`, {status, contacts})
+        return data
+    }catch (e) {
+        return await Promise.reject(e)
+    }
+}
