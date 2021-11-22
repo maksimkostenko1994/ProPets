@@ -6,6 +6,7 @@ import posts from "./post";
 import services from "./service";
 import comments from "./comment";
 import pets from "./pet"
+import pagination from "./pagination";
 
 const rootReducer = combineReducers({
     app,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     posts,
     services,
     comments,
-    pets
+    pets,
+    pagination
 });
 
 const store = configureStore({ reducer: rootReducer });

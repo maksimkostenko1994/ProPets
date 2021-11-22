@@ -1,8 +1,8 @@
 import {$authHost} from "./api";
 
-export const getServices = async type => {
+export const getServices = async (type, page = null, limit = null) => {
     try {
-        const {data} = await $authHost.get(`/api/services/${type}`)
+        const {data} = await $authHost.get(`/api/services/${type}?page=${page}&limit=${limit}`)
         return data
     } catch (e) {
         return await Promise.reject(e.response.data.message)
@@ -35,7 +35,7 @@ export const getService = async id => {
     try {
         const {data} = await $authHost.get(`/api/services/id/${id}`)
         return data
-    }catch (e) {
+    } catch (e) {
         return await Promise.reject(e.response.data.message)
     }
 }
