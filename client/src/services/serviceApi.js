@@ -11,7 +11,6 @@ export const getServices = async type => {
 
 export const addService = async service => {
     try {
-        console.log(service)
         const formData = new FormData()
         formData.append("title", service.title)
         formData.append("type", service.type)

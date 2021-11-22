@@ -16,7 +16,7 @@ const PostList = () => {
         <h1>No Posts yet</h1>
     ) : (
         <PostsBox>
-            {posts.map((post) => (
+            {posts.rows.map((post) => (
                 <li key={post.id}>
                     <Post post={post} />
                 </li>

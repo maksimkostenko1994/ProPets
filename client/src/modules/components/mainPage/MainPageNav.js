@@ -62,25 +62,25 @@ export default function MainPageNav() {
                                 </>
                             ) : (
                                 <>
-                                    <Link to="/posts/add">
+                                    {path === "posts" && <Link to="/posts/add">
                                         <Button
                                             text={"Add new"}
                                             icon={faPlus}
                                             color={"btn"}
                                         />
-                                    </Link>
-                                    <Link to="/services/add">
+                                    </Link>}
+                                    {path.startsWith("services") && <Link to="/services/add">
                                         <Button
                                             text={"Add service"}
                                             icon={faPlus}
                                             color={"btn"}
                                         />
-                                    </Link>
+                                    </Link>}
                                 </>
                             )}
                         </div>
                     </>
-                ) : (path === "found" || path === "lost") ? <></>: (
+                ) : (path === "found" || path === "lost") ? <></> : (
                     <Link to="/signin">
                         <Button color="btn" text="Sign in"/>
                     </Link>
