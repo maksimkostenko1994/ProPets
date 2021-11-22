@@ -3,6 +3,7 @@ import { addNewDislike, addNewLike } from "../services/likeApi";
 import { getPosts, getPost, addNewPost } from "../services/postApi";
 import { stateLoading } from "./app";
 import { resetError, setError } from "./auth";
+import { setCurrentPage, setPagination } from "./pagination";
 
 const initialState = {
     posts: [],
@@ -32,13 +33,16 @@ const postsReducer = createSlice({
 });
 export default postsReducer.reducer;
 
-export const getPostsAction = () => async (dispatch) => {
+export const getPostsAction = (page, limit) => async (dispatch) => {
     dispatch(stateLoading(true));
     dispatch(resetError());
     try {
-        const posts = await getPosts();
+        const posts = await getPosts(page, limit);
         dispatch(setPosts(posts));
+        dispatch(setPagination({ total: posts.count, limit: 2 }));
+        dispatch(setCurrentPage(page));
     } catch (e) {
+        console.log("error");
         dispatch(setError(e.message));
     } finally {
         dispatch(stateLoading(false));
@@ -96,3 +100,19 @@ export const { setPosts, addPost, setCurrentPost, addLike, addDislike } =
     postsReducer.actions;
 export const postsSelector = (state) => state.posts.posts;
 export const postSelector = (state) => state.posts.post;
+
+// export const getPostsAction = (page, limit) => async (dispatch) => {
+//     dispatch(stateLoading(true));
+//     dispatch(resetError());
+//     try {
+//         const posts = await getPosts(page, limit);
+//         dispatch(setPosts(posts));
+//         dispatch(setPagination({ total: posts.count, limit: 2 }));
+//         dispatch(setCurrentPost(page));
+//     } catch (e) {
+//         console.log("error");
+//         dispatch(setError(e.message));
+//     } finally {
+//         dispatch(stateLoading(false));
+//     }
+// };

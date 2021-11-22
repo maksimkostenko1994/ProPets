@@ -3,19 +3,53 @@ import { getPostsAction, postsSelector } from "../../../store/post";
 import Post from "./Post";
 import styled from "styled-components";
 import { useEffect } from "react";
+import {
+    paginationSelector,
+    setCurrentPageAction,
+} from "../../../store/pagination";
 
 const PostList = () => {
+    const { currentPage, limit, pages } = useSelector(paginationSelector);
     const posts = useSelector(postsSelector);
+
+    const pagesArr = (number) => {
+        const res = [];
+
+        for (let i = 1; i <= number; i++) res.push(i);
+        return res;
+    };
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getPostsAction());
-    }, [dispatch]);
+        dispatch(getPostsAction(currentPage, limit));
+    }, [dispatch, currentPage, limit]);
 
     return posts.length === 0 ? (
         <h1>No Posts yet</h1>
     ) : (
         <PostsBox>
+            <div className="service-pagination">
+                {pagesArr(pages).map((item) => (
+                    <a
+                        id={item}
+                        onClick={(event) => {
+                            dispatch(setCurrentPageAction(item));
+                            event.target.classList.add("service-active-link");
+                            Array.from(event.target.parentNode.children).map(
+                                (link) =>
+                                    event.target.id !== link.id
+                                        ? link.classList.remove(
+                                              "service-active-link"
+                                          )
+                                        : ""
+                            );
+                        }}
+                        key={item}
+                    >
+                        {item}
+                    </a>
+                ))}
+            </div>
             {posts.rows.map((post) => (
                 <li key={post.id}>
                     <Post post={post} />
