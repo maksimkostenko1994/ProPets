@@ -1,5 +1,5 @@
 import "../../../sass/lost_template/Add-lost-post.scss";
-import Photo from "../../../assets/img/Group 108@2x.png";
+import Photo from "../../../assets/img/Group108.png";
 import Button from "../button/Button";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import * as yup from "yup";
