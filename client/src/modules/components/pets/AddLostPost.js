@@ -1,5 +1,5 @@
 import "../../../sass/lost_template/Add-lost-post.scss";
-import Photo from "../../../assets/img/Group108.png";
+import Photo from "../../../assets/img/Group 108@2x.png";
 import Button from "../button/Button";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import * as yup from "yup";
@@ -49,7 +49,7 @@ const AddLostPost = () => {
             sex: `Male`,
             breed: ``,
             color: ``,
-            height: `45-70`,
+            height: `45-70cm`,
             features: ``,
             description: ``,
             location: ``,
@@ -73,88 +73,101 @@ const AddLostPost = () => {
     const errors = use("errors", { errorWithTouched: true });
 
     const onChangeHandler = ({ target }) => {
+        console.log(target.value);
         loadFile(target.value);
     };
 
     return (
         <div className="add-lost-post-container">
-            <h3>Lost your buddy? Keep calm and complete the form</h3>
+            <h2>Lost your buddy? Keep calm and complete the form</h2>
             <hr />
             <form className="add-post-form" ref={form} noValidate>
-                <table id="table">
-                    <tbody>
-                        <tr>
-                            <td className="table-td">Nickname:</td>
-                            <td>
+                <div className="lost-form-body">
+                    <div className="left">
+                        <div className="left-box">
+                            <div className="left-label">
+                                <label>Nickname:</label>
+                            </div>
+                            <div className="left-field">
                                 <Field
-                                    placeholder="Benladen"
+                                    placeholder="Uncle Sam"
                                     name="nick"
                                     error={errors.nick}
                                 />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="table-td">Type:</td>
-                            <td>
+                            </div>
+                        </div>
+                        <div className="left-box">
+                            <div className="left-label">
+                                <label>Type:</label>
+                            </div>
+                            <div className="left-field">
                                 <select name="type" error={errors.type}>
-                                    <option value="Dog">Dog</option>
-                                    <option value="Cat">Cat</option>
-                                    <option value="Other">Other</option>
+                                    <option>Dog</option>
+                                    <option>Cat</option>
+                                    <option>Bird</option>
+                                    <option>Reptile</option>
+                                    <option>Mammal</option>
                                 </select>
-                            </td>
-                            <td rowSpan="4" className="table-photo">
-                                <img src={Photo} alt="man-icon" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="table-td">Sex:</td>
-                            <td>
+                            </div>
+                        </div>
+                        <div className="left-box">
+                            <div className="left-label">
+                                <label>Sex:</label>
+                            </div>
+                            <div className="left-field">
                                 <select name="sex" error={errors.sex}>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Neutral</option>
                                 </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="table-td">Breed:</td>
-                            <td>
+                            </div>
+                        </div>
+                        <div className="left-box">
+                            <div className="left-label">
+                                <label>Breed:</label>
+                            </div>
+                            <div className="left-field">
                                 <Field
+                                    placeholder="Golden Retriever"
                                     name="breed"
                                     error={errors.breed}
-                                    placeholder="Golden Retriever"
                                 />
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td className="table-td">Color:</td>
-                            <td>
+                            </div>
+                        </div>
+                        <div className="left-box">
+                            <div className="left-label">
+                                <label>Color:</label>
+                            </div>
+                            <div className="left-field">
                                 <Field
+                                    placeholder="Beige"
                                     name="color"
                                     error={errors.color}
-                                    placeholder="Beige"
                                 />
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr className="tr-height">
-                            <td className="table-td">Height:</td>
-                            <td className="table-td-height">
+                            </div>
+                        </div>
+                        <div className="left-box">
+                            <div className="left-label">
+                                <label>Height:</label>
+                            </div>
+                            <div className="left-field">
                                 <select name="height" error={errors.height}>
-                                    <option value="45-70">45-70 cm</option>
-                                    <option value="30-45 ">30-45 cm</option>
-                                    <option value="10-30">10-30 cm</option>
+                                    <option>45-70cm</option>
+                                    <option>30-45cm</option>
+                                    <option>10-30cm</option>
                                 </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="table-td">
-                                Distinctive
-                                <br /> features:
-                                <br />
-                                <span>up to 60 char</span>
-                            </td>
-                            <td>
+                            </div>
+                        </div>
+
+                        <div className="left-box">
+                            <div className="left-label">
+                                <label>
+                                    Distinctive features:
+                                    <br />
+                                    <span>up to 60 char</span>
+                                </label>
+                            </div>
+                            <div className="left-field">
                                 <textarea
                                     name="features"
                                     error={errors.features}
@@ -163,81 +176,102 @@ const AddLostPost = () => {
                                     placeholder="blue collar with stars, no left ear, damaged tail."
                                     maxLength="60"
                                 />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="table-td">
-                                Description:
-                                <br />
-                                <span>up to 150 char</span>
-                            </td>
-                            <td>
+                            </div>
+                        </div>
+                        <div className="left-box">
+                            <div className="left-label">
+                                <label>
+                                    Description:
+                                    <br />
+                                    <span>up to 150 char</span>
+                                </label>
+                            </div>
+                            <div className="left-field">
                                 <textarea
                                     name="description"
                                     error={errors.description}
                                     cols="30"
                                     rows="6"
                                     maxLength="150"
-                                    placeholder="blue collar with stars, no left ear, damaged tail."
+                                    placeholder="brown fox jumps over a lazy dog. DJs flock by when jhkjk jhgMTV ax quiz prog. Junk MTV quiz graced by fox"
                                 />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="table-td">Location:</td>
-                            <td>
+                            </div>
+                        </div>
+                        <div className="left-box">
+                            <div className="left-label">
+                                <label>Location:</label>
+                            </div>
+                            <div className="left-field">
                                 <textarea
                                     name="location"
                                     error={errors.location}
                                     cols="30"
                                     rows="4"
-                                    placeholder="Oliver Platy, Berlin"
+                                    placeholder="Oliver Platz, Berlin"
                                     maxLength="60"
-                                ></textarea>
-                            </td>
-                            <td className="loadImageSection" align="right">
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="right">
+                        <div className="right-up">
+                            <div>
+                                <img src={Photo} alt="man-pictures" />
+                            </div>
+                        </div>
+                        <div className="right-down">
+                            <div className="img-section">
                                 <Field
+                                    placeholder="load image "
+                                    defaultValue={file}
+                                    error={errors.image}
+                                    disabled
+                                    type="text"
+                                    name="loadImg"
+                                />
+                            </div>
+                            <div className="right-down-btn">
+                                <Field
+                                    className="btn-1"
                                     type="file"
                                     name="image"
-                                    value={file}
-                                    error={errors.image}
+                                    onChange={onChangeHandler}
                                 />
-                                <Button
-                                    text={"Load img"}
-                                    color={"btn"}
-                                    onclick={onChangeHandler}
-                                />
-                            </td>
-                        </tr>
-                        <tr className="contactSection">
-                            <td className="table-td">Contacts:</td>
-                            <td>
                                 <Field
+                                    className="btn-2"
+                                    value="Load image"
                                     type="text"
-                                    placeholder="Phone*"
-                                    name="phone"
-                                    error={errors.phone}
+                                    name="loadImg2"
                                 />
-                            </td>
-                            <td>
-                                <Field
-                                    type="text"
-                                    name="email"
-                                    placeholder="Email"
-                                    error={errors.email}
-                                />
-                            </td>
-                        </tr>
-                        <tr className="publishBtnSection" align="right">
-                            <td colSpan="3" height="20px">
-                                <Button
-                                    text={"Publish"}
-                                    icon={faPaw}
-                                    color={"btn"}
-                                />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div className="form-contacts">
+                    <div className="contacts-label">
+                        <label>Contacts:</label>
+                    </div>
+                    <div className="contacts-field">
+                        <Field
+                            type="text"
+                            placeholder="Phone*"
+                            name="phone"
+                            error={errors.phone}
+                        />
+                    </div>
+                    <div className="contacts-field-right">
+                        <Field
+                            type="text"
+                            name="email"
+                            placeholder="Email"
+                            error={errors.email}
+                        />
+                    </div>
+                </div>
+                <div className="publishBtnSection" align="right">
+                    <Button text={"Publish"} icon={faPaw} color={"btn"} />
+                </div>
             </form>
         </div>
     );
