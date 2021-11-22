@@ -2,7 +2,7 @@
 .post {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
     padding-top: 10px;
     font-family: Montserrat, sans-serif;
@@ -38,6 +38,8 @@
     }
     .post-body {
         display: flex;
+        width: 40%;
+        margin: 0 auto;
         img {
             width: 100%;
         }
