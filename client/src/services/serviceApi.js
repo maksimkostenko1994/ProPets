@@ -1,6 +1,6 @@
 import {$authHost} from "./api";
 
-export const getServices = async (type, page = null, limit = null) => {
+export const getServices = async (type, page , limit) => {
     try {
         const {data} = await $authHost.get(`/api/services/${type}?page=${page}&limit=${limit}`)
         return data

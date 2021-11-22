@@ -14,6 +14,7 @@ const paginationReducer = createSlice({
             state.currentPage = payload.currentPage
         },
         setPagination: (state, {payload}) => {
+            console.log(payload)
             state.limit = payload.limit
             state.pages = Math.ceil(payload.total/payload.limit)
         }
