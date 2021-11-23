@@ -1,22 +1,22 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import HotelList from "./hotels/HotelList";
 import WalkingList from "./walking/WalkingList";
 import FosteringList from "./fostering/FosteringList";
 import VetHelpList from "./vet_help/VetHelpList";
-import { NavLink, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getServicesAction, serviceSelector } from "../../../store/service";
+import {NavLink, useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {getServicesAction, serviceSelector} from "../../../store/service";
 import {
     paginationSelector,
     setCurrentPageAction,
 } from "../../../store/pagination";
 
 const Services = () => {
-    const { currentPage, limit, pages } = useSelector(paginationSelector);
+    const {currentPage, limit, pages} = useSelector(paginationSelector);
     const {
-        services: { rows },
+        services: {rows},
     } = useSelector(serviceSelector);
-    const { type } = useParams();
+    const {type} = useParams();
 
     const pagesArr = (number) => {
         const res = [];
@@ -43,8 +43,8 @@ const Services = () => {
                                 (link) =>
                                     event.target.id !== link.id
                                         ? link.classList.remove(
-                                              "service-active-link"
-                                          )
+                                            "service-active-link"
+                                        )
                                         : ""
                             );
                         }}
@@ -54,10 +54,10 @@ const Services = () => {
                     </a>
                 ))}
             </div>
-            {type === "Hotels" && <HotelList rows={rows} />}
-            {type === "Walking" && <WalkingList rows={rows} />}
-            {type === "Fostering" && <FosteringList rows={rows} />}
-            {type === "VetHelp" && <VetHelpList rows={rows} />}
+            {type === "Hotels" && <HotelList rows={rows}/>}
+            {type === "Walking" && <WalkingList rows={rows}/>}
+            {type === "Fostering" && <FosteringList rows={rows}/>}
+            {type === "VetHelp" && <VetHelpList rows={rows}/>}
         </div>
     );
 };
