@@ -30,7 +30,7 @@ const PostList = () => {
         <PostsBox>
             <div className="service-pagination">
                 {pagesArr(pages).map((item) => (
-                    <a
+                    <p
                         id={item}
                         onClick={(event) => {
                             dispatch(setCurrentPageAction(item));
@@ -47,7 +47,7 @@ const PostList = () => {
                         key={item}
                     >
                         {item}
-                    </a>
+                    </p>
                 ))}
             </div>
             {posts.rows.map((post) => (
