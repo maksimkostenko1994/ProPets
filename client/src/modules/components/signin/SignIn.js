@@ -38,7 +38,7 @@ const SignIn = ({ currentForm }) => {
         onSubmit: (values, e, { submitter }) => {
             if (submitter.name === "login") {
                 dispatch(loginAction(values));
-                history.push("/posts");
+                if (!error) history.push("/posts");
             }
         },
     });
@@ -62,7 +62,10 @@ const SignIn = ({ currentForm }) => {
                         />
                     </div>
                     {error && (
-                        <Error text={error} errorClass="not-auth-error" />
+                        <Error
+                            text={error.data.message}
+                            errorClass="not-auth-error"
+                        />
                     )}
                 </div>
                 <ModalFooter currentForm={currentForm} user={"login"} />

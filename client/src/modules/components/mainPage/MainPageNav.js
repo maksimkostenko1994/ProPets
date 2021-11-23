@@ -1,15 +1,15 @@
 import React from "react";
 import Button from "../button/Button";
-import {Link, useLocation} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {authSelector} from "../../../store/app";
+import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { authSelector } from "../../../store/app";
 
-import {faPaw, faPlus, faSearch} from "@fortawesome/free-solid-svg-icons";
+import { faPaw, faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../logo/Logo";
 
 export default function MainPageNav() {
     const auth = useSelector(authSelector);
-    const {pathname} = useLocation();
+    const { pathname } = useLocation();
     const path = pathname.slice(1);
 
     return (
@@ -17,21 +17,29 @@ export default function MainPageNav() {
             id="top"
             className="navMainPage"
             style={{
-                background: (auth || path === "found" || path === "lost") ? "snow" : "#06B2BB",
+                background:
+                    auth ||
+                    path === "found" ||
+                    path === "lost" ||
+                    path.startsWith("pet/")
+                        ? "snow"
+                        : "#06B2BB",
             }}
         >
             <div className="navContainer">
                 {auth ? (
                     <Link to="/posts">
-                        <Logo color={"textColor"}/>
+                        <Logo color={"textColor"} />
                     </Link>
-                ) : (path === "found" || path === "lost") ? (
+                ) : path === "found" ||
+                  path === "lost" ||
+                  path.startsWith("pet/") ? (
                     <Link to="/" className="logo">
-                        <Logo color={"textColor"}/>
+                        <Logo color={"textColor"} />
                     </Link>
                 ) : (
                     <Link to="/">
-                        <Logo color={"whiteText"}/>
+                        <Logo color={"whiteText"} />
                     </Link>
                 )}
                 {auth ? (
@@ -62,27 +70,35 @@ export default function MainPageNav() {
                                 </>
                             ) : (
                                 <>
-                                    {path === "posts" && <Link to="/posts/add">
-                                        <Button
-                                            text={"Add new"}
-                                            icon={faPlus}
-                                            color={"btn"}
-                                        />
-                                    </Link>}
-                                    {path.startsWith("services") && <Link to="/services/add">
-                                        <Button
-                                            text={"Add service"}
-                                            icon={faPlus}
-                                            color={"btn"}
-                                        />
-                                    </Link>}
+                                    {path === "posts" && (
+                                        <Link to="/posts/add">
+                                            <Button
+                                                text={"Add new"}
+                                                icon={faPlus}
+                                                color={"btn"}
+                                            />
+                                        </Link>
+                                    )}
+                                    {path.startsWith("services") && (
+                                        <Link to="/services/add">
+                                            <Button
+                                                text={"Add service"}
+                                                icon={faPlus}
+                                                color={"btn"}
+                                            />
+                                        </Link>
+                                    )}
                                 </>
                             )}
                         </div>
                     </>
-                ) : (path === "found" || path === "lost") ? <></> : (
+                ) : path === "found" ||
+                  path === "lost" ||
+                  path.startsWith("pet/") ? (
+                    <></>
+                ) : (
                     <Link to="/signin">
-                        <Button color="btn" text="Sign in"/>
+                        <Button color="btn" text="Sign in" />
                     </Link>
                 )}
             </div>

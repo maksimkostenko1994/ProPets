@@ -1,4 +1,4 @@
-import { $authHost } from "./api";
+import { $authHost, $host } from "./api";
 
 export const getPets = async (status) => {
     try {
@@ -38,7 +38,8 @@ export const addNewLostPost = async (post) => {
 
 export const getOnePet = async (id) => {
     try {
-        const { data } = await $authHost.get(`api/pets/id/${id}`);
+        const { data } = await $host.get(`api/pets/id/${id}`);
+
         return data;
     } catch (e) {
         return await Promise.reject(e.response.data.message);
@@ -73,9 +74,12 @@ export const addFoundPet = async (pet) => {
 
 export const updatePet = async (id, status, contacts) => {
     try {
-        const {data} = await $authHost.put(`/api/pets/${id}`, {status, contacts})
-        return data
-    }catch (e) {
-        return await Promise.reject(e)
+        const { data } = await $authHost.put(`/api/pets/${id}`, {
+            status,
+            contacts,
+        });
+        return data;
+    } catch (e) {
+        return await Promise.reject(e);
     }
-}
+};
