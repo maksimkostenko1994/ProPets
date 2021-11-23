@@ -14,8 +14,8 @@ const AddComment = () => {
     const { form } = useForm({
         defaultValues: {
             text: ``,
-            postId: `${id}`,
-            userId: `${user.id}`,
+            postId: id,
+            userId: user.id,
         },
         onSubmit: (values, { reset }) => {
             dispatch(addCommentAction(values));
