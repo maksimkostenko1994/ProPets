@@ -21,7 +21,9 @@ const SignUp = ({currentForm}) => {
         name: yup.string().min(3).required(),
         email: yup.string().email().required(),
         password: yup.string().min(6).required(),
-        verify: yup.string().min(6).test("match", "password do not match", function () { return this.parent.password === this.parent.verify}).required()
+        verify: yup.string().min(6).test("match", "password do not match", function () {
+            return this.parent.password === this.parent.verify
+        }).required()
     })
 
     const validateSignUpWithYup = schema => async values => {
@@ -38,10 +40,10 @@ const SignUp = ({currentForm}) => {
         defaultValues: {name: '', email: '', password: '', verify: ''},
         validate: validateSignUpWithYup(yupSchema),
         onSubmit: (values, e, {submitter}) => {
-            console.log(submitter.name)
-            if(submitter.name === "reg") {
+            if (submitter.name === "reg") {
                 dispatch(registrationAction(values))
-                history.push('/posts')
+                if (!error)
+                    history.push('/posts')
             }
         }
     })
@@ -49,26 +51,26 @@ const SignUp = ({currentForm}) => {
     const errors = use('errors', {errorWithTouched: true})
 
     return (
-            <div className="signup-box">
-                {error && <Error text={error}/>}
-                <form ref={form} className="signup-form" noValidate>
-                    <div className="signup-div">
-                        <div className="signup-form-field">
-                            <label>Name:</label><Field name="name" type="text" error={errors.name}/>
-                        </div>
-                        <div className="signup-form-field">
-                            <label>Email:</label><Field name="email" type="email" error={errors.email}/>
-                        </div>
-                        <div className="signup-form-field">
-                            <label>Password:</label><Field name="password" type="password" error={errors.password}/>
-                        </div>
-                        <div className="signup-form-field">
-                            <label>Verify:</label><Field name="verify" type="password" error={errors.verify}/>
-                        </div>
+        <div className="signup-box">
+            {error && <Error text={error.data.message}/>}
+            <form ref={form} className="signup-form" noValidate>
+                <div className="signup-div">
+                    <div className="signup-form-field">
+                        <label>Name:</label><Field name="name" type="text" error={errors.name}/>
                     </div>
-                    <ModalFooter currentForm={currentForm}/>
-                </form>
-            </div>
+                    <div className="signup-form-field">
+                        <label>Email:</label><Field name="email" type="email" error={errors.email}/>
+                    </div>
+                    <div className="signup-form-field">
+                        <label>Password:</label><Field name="password" type="password" error={errors.password}/>
+                    </div>
+                    <div className="signup-form-field">
+                        <label>Verify:</label><Field name="verify" type="password" error={errors.verify}/>
+                    </div>
+                </div>
+                <ModalFooter currentForm={currentForm}/>
+            </form>
+        </div>
     )
 }
 

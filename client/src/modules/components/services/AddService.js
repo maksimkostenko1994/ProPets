@@ -100,7 +100,7 @@ const AddService = () => {
         validate: serviceType === "Hotels" || serviceType === "VetHelp" ?
             validateServiceForm(specialSchema) : serviceType === "Walking" ?
                 validateServiceForm(walkingSchema) : validateServiceForm(yupSchema),
-        onSubmit: (values, {reset}, e) => {
+        onSubmit: (values, {reset}) => {
             if (values.type === "Hotels" || values.type === "VetHelp")
                 dispatch(addServiceAction({
                     title: values.title,

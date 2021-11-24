@@ -11,7 +11,6 @@ const authReducer = createSlice({
     initialState,
     reducers: {
         setError: (state, {payload}) => {
-            console.error(payload);
             state.error = payload;
         },
         resetError: (state) => {
@@ -24,7 +23,7 @@ export default authReducer.reducer;
 
 export const {setError, resetError} = authReducer.actions;
 
-export const checkAuthAction = () => async (dispatch) => {
+export const checkAuthAction = () => async dispatch => {
     dispatch(stateLoading(true));
     dispatch(resetError());
     try {
@@ -32,7 +31,7 @@ export const checkAuthAction = () => async (dispatch) => {
         dispatch(setCurrentUser(user));
         dispatch(authSuccess());
     } catch (e) {
-        dispatch(setError(e));
+        dispatch(setError({data: e.data, status: e.status}));
     } finally {
         dispatch(stateLoading(false));
     }
@@ -45,8 +44,8 @@ export const loginAction = (data) => async (dispatch) => {
         const user = await login(data);
         dispatch(setCurrentUser(user));
         dispatch(authSuccess());
-    } catch (error) {
-        dispatch(setError(error));
+    } catch (e) {
+        dispatch(setError({data: e.data, status: e.status}));
     } finally {
         dispatch(stateLoading(false));
     }
@@ -59,8 +58,8 @@ export const registrationAction = (data) => async (dispatch) => {
         const user = await registration(data);
         dispatch(authSuccess());
         dispatch(setCurrentUser(user));
-    } catch (error) {
-        dispatch(setError(error));
+    } catch (e) {
+        dispatch(setError({data: e.data, status: e.status}));
     } finally {
         dispatch(stateLoading(false));
     }
@@ -78,7 +77,7 @@ export const getUserAction = id => async dispatch => {
         const user = await getUser(id)
         setCurrentUser(user)
     } catch (e) {
-        dispatch(setError(e))
+        dispatch(setError({data: e.data, status: e.status}))
     } finally {
         dispatch(stateLoading(false))
     }
@@ -91,7 +90,7 @@ export const updateAction = (obj) => async (dispatch) => {
         const user = await updateUser(obj);
         dispatch(setCurrentUser(user));
     } catch (e) {
-        dispatch(setError(e));
+        dispatch(setError({data: e.data, status: e.status}));
     } finally {
         dispatch(stateLoading(false));
     }

@@ -51,7 +51,7 @@ export const getUser = async (id) => {
         const { data } = await $authHost.get(`/api/users/${id}`);
         return data;
     } catch (e) {
-        console.log(e);
+        return await Promise.reject(e.response)
     }
 };
 

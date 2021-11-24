@@ -5,7 +5,7 @@ export const getLikes = async () => {
         const {data} = await $authHost.get(`/api/likes`);
         return data;
     } catch (e) {
-        return await Promise.reject(e);
+        return await Promise.reject(e.response);
     }
 };
 
@@ -21,7 +21,7 @@ export const addNewLike = async (postId, userId) => {
         });
         return data;
     } catch (e) {
-        return await Promise.reject(e);
+        return await Promise.reject(e.response);
     }
 };
 export const addNewDislike = async (like) => {
@@ -29,6 +29,6 @@ export const addNewDislike = async (like) => {
         const {data} = await $authHost.delete(`/api/likes/`, {data: {...like}});
         return data;
     } catch (e) {
-        return await Promise.reject(e);
+        return await Promise.reject(e.response);
     }
 };

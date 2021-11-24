@@ -5,7 +5,7 @@ export const getComments = async () => {
         const { data } = await $authHost.get(`/api/comments/`);
         return data;
     } catch (e) {
-        return await Promise.reject(e);
+        return await Promise.reject(e.response);
     }
 };
 export const addNewComment = async (comment) => {
@@ -20,6 +20,6 @@ export const addNewComment = async (comment) => {
 
         return data;
     } catch (e) {
-        return await Promise.reject(e);
+        return await Promise.reject(e.response);
     }
 };

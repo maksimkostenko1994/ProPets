@@ -5,7 +5,7 @@ export const getPets = async (status) => {
         const { data } = await $authHost.get(`/api/pets/${status}`);
         return data;
     } catch (e) {
-        return await Promise.reject(e.response.data.message);
+        return await Promise.reject(e.response);
     }
 };
 
@@ -32,7 +32,7 @@ export const addNewLostPost = async (post) => {
         });
         return data;
     } catch (e) {
-        return await Promise.reject(e.response.data.message);
+        return await Promise.reject(e.response);
     }
 };
 
@@ -68,7 +68,7 @@ export const addFoundPet = async (pet) => {
         });
         return data;
     } catch (e) {
-        return await Promise.reject(e.response.data.message);
+        return await Promise.reject(e.response);
     }
 };
 
@@ -80,6 +80,6 @@ export const updatePet = async (id, status, contacts) => {
         });
         return data;
     } catch (e) {
-        return await Promise.reject(e);
+        return await Promise.reject(e.response);
     }
 };

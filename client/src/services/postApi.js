@@ -7,7 +7,7 @@ export const getPosts = async (page, limit) => {
         );
         return data;
     } catch (e) {
-        return await Promise.reject(e);
+        return await Promise.reject(e.response);
     }
 };
 
@@ -33,6 +33,6 @@ export const addNewPost = async (post) => {
         });
         return data;
     } catch (e) {
-        return await Promise.reject(e);
+        return await Promise.reject(e.response);
     }
 };

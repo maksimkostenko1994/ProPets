@@ -5,10 +5,9 @@ export const getServices = async (type, page, limit) => {
         const { data } = await $authHost.get(
             `/api/services/${type}?page=${page}&limit=${limit}`
         );
-
         return data;
     } catch (e) {
-        return await Promise.reject(e.response.data.message);
+        return await Promise.reject(e.response);
     }
 };
 
@@ -45,7 +44,7 @@ export const addService = async (service) => {
         });
         return data;
     } catch (e) {
-        return await Promise.reject(e.response.data.message);
+        return await Promise.reject(e.response);
     }
 };
 
@@ -54,6 +53,6 @@ export const getService = async (id) => {
         const { data } = await $authHost.get(`/api/services/id/${id}`);
         return data;
     } catch (e) {
-        return await Promise.reject(e.response.data.message);
+        return await Promise.reject(e.response);
     }
 };
