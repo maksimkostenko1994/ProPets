@@ -17,8 +17,8 @@ const AddPost = () => {
     const dispatch = useDispatch();
     const user = useSelector(userSelector);
     const yupSchema = yup.object().shape({
-        title: yup.string().min(2),
-        text: yup.string().min(2),
+        title: yup.string().min(2).required(),
+        text: yup.string().min(2).required(),
         photo: yup.string().required(),
     });
     const validateWithYup = (schema) => async (values) => {
@@ -50,6 +50,7 @@ const AddPost = () => {
     const onChangeHandler = ({ target }) => {
         loadFile(target.value);
     };
+
     return (
         <div className="add-post">
             <h3 className="title">
@@ -70,7 +71,7 @@ const AddPost = () => {
                     <span>up to 1500 char</span>
                     <TextArea
                         name="text"
-                        error={errors.textarea}
+                        error={errors.text}
                         placeholder="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi deleniti possimus dolorem eius dolores et cumque alias corporis illo, iure molestias nam sint omnis vel."
                     />
 
@@ -86,9 +87,10 @@ const AddPost = () => {
                             Add photo
                         </label>
                         <Field
-                            defaultValue={file}
+                            defaultValue={file && file.split("\\")[2]}
                             error={errors.photo}
                             name="photo"
+                            onChange={onChangeHandler}
                             disabled
                         />
                     </div>

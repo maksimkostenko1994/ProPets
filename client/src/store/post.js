@@ -42,8 +42,7 @@ export const getPostsAction = (page, limit) => async (dispatch) => {
         dispatch(setPagination({ total: posts.count, limit: 2 }));
         dispatch(setCurrentPage(page));
     } catch (e) {
-        console.log("error");
-        dispatch(setError(e.message));
+        dispatch(setError({ data: e.data, status: e.status }));
     } finally {
         dispatch(stateLoading(false));
     }
@@ -56,7 +55,7 @@ export const getPostAction = (id) => async (dispatch) => {
         const post = await getPost(id);
         dispatch(setCurrentPost(post));
     } catch (e) {
-        dispatch(setError(e.message));
+        dispatch(setError({ data: e.data, status: e.status }));
     } finally {
         dispatch(stateLoading(false));
     }
@@ -69,7 +68,7 @@ export const addPostAction = (post) => async (dispatch) => {
         const response = await addNewPost(post);
         dispatch(addPost(response));
     } catch (e) {
-        dispatch(setError(e.message));
+        dispatch(setError({ data: e.data, status: e.status }));
     } finally {
         dispatch(stateLoading(false));
     }
@@ -82,7 +81,7 @@ export const addLikeAction = (postId, userId) => async (dispatch) => {
         dispatch(addLike(response));
         dispatch(getPostAction(response.postId));
     } catch (e) {
-        dispatch(setError(e.message));
+        dispatch(setError({ data: e.data, status: e.status }));
     }
 };
 
@@ -92,7 +91,7 @@ export const addDislikeAction = (like) => async (dispatch) => {
         await addNewDislike(like);
         dispatch(getPostAction(like.postId));
     } catch (e) {
-        dispatch(setError(e.message));
+        dispatch(setError({ data: e.data, status: e.status }));
     }
 };
 
@@ -100,19 +99,3 @@ export const { setPosts, addPost, setCurrentPost, addLike, addDislike } =
     postsReducer.actions;
 export const postsSelector = (state) => state.posts.posts;
 export const postSelector = (state) => state.posts.post;
-
-// export const getPostsAction = (page, limit) => async (dispatch) => {
-//     dispatch(stateLoading(true));
-//     dispatch(resetError());
-//     try {
-//         const posts = await getPosts(page, limit);
-//         dispatch(setPosts(posts));
-//         dispatch(setPagination({ total: posts.count, limit: 2 }));
-//         dispatch(setCurrentPost(page));
-//     } catch (e) {
-//         console.log("error");
-//         dispatch(setError(e.message));
-//     } finally {
-//         dispatch(stateLoading(false));
-//     }
-// };
