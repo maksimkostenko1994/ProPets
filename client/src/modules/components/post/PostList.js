@@ -13,7 +13,6 @@ const PostList = () => {
     const posts = useSelector(postsSelector);
     const pagesArr = (number) => {
         const res = [];
-
         for (let i = 1; i <= number; i++) res.push(i);
         return res;
     };

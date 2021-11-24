@@ -33,7 +33,7 @@ export const getServicesAction = (type, page, limit) => async (dispatch) => {
         const services = await getServices(type, page, limit);
         dispatch(setServices(services));
         dispatch(setPagination({ total: services.count, limit: 4 }));
-        if (services.count / limit < page) {
+        if (Math.ceil(services.count / limit) < page) {
             dispatch(setCurrentPage(1));
         } else {
             dispatch(setCurrentPage(page));

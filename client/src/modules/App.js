@@ -1,20 +1,20 @@
-import { Redirect, Route, Switch, useLocation } from "react-router-dom";
+import {Redirect, Route, Switch, useLocation} from "react-router-dom";
 import MainPageNav from "./components/mainPage/MainPageNav";
 import MainPageContent from "./components/mainPage/MainPageContent";
 import ModalWindow from "./components/modal/ModalWindow";
-import { useDispatch, useSelector } from "react-redux";
-import { appSelector } from "../store/app";
-import { useEffect } from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {appSelector} from "../store/app";
+import {useEffect} from "react";
 import Loader from "./components/loader/Loader";
 import Home from "./components/home/Home";
-import { checkAuthAction, errorSelector } from "../store/auth";
+import {checkAuthAction, errorSelector} from "../store/auth";
 
 function App() {
-    const { loading, auth } = useSelector(appSelector);
+    const {loading, auth} = useSelector(appSelector);
     const error = useSelector(errorSelector);
     const dispatch = useDispatch();
 
-    const { pathname } = useLocation();
+    const {pathname} = useLocation();
 
     useEffect(() => {
         dispatch(checkAuthAction());
@@ -22,17 +22,17 @@ function App() {
 
     return (
         <>
-            <MainPageNav />
+            <MainPageNav/>
             <Switch>
-                <Route exact path="/" component={MainPageContent} />
-                <Route path="/signin" component={ModalWindow} />
+                <Route exact path="/" component={MainPageContent}/>
+                <Route path="/signin" component={ModalWindow}/>
             </Switch>
-            {(auth ||
-                pathname === "/lost" ||
+            {(auth || pathname === "/lost" ||
                 pathname === "/found" ||
-                pathname.startsWith("/pet/")) && <Home />}
-            {loading && <Loader />}
-            {error === "Not authorized" && <Redirect to={`/`} />}
+                pathname.startsWith("/pet/")) && <Home/>}
+            {loading && <Loader/>}
+            {!auth ? <Redirect to={"/"}/> : <Redirect to={"/posts"}/>}
+            {error === "Not authorized" && <Redirect to={`/`}/>}
         </>
     );
 }

@@ -11,12 +11,12 @@ export const getPosts = async (page, limit) => {
     }
 };
 
-export const getPost = async (id) => {
+export const getPost = async (id, page, limit) => {
     try {
-        const { data } = await $authHost.get(`/api/posts/${id}`);
+        const { data } = await $authHost.get(`/api/posts/${id}?page=${page}&limit=${limit}`);
         return data;
     } catch (e) {
-        return await Promise.reject(e);
+        return await Promise.reject(e.response);
     }
 };
 export const addNewPost = async (post) => {

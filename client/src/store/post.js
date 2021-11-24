@@ -53,12 +53,18 @@ export const getPostsAction = (page, limit) => async (dispatch) => {
     }
 };
 
-export const getPostAction = (id) => async (dispatch) => {
+export const getPostAction = (id, page, limit) => async (dispatch) => {
     dispatch(stateLoading(true));
     dispatch(resetError());
     try {
-        const post = await getPost(id);
+        const post = await getPost(id, page, limit);
         dispatch(setCurrentPost(post));
+        dispatch(setPagination({ total: post.commentsCount, limit: 5 }));
+        if (Math.ceil(post.commentsCount / limit) < page) {
+            dispatch(setCurrentPage(1));
+        } else {
+            dispatch(setCurrentPage(page));
+        }
     } catch (e) {
         dispatch(setError({ data: e.data, status: e.status }));
     } finally {
