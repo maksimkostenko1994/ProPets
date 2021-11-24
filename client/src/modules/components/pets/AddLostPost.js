@@ -9,9 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { addLostPetPost } from "../../../store/pet";
 import { userSelector } from "../../../store/app";
 import { useState } from "react";
+import { useHistory } from "react-router";
 
 const AddLostPost = () => {
     const [file, loadFile] = useState(null);
+    const history = useHistory();
 
     const user = useSelector(userSelector);
     const dispatch = useDispatch();
@@ -68,12 +70,12 @@ const AddLostPost = () => {
                 })
             );
             reset();
+            history.push("/lost");
         },
     });
     const errors = use("errors", { errorWithTouched: true });
 
     const onChangeHandler = ({ target }) => {
-        console.log(target.value);
         loadFile(target.value);
     };
 

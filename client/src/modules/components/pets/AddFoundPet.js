@@ -8,9 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { userSelector } from "../../../store/app";
 import { set, useForm } from "react-cool-form";
 import { addFoundPetAction } from "../../../store/pet";
+import { useHistory } from "react-router";
 
 const AddFoundPet = () => {
     const [file, loadFile] = useState(null);
+
+    const history = useHistory();
 
     const user = useSelector(userSelector);
     const dispatch = useDispatch();
@@ -67,13 +70,13 @@ const AddFoundPet = () => {
                 })
             );
             reset();
+            history.push("/found");
         },
     });
 
     const errors = use("errors", { errorWithTouched: true });
 
     const onChangeHandler = ({ target }) => {
-        console.log(target.value);
         loadFile(target.value);
     };
 

@@ -91,17 +91,18 @@ export const getUserAction = (id) => async (dispatch) => {
     }
 };
 
-export const updateAction = (obj) => async (dispatch) => {
-    dispatch(stateLoading(true));
-    dispatch(resetError());
-    try {
-        const user = await updateUser(obj);
-        dispatch(setCurrentUser(user));
-    } catch (e) {
-        dispatch(setError({ data: e.data, status: e.status }));
-    } finally {
-        dispatch(stateLoading(false));
-    }
-};
+export const updateAction =
+    (obj, avatarOld, petPhotoOld) => async (dispatch) => {
+        dispatch(stateLoading(true));
+        dispatch(resetError());
+        try {
+            const user = await updateUser(obj, avatarOld, petPhotoOld);
+            dispatch(setCurrentUser(user));
+        } catch (e) {
+            dispatch(setError({ data: e.data, status: e.status }));
+        } finally {
+            dispatch(stateLoading(false));
+        }
+    };
 
 export const errorSelector = (state) => state.auth.error;

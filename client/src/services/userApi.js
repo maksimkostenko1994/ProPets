@@ -55,7 +55,13 @@ export const getUser = async (id) => {
     }
 };
 
-export const updateUser = async ({ id, full_name, ...rest }) => {
+export const updateUser = async ({
+    id,
+    full_name,
+    avatarPhotoOld,
+    petPhotoOld,
+    ...rest
+}) => {
     try {
         const formData = new FormData();
         formData.append("full_name", full_name);
@@ -65,11 +71,14 @@ export const updateUser = async ({ id, full_name, ...rest }) => {
         formData.append("user_pet", rest.user_pet);
         formData.append("nick", rest.nick);
         formData.append("pet_photo", rest.pet_photo && rest.pet_photo[0]);
+        formData.append("pet_photo_old", petPhotoOld);
+        formData.append("avatar_old", avatarPhotoOld);
         const { data } = await $authHost.put(`/api/users/${id}`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
             },
         });
+
         return data;
     } catch (e) {
         return await Promise.reject(e.response);
