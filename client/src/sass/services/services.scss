@@ -41,7 +41,7 @@
   padding: 10px 0;
 
   .service-title {
-    color: #06B2BB;
+    color: #06b2bb;
     font-weight: 700;
     align-self: flex-start;
     margin-top: 20px;
@@ -66,183 +66,131 @@
       }
     }
 
-    p {
-      border-bottom: 1px solid white;
-      padding: 5px;
-      color: white;
+    .service-card-info {
+      display: flex;
+      flex-direction: column;
+      padding: 0 0 0 15px;
+      justify-content: space-between;
 
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-      }
-
-      &:last-child {
-        border-bottom: none;
-      }
-    }
-  }
-
-  .service-list {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 600px;
-    padding: 10px 0;
-
-    .service-title {
-      color: #06b2bb;
-      font-weight: 700;
-      align-self: flex-start;
-      margin-top: 20px;
-      font-size: 1.3rem;
-    }
-
-    .service-card {
-      list-style-type: none;
-      display: grid;
-      grid-template-columns: 300px 300px;
-      border-top: 1px solid lightgray;
-      margin-top: 10px;
-      padding-top: 20px;
-
-      .service-card-img {
+      .service-card-profile {
         display: flex;
-        justify-content: center;
         align-items: center;
+        color: $textColor;
 
-        img {
-          width: 100%;
+        h4 {
+          margin-left: 10px;
+          font-family: Montserrat, sans-serif;
         }
       }
 
-      .service-card-info {
-        display: flex;
-        flex-direction: column;
-        padding: 0 0 0 15px;
-        justify-content: space-between;
+      .service-card-content {
+        margin-left: 10px;
+        height: 100%;
 
-        .service-card-profile {
-          display: flex;
-          align-items: center;
-          color: $textColor;
+        h2 {
+          font-size: 1.6rem;
 
-          h4 {
-            margin-left: 10px;
-            font-family: Montserrat, sans-serif;
+          &:first-letter {
+            text-transform: uppercase;
           }
         }
 
-        .service-card-content {
-          margin-left: 10px;
-          height: 100%;
-
-          h2 {
-            font-size: 1.6rem;
-
-            &:first-letter {
-              text-transform: uppercase;
-            }
-          }
-
-          a {
-            color: $textColor;
-          }
+        a {
+          color: $textColor;
         }
       }
     }
   }
+}
 
-  .service-full-info {
-    width: 80%;
-    margin: 20px auto;
-    font-family: Montserrat, sans-serif;
+.service-full-info {
+  width: 80%;
+  margin: 20px auto;
+  font-family: Montserrat, sans-serif;
 
-    .service-title {
-      font-size: 1.3rem;
+  .service-title {
+    font-size: 1.3rem;
+    color: $textColor;
+    padding: 0 5px;
+  }
+
+  hr {
+    border: none;
+    background-color: lightgray;
+    height: 2px;
+    margin: 10px 0;
+  }
+
+  .service-user-info {
+    display: flex;
+
+    .service-user-text {
+      display: flex;
+      flex-direction: column;
       color: $textColor;
-      padding: 0 5px;
-    }
-
-    hr {
-      border: none;
-      background-color: lightgray;
-      height: 2px;
-      margin: 10px 0;
-    }
-
-    .service-user-info {
-      display: flex;
-
-      .service-user-text {
-        display: flex;
-        flex-direction: column;
-        color: $textColor;
-        font-weight: 700;
-        font-size: 0.9rem;
-        justify-content: center;
-        padding-left: 10px;
-
-        span {
-          color: $textGrey;
-          font-size: 0.7rem;
-          font-weight: 200;
-        }
-      }
-    }
-
-    .service-full-img {
-      width: 100%;
-      display: flex;
+      font-weight: 700;
+      font-size: 0.9rem;
       justify-content: center;
-      margin-top: 5px;
-
-      img {
-        width: 100%;
-      }
-    }
-
-    h2 {
-      font-family: Montserrat, sans-serif;
-      margin: 10px 0;
-      padding-left: 5px;
-
-      &:first-letter {
-        text-transform: uppercase;
-      }
-    }
-
-    .service-full-text {
-      width: 100%;
-      padding: 0 5px;
-      margin: 10px 0;
-
-      &:first-letter {
-        text-transform: uppercase;
-      }
-
-      p {
-        margin: 30px 0;
-        font-size: 0.9rem;
-        font-family: Montserrat, sans-serif;
-
-        span {
-          font-weight: 700;
-        }
-      }
-    }
-
-    .service-full-contacts {
-      width: 100%;
-      padding: 0 5px;
-      margin: 10px 0;
-      color: $textGrey;
-      font-size: 0.8rem;
+      padding-left: 10px;
 
       span {
-        color: $textColor;
+        color: $textGrey;
+        font-size: 0.7rem;
+        font-weight: 200;
       }
+    }
+  }
+
+  .service-full-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  h2 {
+    font-family: Montserrat, sans-serif;
+    margin: 10px 0;
+    padding-left: 5px;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  .service-full-text {
+    width: 100%;
+    padding: 0 5px;
+    margin: 10px 0;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+
+    p {
+      margin: 30px 0;
+      font-size: 0.9rem;
+      font-family: Montserrat, sans-serif;
+
+      span {
+        font-weight: 700;
+      }
+    }
+  }
+
+  .service-full-contacts {
+    width: 100%;
+    padding: 0 5px;
+    margin: 10px 0;
+    color: $textGrey;
+    font-size: 0.8rem;
+
+    span {
+      color: $textColor;
     }
   }
 }
