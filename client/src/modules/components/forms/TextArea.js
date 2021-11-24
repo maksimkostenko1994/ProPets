@@ -1,4 +1,4 @@
-import React from "react";
+
 import Error from "../error/Error";
 
 const TextArea = ({ error, ...rest }) => {

@@ -1,9 +1,14 @@
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarker, faSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+    faMapMarker,
+    faSearch,
+    faPaw,
+} from "@fortawesome/free-solid-svg-icons";
 import "../../../sass/lost_template/Lost-full-info.scss";
 import { useHistory, useParams } from "react-router-dom";
 import {
+    deletePetAction,
     getOnePetAction,
     petsSelector,
     updatePetAction,
@@ -137,6 +142,23 @@ const PetFullInfo = () => {
                             />
                         </div>
                     )}
+                    {auth &&
+                        currentPet.status === "found" &&
+                        currentPet.userId === user.id && (
+                            <div>
+                                <Button
+                                    click={() => {
+                                        dispatch(
+                                            deletePetAction(currentPet.id)
+                                        );
+                                        push(`/found`);
+                                    }}
+                                    text="Delete"
+                                    color="btn"
+                                    icon={faPaw}
+                                />
+                            </div>
+                        )}
                 </div>
             </div>
         )

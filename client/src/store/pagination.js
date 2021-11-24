@@ -17,12 +17,16 @@ const paginationReducer = createSlice({
             state.limit = payload.limit;
             state.pages = Math.ceil(payload.total / payload.limit);
         },
+        resetPagination: (state, { payload }) => {
+            state.currentPage = payload;
+        },
     },
 });
 
 export default paginationReducer.reducer;
 
-export const { setCurrentPage, setPagination } = paginationReducer.actions;
+export const { setCurrentPage, setPagination, resetPagination } =
+    paginationReducer.actions;
 
 export const paginationSelector = (state) => state.pagination;
 

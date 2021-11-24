@@ -83,3 +83,12 @@ export const updatePet = async (id, status, contacts) => {
         return await Promise.reject(e.response);
     }
 };
+export const deletePet = async (id) => {
+    try {
+        const { data } = await $authHost.delete(`/api/pets/${id}`);
+        console.log("data from api", data);
+        return data;
+    } catch (e) {
+        return await Promise.reject(e.response);
+    }
+};

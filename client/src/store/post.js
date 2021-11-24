@@ -36,11 +36,16 @@ export default postsReducer.reducer;
 export const getPostsAction = (page, limit) => async (dispatch) => {
     dispatch(stateLoading(true));
     dispatch(resetError());
+
     try {
         const posts = await getPosts(page, limit);
         dispatch(setPosts(posts));
         dispatch(setPagination({ total: posts.count, limit: 2 }));
-        dispatch(setCurrentPage(page));
+        if (posts.count / limit < page) {
+            dispatch(setCurrentPage(1));
+        } else {
+            dispatch(setCurrentPage(page));
+        }
     } catch (e) {
         dispatch(setError({ data: e.data, status: e.status }));
     } finally {

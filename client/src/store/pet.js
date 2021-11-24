@@ -4,6 +4,7 @@ import { resetError, setError } from "./auth";
 import {
     addFoundPet,
     addNewLostPost,
+    deletePet,
     getOnePet,
     getPets,
     updatePet,
@@ -89,6 +90,19 @@ export const updatePetAction = (id, status, contacts) => async (dispatch) => {
     try {
         await updatePet(id, status, contacts);
         dispatch(updatePetStatus(id));
+    } catch (e) {
+        setError({ data: e.data, status: e.status });
+    } finally {
+        dispatch(stateLoading(false));
+    }
+};
+
+export const deletePetAction = (id) => async (dispatch) => {
+    dispatch(stateLoading(true));
+    dispatch(resetError());
+    try {
+        const text = await deletePet(id);
+        console.log(text);
     } catch (e) {
         setError({ data: e.data, status: e.status });
     } finally {

@@ -1,4 +1,3 @@
-import React from "react";
 import Error from "../error/Error";
 
 const Field = ({ error, ...rest }) => {
