@@ -39,10 +39,9 @@ export const addNewLostPost = async (post) => {
 export const getOnePet = async (id) => {
     try {
         const { data } = await $host.get(`api/pets/id/${id}`);
-
         return data;
     } catch (e) {
-        return await Promise.reject(e.response.data.message);
+        return await Promise.reject(e.response);
     }
 };
 
@@ -86,7 +85,6 @@ export const updatePet = async (id, status, contacts) => {
 export const deletePet = async (id) => {
     try {
         const { data } = await $authHost.delete(`/api/pets/${id}`);
-        console.log("data from api", data);
         return data;
     } catch (e) {
         return await Promise.reject(e.response);

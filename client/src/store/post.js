@@ -41,7 +41,7 @@ export const getPostsAction = (page, limit) => async (dispatch) => {
         const posts = await getPosts(page, limit);
         dispatch(setPosts(posts));
         dispatch(setPagination({ total: posts.count, limit: 2 }));
-        if (posts.count / limit < page) {
+        if (Math.ceil(posts.count / limit) < page) {
             dispatch(setCurrentPage(1));
         } else {
             dispatch(setCurrentPage(page));

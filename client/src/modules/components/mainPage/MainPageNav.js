@@ -53,15 +53,15 @@ export default function MainPageNav() {
                                 justifyContent: "space-between",
                             }}
                         >
-                            {((path === "lost" || path === "found") && pets && pets.access) ? (
+                            {((path === "lost" || path === "found") && pets) ? (
                                 <>
-                                    <Link to="/lost/add">
+                                {pets.access && <Link to="/lost/add">
                                         <Button
                                             text={"I lost my pet"}
                                             icon={faSearch}
                                             color={"redBtn"}
                                         />
-                                    </Link>
+                                    </Link>}
                                     <Link to="/found/add">
                                         <Button
                                             text={"I found a pet"}

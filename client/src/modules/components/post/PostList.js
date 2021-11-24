@@ -11,7 +11,6 @@ import {
 const PostList = () => {
     const { currentPage, limit, pages } = useSelector(paginationSelector);
     const posts = useSelector(postsSelector);
-    console.log(currentPage);
     const pagesArr = (number) => {
         const res = [];
 
