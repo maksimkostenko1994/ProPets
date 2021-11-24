@@ -18,20 +18,22 @@ const PetsList = () => {
         dispatch(getPetsAction(path))
     }, [dispatch, path])
 
-    return (
+    return pets && (
         <div className="lost-container">
             <p className="lost-title">{pathname.slice(1)} pets</p>
             <hr/>
             {!auth && <p style={{
                 fontSize: "0.9rem",
                 marginTop: "10px"
-            }}>Would you like to publish a post? <NavLink style={{color: "rgb(6, 178, 187)", textDecoration: "underline"}} to="/signin">JOIN</NavLink> to our community</p>}
+            }}>Would you like to publish a post? <NavLink
+                style={{color: "rgb(6, 178, 187)", textDecoration: "underline"}} to="/signin">JOIN</NavLink> to our
+                community</p>}
             <div className="lost-list">
                 {pathname.slice(1) === "lost"
-                    ? pets.map((pet, index) => (
+                    ? pets.petsArr.map((pet, index) => (
                         <PetItem key={index} pet={pet} index={pet.id}/>
                     ))
-                    : pets.map((pet, index) => (
+                    : pets.petsArr.map((pet, index) => (
                         <PetItem key={index} pet={pet} index={pet.id}/>
                     ))
                 }

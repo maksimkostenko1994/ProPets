@@ -10,7 +10,7 @@ import {
 } from "../services/petApi";
 
 const initialState = {
-    pets: [],
+    pets: null,
     currentPet: null,
 };
 

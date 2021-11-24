@@ -1,16 +1,18 @@
 import React from "react";
 import Button from "../button/Button";
-import { Link, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { authSelector } from "../../../store/app";
+import {Link, useLocation} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {authSelector} from "../../../store/app";
 
-import { faPaw, faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
+import {faPaw, faPlus, faSearch} from "@fortawesome/free-solid-svg-icons";
 import Logo from "../logo/Logo";
+import {petsSelector} from "../../../store/pet";
 
 export default function MainPageNav() {
     const auth = useSelector(authSelector);
-    const { pathname } = useLocation();
+    const {pathname} = useLocation();
     const path = pathname.slice(1);
+    const {pets} = useSelector(petsSelector)
 
     return (
         <div
@@ -29,17 +31,17 @@ export default function MainPageNav() {
             <div className="navContainer">
                 {auth ? (
                     <Link to="/posts">
-                        <Logo color={"textColor"} />
+                        <Logo color={"textColor"}/>
                     </Link>
                 ) : path === "found" ||
-                  path === "lost" ||
-                  path.startsWith("pet/") ? (
+                path === "lost" ||
+                path.startsWith("pet/") ? (
                     <Link to="/" className="logo">
-                        <Logo color={"textColor"} />
+                        <Logo color={"textColor"}/>
                     </Link>
                 ) : (
                     <Link to="/">
-                        <Logo color={"whiteText"} />
+                        <Logo color={"whiteText"}/>
                     </Link>
                 )}
                 {auth ? (
@@ -51,7 +53,7 @@ export default function MainPageNav() {
                                 justifyContent: "space-between",
                             }}
                         >
-                            {path === "lost" || path === "found" ? (
+                            {((path === "lost" || path === "found") && pets && pets.access) ? (
                                 <>
                                     <Link to="/lost/add">
                                         <Button
@@ -93,12 +95,12 @@ export default function MainPageNav() {
                         </div>
                     </>
                 ) : path === "found" ||
-                  path === "lost" ||
-                  path.startsWith("pet/") ? (
+                path === "lost" ||
+                path.startsWith("pet/") ? (
                     <></>
                 ) : (
                     <Link to="/signin">
-                        <Button color="btn" text="Sign in" />
+                        <Button color="btn" text="Sign in"/>
                     </Link>
                 )}
             </div>
