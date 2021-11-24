@@ -40,6 +40,9 @@
         display: flex;
         width: auto;
         margin: 0 auto;
+        .post-img {
+            width: 100%;
+        }
     }
     .post-footer {
         position: relative;

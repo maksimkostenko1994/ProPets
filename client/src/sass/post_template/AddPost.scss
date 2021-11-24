@@ -5,97 +5,116 @@
     width: 80%;
     margin: 0 auto;
     font-family: Montserrat, sans-serif;
+    display: flex;
+    flex-direction: column;
     .title {
         color: $textColor;
         font-weight: $textBolder;
+        text-align: center;
     }
-
-    .add-post-form {
+    .label {
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+    hr {
+        border: none;
+        height: 1px;
+        background-color: lightgray;
+        margin-top: 10px;
+    }
+    p {
+        color: red;
+    }
+    .post-container {
         margin-top: 20px;
-        display: flex;
-        flex-direction: column;
-
-        label {
-            margin-top: 10px;
-            font-size: $text12;
-            color: $darkText;
-            cursor: pointer;
-        }
-        input {
-            padding-top: 4px;
-        }
-
-        span {
-            color: $textColor;
-            font-size: $text10;
-            padding-left: 3px;
-        }
-
-        textarea {
-            border: 1px solid $textColor;
-            resize: none;
-            height: 300px;
-            padding: 10px 15px;
-            &::placeholder {
-                color: $textGrey;
-            }
-
-            &:focus {
-                outline-color: #15939b;
-            }
-        }
-
-        input {
-            border: 1px solid $textColor;
-            height: 30px;
-            padding-left: 5px;
-            &::placeholder {
-                color: $textGrey;
-            }
-
-            &:focus {
-                outline-color: #15939b;
-            }
-        }
-        hr {
-            margin-top: 15px;
-            border: none;
-            height: 1px;
-            width: 100%;
-            background-color: lightgray;
-        }
-        div {
+        .add-post-form {
             display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-            align-items: center;
+            flex-direction: column;
+            position: relative;
+            .add-photo-fake {
+                position: absolute;
+                bottom: 70px;
+                left: 85px;
+                opacity: 0;
+            }
 
-            .user-data-post {
-                margin: 0;
+            span {
+                color: $textColor;
+                font-size: $text10;
+                padding-left: 3px;
+            }
+
+            textarea {
+                border: 1px solid $textColor;
+                resize: none;
+                height: 300px;
+                padding: 10px 15px;
+                &::placeholder {
+                    color: $textGrey;
+                }
+
+                &:focus {
+                    outline-color: #15939b;
+                }
+            }
+
+            input {
+                border: 1px solid $textColor;
+                height: 30px;
+                padding-left: 5px;
+                &::placeholder {
+                    color: $textGrey;
+                }
+
+                &:focus {
+                    outline-color: #15939b;
+                }
+            }
+            .add-photo-btn {
+                border-radius: 20px;
+                padding: 5px 15px;
+                text-align: center;
+                background: $textColor;
+                color: white;
+            }
+
+            .add-photo-section {
+                margin-top: 10px;
+                width: 100%;
+                .add-photo-btn {
+                    margin-right: 10px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                input {
+                    border: none;
+                    background: none;
+                }
+            }
+
+            .form-footer-section {
+                margin-top: 20px;
                 display: flex;
                 align-items: center;
                 color: $textColor;
+                justify-content: space-between;
 
-                .add-post-user-avatar {
-                    margin: 0 10px 0 0;
-                    color: $textColor;
-                    border: 1px solid $textColor;
-                    border-radius: 50%;
-                    height: 35px;
-                    width: 35px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
+                .btn-tmp p {
+                    color: white !important;
+                }
+            }
+            .form-footer-avatar-section {
+                display: flex;
+                align-items: center;
+                .add-post-user-avatar,
+                .user-avatar {
+                    margin-right: 15px;
                     img {
                         border-radius: 50%;
                         height: 50px;
                         width: 50px;
-                    }
-
-                    svg {
-                        height: 20px;
-                        width: 20px;
-                        margin-right: 0;
+                        border: 1px solid white;
                     }
                 }
             }

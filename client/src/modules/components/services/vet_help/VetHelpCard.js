@@ -1,14 +1,14 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 
-const VetHelpCard = ({service}) => {
-
-    console.log(service)
-
+const VetHelpCard = ({ service }) => {
     return (
         <li className="service-card">
             <div className="service-card-img">
-                <img src={`http://localhost:5000/${service.photo}`} alt="service fostering"/>
+                <img
+                    src={`http://localhost:5000/${service.photo}`}
+                    alt="service fostering"
+                />
             </div>
             <div className="service-card-info">
                 <div className="service-card-content">

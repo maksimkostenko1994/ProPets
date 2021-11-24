@@ -27,7 +27,7 @@ const AddLostPost = () => {
         description: yup.string().min(1).required(),
         location: yup.string().min(1).required(),
         phone: yup.string().min(2).required(),
-        email: yup.string().min(2).required(),
+        email: yup.string().email("Invalid email").required(),
         image: yup.string().required(),
     });
     const validateWithYup = (schema) => async (values) => {
@@ -242,6 +242,7 @@ const AddLostPost = () => {
                                     value="Load image"
                                     type="text"
                                     name="loadImg2"
+                                    readOnly
                                 />
                             </div>
                         </div>
@@ -270,7 +271,7 @@ const AddLostPost = () => {
                     </div>
                 </div>
                 <div className="publishBtnSection" align="right">
-                    <Button text={"Publish"} icon={faPaw} color={"btn"} />
+                    <Button text={"Publish"} icon={faPaw} color={"btn "} />
                 </div>
             </form>
         </div>

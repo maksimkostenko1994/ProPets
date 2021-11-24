@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { faUser, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import {
     addDislikeAction,
     addLikeAction,
@@ -16,10 +16,12 @@ import moment from "moment";
 
 import AddComment from "./AddComment";
 import { userSelector } from "../../../store/app";
+import Button from "../button/Button";
 
 const PostFullInfo = () => {
     const post = useSelector(postSelector);
     const user = useSelector(userSelector);
+
     const dispatch = useDispatch();
     const like = post && post.likes.find((like) => like.userId === user.id);
     const { id } = useParams();
@@ -36,21 +38,28 @@ const PostFullInfo = () => {
         post && (
             <div className="fullPost">
                 <div className="fullPost-header">
-                    {post.avatar ? (
-                        <div className="fullPost-header-img">
-                            <img
-                                src={`http://localhost:5000/${post.avatar}`}
-                                alt="user-avatar"
-                            />
+                    <div className="full-Post-header-left">
+                        {post.avatar ? (
+                            <div className="fullPost-header-img">
+                                <img
+                                    src={`http://localhost:5000/${post.avatar}`}
+                                    alt="user-avatar"
+                                />
+                            </div>
+                        ) : (
+                            <div className="fullPost-header-img">
+                                <FontAwesomeIcon size="2x" icon={faUser} />
+                            </div>
+                        )}
+                        <div className="fullPost-header-author">
+                            <h3>{post.full_name}</h3>
+                            <p>{date ? date : ""}</p>
                         </div>
-                    ) : (
-                        <div className="fullPost-header-img">
-                            <FontAwesomeIcon size="2x" icon={faUser} />
-                        </div>
-                    )}
-                    <div className="fullPost-header-author">
-                        <h3>{post.full_name}</h3>
-                        <p>{date ? date : ""}</p>
+                    </div>
+                    <div className="fullPost-header-button">
+                        <Link to="/posts">
+                            <Button text="back to posts" color="btn" />
+                        </Link>
                     </div>
                 </div>
                 <div className="fullPost-body">
