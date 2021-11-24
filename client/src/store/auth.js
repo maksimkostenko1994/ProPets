@@ -1,6 +1,12 @@
-import {createSlice} from "@reduxjs/toolkit";
-import {authSuccess, logout, setCurrentUser, stateLoading} from "./app";
-import {check, getUser, login, registration, updateUser} from "../services/userApi";
+import { createSlice } from "@reduxjs/toolkit";
+import { authSuccess, logout, setCurrentUser, stateLoading } from "./app";
+import {
+    check,
+    getUser,
+    login,
+    registration,
+    updateUser,
+} from "../services/userApi";
 
 const initialState = {
     error: null,
@@ -10,7 +16,7 @@ const authReducer = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        setError: (state, {payload}) => {
+        setError: (state, { payload }) => {
             state.error = payload;
         },
         resetError: (state) => {
@@ -21,17 +27,17 @@ const authReducer = createSlice({
 
 export default authReducer.reducer;
 
-export const {setError, resetError} = authReducer.actions;
+export const { setError, resetError } = authReducer.actions;
 
-export const checkAuthAction = () => async dispatch => {
+export const checkAuthAction = () => async (dispatch) => {
     dispatch(stateLoading(true));
     dispatch(resetError());
     try {
-        const {user} = await check();
+        const { user } = await check();
         dispatch(setCurrentUser(user));
         dispatch(authSuccess());
     } catch (e) {
-        dispatch(setError({data: e.data, status: e.status}));
+        dispatch(setError({ data: e.data, status: e.status }));
     } finally {
         dispatch(stateLoading(false));
     }
@@ -40,12 +46,14 @@ export const checkAuthAction = () => async dispatch => {
 export const loginAction = (data) => async (dispatch) => {
     dispatch(stateLoading(true));
     dispatch(resetError());
+
     try {
         const user = await login(data);
-        dispatch(setCurrentUser(user));
+        dispatch(setCurrentUser(user.data.user));
         dispatch(authSuccess());
+        return user;
     } catch (e) {
-        dispatch(setError({data: e.data, status: e.status}));
+        dispatch(setError({ data: e.data, status: e.status }));
     } finally {
         dispatch(stateLoading(false));
     }
@@ -59,7 +67,7 @@ export const registrationAction = (data) => async (dispatch) => {
         dispatch(authSuccess());
         dispatch(setCurrentUser(user));
     } catch (e) {
-        dispatch(setError({data: e.data, status: e.status}));
+        dispatch(setError({ data: e.data, status: e.status }));
     } finally {
         dispatch(stateLoading(false));
     }
@@ -70,18 +78,18 @@ export const logoutAction = () => async (dispatch) => {
     dispatch(setCurrentUser(null));
 };
 
-export const getUserAction = id => async dispatch => {
-    dispatch(stateLoading(true))
-    dispatch(resetError())
+export const getUserAction = (id) => async (dispatch) => {
+    dispatch(stateLoading(true));
+    dispatch(resetError());
     try {
-        const user = await getUser(id)
-        setCurrentUser(user)
+        const user = await getUser(id);
+        setCurrentUser(user);
     } catch (e) {
-        dispatch(setError({data: e.data, status: e.status}))
+        dispatch(setError({ data: e.data, status: e.status }));
     } finally {
-        dispatch(stateLoading(false))
+        dispatch(stateLoading(false));
     }
-}
+};
 
 export const updateAction = (obj) => async (dispatch) => {
     dispatch(stateLoading(true));
@@ -90,7 +98,7 @@ export const updateAction = (obj) => async (dispatch) => {
         const user = await updateUser(obj);
         dispatch(setCurrentUser(user));
     } catch (e) {
-        dispatch(setError({data: e.data, status: e.status}));
+        dispatch(setError({ data: e.data, status: e.status }));
     } finally {
         dispatch(stateLoading(false));
     }

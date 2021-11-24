@@ -18,12 +18,12 @@ export const registration = async ({ name, email, password }) => {
 
 export const login = async ({ email, password }) => {
     try {
-        const { data } = await $host.post(`/api/users/login`, {
+        const response = await $host.post(`/api/users/login`, {
             email,
             password,
         });
-        localStorage.setItem("token", data.token);
-        return data.user;
+        localStorage.setItem("token", response.data.token);
+        return response;
     } catch (e) {
         return await Promise.reject(e.response);
     }
@@ -51,7 +51,7 @@ export const getUser = async (id) => {
         const { data } = await $authHost.get(`/api/users/${id}`);
         return data;
     } catch (e) {
-        return await Promise.reject(e.response)
+        return await Promise.reject(e.response);
     }
 };
 

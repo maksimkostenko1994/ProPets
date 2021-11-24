@@ -35,10 +35,13 @@ const SignIn = ({ currentForm }) => {
     const { form, use } = useForm({
         defaultValues: { email: "", password: "" },
         validate: validateWithYup(yupSchema),
-        onSubmit: (values, e, { submitter }) => {
+        onSubmit: (values, _, { submitter }) => {
             if (submitter.name === "login") {
-                dispatch(loginAction(values));
-                if (!error) history.push("/posts");
+                dispatch(loginAction(values))
+                    .then((data) => {
+                        if (data.status === 200) history.push("/posts");
+                    })
+                    .catch((e) => e);
             }
         },
     });
