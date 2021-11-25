@@ -45,7 +45,7 @@
             margin-right: 10px;
         }
     }
-    .upBtn {
+    #upBtn {
         position: fixed;
         display: flex;
         flex-direction: column;
@@ -53,6 +53,35 @@
         bottom: 30px;
         width: 40px;
         height: 30px;
+        transition: all 0.5s ease-in-out;
+        opacity: 0;
+
+        .arrowUp1,
+        .arrowUp2,
+        .arrowUp3 {
+            animation-name: first;
+            animation-duration: 5s;
+
+            animation-iteration-count: infinite;
+
+            @keyframes first {
+                0% {
+                    opacity: 0;
+                }
+                25% {
+                    opacity: 0, 25;
+                }
+                50% {
+                    opacity: 0, 5;
+                }
+                75% {
+                    opacity: 0.75;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+        }
     }
 }
 

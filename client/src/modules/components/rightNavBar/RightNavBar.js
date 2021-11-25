@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt, faUser } from "@fortawesome/free-solid-svg-icons";
@@ -13,6 +13,41 @@ const RightNavBar = () => {
 
     const dispatch = useDispatch();
     const [firstName, secondName] = user ? user.full_name.split(" ") : ["", ""];
+
+    const [fetching, setFetching] = useState("");
+    useEffect(() => {
+        const upBtn = document.querySelector(".upBtn");
+        if (fetching) {
+            upBtn.style.opacity = 1;
+        }
+        if (!fetching) {
+            upBtn.style.opacity = 0;
+        }
+    }, [fetching]);
+
+    useEffect(() => {
+        document.addEventListener("scroll", scrollHandler);
+        return function () {
+            document.removeEventListener("scroll", scrollHandler);
+        };
+    }, []);
+
+    const scrollHandler = (e) => {
+        if (
+            e.target.documentElement.scrollHeight -
+                (e.target.documentElement.scrollTop + window.innerHeight) <
+            100
+        ) {
+            setFetching(true);
+        }
+        if (
+            e.target.documentElement.scrollHeight -
+                (e.target.documentElement.scrollTop + window.innerHeight) >
+            0
+        ) {
+            setFetching(false);
+        }
+    };
 
     return (
         <div className="right-nav-bar">
@@ -51,7 +86,7 @@ const RightNavBar = () => {
                         <FontAwesomeIcon icon={faSignOutAlt} />
                         Logout
                     </Link>
-                    <a href="#top" className="upBtn">
+                    <a href="#top" className="upBtn" id="upBtn">
                         <ArrowUp className="arrowUp1" />
                         <ArrowUp className="arrowUp2" />
                         <ArrowUp className="arrowUp3" />
