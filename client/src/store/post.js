@@ -36,7 +36,6 @@ export default postsReducer.reducer;
 export const getPostsAction = (page, limit) => async (dispatch) => {
     dispatch(stateLoading(true));
     dispatch(resetError());
-
     try {
         const posts = await getPosts(page, limit);
         dispatch(setPosts(posts));
@@ -59,7 +58,7 @@ export const getPostAction = (id, page, limit) => async (dispatch) => {
     try {
         const post = await getPost(id, page, limit);
         dispatch(setCurrentPost(post));
-        dispatch(setPagination({ total: post.commentsCount, limit: 5 }));
+        dispatch(setPagination({ total: post.commentsCount, limit: 10 }));
         if (Math.ceil(post.commentsCount / limit) < page) {
             dispatch(setCurrentPage(1));
         } else {

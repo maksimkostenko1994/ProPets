@@ -1,45 +1,67 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
-import { faUser, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
-import { useParams, Link } from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faThumbsUp} from "@fortawesome/free-regular-svg-icons";
+import {faUser, faThumbsDown} from "@fortawesome/free-solid-svg-icons";
+import {useParams, Link} from "react-router-dom";
 import {
     addDislikeAction,
     addLikeAction,
-    getPostAction,
-    postSelector,
+    postSelector, setCurrentPost,
 } from "../../../store/post";
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import "./../../../sass/post_template/PostFullInfo.scss";
 import Comment from "./Comment";
-import { useEffect } from "react";
+import {useEffect, useState} from "react";
 import moment from "moment";
 
 import AddComment from "./AddComment";
-import { userSelector } from "../../../store/app";
+import {stateLoading, userSelector} from "../../../store/app";
 import Button from "../button/Button";
-import {
-    paginationSelector,
-    setCurrentPageAction,
-} from "../../../store/pagination";
+import {$authHost} from "../../../services/api";
 
 const PostFullInfo = () => {
     const post = useSelector(postSelector);
     const user = useSelector(userSelector);
 
-    const { currentPage, pages, limit } = useSelector(paginationSelector);
+    const [currentPage, setCurrentPage] = useState(1)
 
-    const pagesArr = (number) => {
-        const res = [];
-        for (let i = 1; i <= number; i++) res.push(i);
-        return res;
-    };
+    const [fetching, setFetch] = useState(true)
+
+    const [comments, setComments] = useState([])
 
     const dispatch = useDispatch();
     const like = post && post.likes.find((like) => like.userId === user.id);
-    const { id } = useParams();
+    const {id} = useParams();
+
     useEffect(() => {
-        dispatch(getPostAction(id, currentPage, limit));
-    }, [dispatch, id, currentPage, limit]);
+        if (!post) dispatch(stateLoading(true))
+        if (fetching) {
+            $authHost.get(`/api/posts/${id}?page=${currentPage}&limit=${10}`).then(res => {
+                const pages = Math.ceil(res.data.commentsCount / 10)
+                if (!post)
+                    dispatch(setCurrentPost(res.data))
+                if (pages >= currentPage) {
+                    setComments([...comments, ...res.data.comments])
+                    setCurrentPage(prevState => prevState + 1)
+                }
+            }).finally(() => {
+                dispatch(stateLoading(false))
+                setFetch(false)
+            })
+        }
+    }, [dispatch, fetching]);
+
+    useEffect(() => {
+        document.addEventListener('scroll', scrollHandler)
+        return function () {
+            document.removeEventListener('scroll', scrollHandler)
+        }
+    }, [])
+
+    const scrollHandler = ({target}) => {
+        if (target.documentElement.scrollHeight - (target.documentElement.scrollTop + window.innerHeight) < 100) {
+            setFetch(true)
+        }
+    }
 
     const date = post ? moment(post.createdAt).format("D MMMM, HH:mm") : false;
 
@@ -60,7 +82,7 @@ const PostFullInfo = () => {
                             </div>
                         ) : (
                             <div className="fullPost-header-img">
-                                <FontAwesomeIcon size="2x" icon={faUser} />
+                                <FontAwesomeIcon size="2x" icon={faUser}/>
                             </div>
                         )}
                         <div className="fullPost-header-author">
@@ -70,7 +92,7 @@ const PostFullInfo = () => {
                     </div>
                     <div className="fullPost-header-button">
                         <Link to="/posts">
-                            <Button text="back to posts" color="btn" />
+                            <Button text="back to posts" color="btn"/>
                         </Link>
                     </div>
                 </div>
@@ -88,7 +110,7 @@ const PostFullInfo = () => {
                         <p>{post.count}</p>
                         {!isLiked ? (
                             <>
-                                <FontAwesomeIcon icon={faThumbsUp} />
+                                <FontAwesomeIcon icon={faThumbsUp}/>
                                 <button
                                     onClick={() =>
                                         dispatch(
@@ -101,7 +123,7 @@ const PostFullInfo = () => {
                             </>
                         ) : (
                             <>
-                                <FontAwesomeIcon icon={faThumbsDown} />
+                                <FontAwesomeIcon icon={faThumbsDown}/>
                                 <button
                                     onClick={() =>
                                         dispatch(addDislikeAction(like))
@@ -115,46 +137,20 @@ const PostFullInfo = () => {
                 </div>
                 <div className="comments">
                     <p className="comments-p">Comments</p>
-                    <hr />
-                    <div className="service-pagination">
-                        {pagesArr(pages).map((item) => (
-                            <p
-                                id={item}
-                                onClick={(event) => {
-                                    dispatch(setCurrentPageAction(item));
-                                    event.target.classList.add(
-                                        "service-active-link"
-                                    );
-                                    Array.from(
-                                        event.target.parentNode.children
-                                    ).map((link) =>
-                                        event.target.id !== link.id
-                                            ? link.classList.remove(
-                                                  "service-active-link"
-                                              )
-                                            : ""
-                                    );
-                                }}
-                                key={item}
-                            >
-                                {item}
-                            </p>
-                        ))}
-                    </div>
-                    <hr />
+                    <hr/>
                     {post.comments.length === 0 ? (
                         <h3>No comments yet</h3>
                     ) : (
                         <div>
-                            {post.comments.map((comment, index) => (
+                            {comments.map((comment, index) => (
                                 <li key={index}>
-                                    <Comment comment={comment} />
+                                    <Comment comment={comment}/>
                                 </li>
                             ))}
                         </div>
                     )}
                 </div>
-                <AddComment />
+                <AddComment/>
             </div>
         )
     );
