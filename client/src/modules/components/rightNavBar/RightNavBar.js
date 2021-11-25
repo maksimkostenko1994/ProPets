@@ -1,49 +1,63 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSignOutAlt, faUser} from "@fortawesome/free-solid-svg-icons";
-import {logoutAction} from "../../../store/auth";
-import {useDispatch, useSelector} from "react-redux";
-import {appSelector, userSelector} from "../../../store/app";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt, faUser } from "@fortawesome/free-solid-svg-icons";
+import { logoutAction } from "../../../store/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { appSelector, userSelector } from "../../../store/app";
+import ArrowUp from "../arrowUp/ArrowUp";
 
 const RightNavBar = () => {
     const user = useSelector(userSelector);
-    const {auth} = useSelector(appSelector)
+    const { auth } = useSelector(appSelector);
 
     const dispatch = useDispatch();
     const [firstName, secondName] = user ? user.full_name.split(" ") : ["", ""];
 
     return (
         <div className="right-nav-bar">
-            {auth && <>
-                <div className="right-nav-user">
-                    {user && (
-                        <Link to={"/profile"} className="user-profile-btn">
-                            {user.avatar ? (
-                                <div className="user-avatar">
-                                    <img src={`http://localhost:5000/${user.avatar}`} alt="avatar"/>
-                                </div>
-                            ) : (
-                                <div className="user-avatar">
-                                    <FontAwesomeIcon size="2x" icon={faUser}/>
-                                </div>
-                            )}
-                            <h4>
-                                {firstName} <br/>
-                                {secondName}
-                            </h4>
-                        </Link>
-                    )}
-                </div>
-                <Link
-                    to={"/"}
-                    onClick={() => dispatch(logoutAction())}
-                    className="user-logout-btn"
-                >
-                    <FontAwesomeIcon icon={faSignOutAlt}/>
-                    Logout
-                </Link>
-            </>}
+            {auth && (
+                <>
+                    <div className="right-nav-user">
+                        {user && (
+                            <Link to={"/profile"} className="user-profile-btn">
+                                {user.avatar ? (
+                                    <div className="user-avatar">
+                                        <img
+                                            src={`http://localhost:5000/${user.avatar}`}
+                                            alt="avatar"
+                                        />
+                                    </div>
+                                ) : (
+                                    <div className="user-avatar">
+                                        <FontAwesomeIcon
+                                            size="2x"
+                                            icon={faUser}
+                                        />
+                                    </div>
+                                )}
+                                <h4>
+                                    {firstName} <br />
+                                    {secondName}
+                                </h4>
+                            </Link>
+                        )}
+                    </div>
+                    <Link
+                        to={"/"}
+                        onClick={() => dispatch(logoutAction())}
+                        className="user-logout-btn"
+                    >
+                        <FontAwesomeIcon icon={faSignOutAlt} />
+                        Logout
+                    </Link>
+                    <a href="#top" className="upBtn">
+                        <ArrowUp className="arrowUp1" />
+                        <ArrowUp className="arrowUp2" />
+                        <ArrowUp className="arrowUp3" />
+                    </a>
+                </>
+            )}
         </div>
     );
 };

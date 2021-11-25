@@ -1,0 +1,32 @@
+@import "../variables.scss";
+.post-active-link {
+    background-color: white;
+    color: $textColor !important;
+}
+
+.post-pagination {
+    position: absolute;
+    right: -28px;
+    top: 220px;
+    border: 1px solid white;
+    border-left: none;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 5px 5px 0;
+    text-align: center;
+
+    p {
+        border-bottom: 1px solid white;
+        padding: 5px;
+        color: white;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}

@@ -7,6 +7,7 @@ import {
     paginationSelector,
     setCurrentPageAction,
 } from "../../../store/pagination";
+import "../../../sass/post_template/PostList.scss";
 
 const PostList = () => {
     const { currentPage, limit, pages } = useSelector(paginationSelector);
@@ -26,18 +27,18 @@ const PostList = () => {
         <h1>No Posts yet</h1>
     ) : (
         <PostsBox>
-            <div className="service-pagination">
+            <div className="post-pagination">
                 {pagesArr(pages).map((item) => (
                     <p
                         id={item}
                         onClick={(event) => {
                             dispatch(setCurrentPageAction(item));
-                            event.target.classList.add("service-active-link");
+                            event.target.classList.add("post-active-link");
                             Array.from(event.target.parentNode.children).map(
                                 (link) =>
                                     event.target.id !== link.id
                                         ? link.classList.remove(
-                                              "service-active-link"
+                                              "post-active-link"
                                           )
                                         : ""
                             );
