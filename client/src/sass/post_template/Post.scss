@@ -72,3 +72,23 @@
         }
     }
 }
+
+@media screen and (max-width: 1210px) {
+    .post .post-footer {
+        h4 {
+            font-size: $text14;
+        }
+        .post-footer-more {
+            font-size: $text12;
+        }
+    }
+}
+@media screen and (max-width: 780px) {
+    .home-box {
+        grid-template-columns: 5fr;
+        .left-nav-bar,
+        .right-nav-bar {
+            display: none;
+        }
+    }
+}
