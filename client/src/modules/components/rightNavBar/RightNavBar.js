@@ -18,11 +18,13 @@ const RightNavBar = () => {
 
     useEffect(() => {
         const upBtn = document.querySelector(".upBtn");
-        if (fetching) {
-            upBtn.style.opacity = 1;
-        }
-        if (!fetching) {
-            upBtn.style.opacity = 0;
+        if (upBtn) {
+            if (fetching) {
+                upBtn.style.opacity = 1;
+            }
+            if (!fetching) {
+                upBtn.style.opacity = 0;
+            }
         }
     }, [fetching]);
 
@@ -78,8 +80,7 @@ const RightNavBar = () => {
                         <FontAwesomeIcon icon={faSignOutAlt} />
                         Logout
                     </Link>
-                    <a
-                        href="#top"
+                    <p
                         className="upBtn"
                         id="upBtn"
                         onClick={(e) => {
@@ -90,7 +91,7 @@ const RightNavBar = () => {
                         <ArrowUp className="arrowUp1" />
                         <ArrowUp className="arrowUp2" />
                         <ArrowUp className="arrowUp3" />
-                    </a>
+                    </p>
                 </>
             )}
         </div>
