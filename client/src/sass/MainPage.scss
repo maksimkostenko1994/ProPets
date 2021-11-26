@@ -42,8 +42,6 @@
 // =========== Main Container adjustment === start
 .mainPageContainer {
   height: 100%;
-  width: 80%;
-  margin: 0 auto;
 
   .mainPageJoinLink {
     font-size: 1.6rem;
@@ -59,18 +57,18 @@
   }
 
   .header-container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
     .mainLeftContainer, .mainRightContainer {
       height: calc(100% - 70px);
     }
 
     .mainLeftContainer {
+      width: 100%;
       h1 {
         font-size: $text56;
-        margin: 100px 0 30px 0;
-        width: 500px;
+        margin: 100px 0 30px 100px;
 
         span {
           color: $textColor;
@@ -165,6 +163,7 @@
   .mainRightContainer {
     text-align: center;
     width: 100%;
+    overflow: unset !important;
 
     img {
       height: 100%;

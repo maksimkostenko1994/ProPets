@@ -12,7 +12,7 @@ export default function MainPageContent() {
             <div className="mainPageContainer">
                 <div className="header-container">
                     <div className="mainLeftContainer">
-                        <h1>Welcome to your <span>pawfessional</span> community</h1>
+                        <h1>Welcome to your <br/><span>pawfessional</span><br/> community</h1>
                         <div className="btnContainer">
                             <MainPageLostBtn/>
                             <MainPageFoundBtn/>

@@ -1,0 +1,92 @@
+@media screen and (max-width: 1135px) {
+  .mainPageContainer .header-container .mainLeftContainer {
+
+    h1 {
+      font-size: 46px;
+    }
+
+  }
+}
+
+@media only screen and (max-width: 936px) {
+  .mainPageContainer .header-container .mainLeftContainer {
+
+    h1 {
+      font-size: 36px;
+    }
+
+  }
+
+  .section-title h1 {
+    font-size: 25px;
+  }
+
+  .section-info .info-items ul li {
+    font-size: 1rem;
+  }
+
+  .section-info .info-items p {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .mainPageContainer .header-container .mainLeftContainer h1 {
+    margin-left: 10px;
+    font-size: 28px;
+  }
+
+  .mainPageContainer .mainRightContainer img {
+    height: 50%;
+  }
+
+  .mainPageContainer .header-container .mainLeftContainer .btnContainer {
+    top: 350px;
+  }
+
+  .mainPageContainer .header-container .mainLeftContainer .btnContainer .btnLost {
+    width: 380px;
+  }
+
+  .mainPageContainer .header-container .mainLeftContainer .btnContainer .btnLost .btn-lost-state {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mainPageContainer .header-container .mainLeftContainer .btnContainer .btnLost h3 {
+    padding: 0 !important;
+  }
+
+  .mainPageContainer .header-container .mainLeftContainer .btnContainer .btnFound {
+    width: 280px;
+  }
+
+  .mainPageContainer .header-container .mainLeftContainer .btnContainer .btnFound .btn-found-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mainPageContainer .header-container .mainLeftContainer .btnContainer .btnFound h3 {
+    padding: 0 !important;
+  }
+
+  .section-info {
+    grid-template-columns: 1fr;
+  }
+
+  .section-info .info-items h2 {
+    font-size: 17px;
+  }
+
+  .section-info .info-image{
+    display: none;
+  }
+
+  .section-title h1 {
+    font-size: 17px;
+  }
+}

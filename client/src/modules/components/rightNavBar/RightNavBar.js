@@ -18,11 +18,13 @@ const RightNavBar = () => {
 
     useEffect(() => {
         const upBtn = document.querySelector(".upBtn");
-        if (fetching) {
-            upBtn.style.opacity = 1;
-        }
-        if (!fetching) {
-            upBtn.style.opacity = 0;
+        if (upBtn) {
+            if (fetching) {
+                upBtn.style.opacity = 1;
+            }
+            if (!fetching) {
+                upBtn.style.opacity = 0;
+            }
         }
     }, [fetching]);
 
@@ -37,18 +39,6 @@ const RightNavBar = () => {
         if (e.target.documentElement.scrollTop > 70) {
             setFetching(true)
         } else {
-            // if (
-            //     e.target.documentElement.scrollHeight -
-            //     (e.target.documentElement.scrollTop + window.innerHeight) <
-            //     100
-            // ) {
-            //     setFetching(true);
-            // }
-            // if (
-            //     e.target.documentElement.scrollHeight -
-            //     (e.target.documentElement.scrollTop + window.innerHeight) >
-            //     0
-            // ) {
             setFetching(false);
         }
     };
@@ -90,14 +80,14 @@ const RightNavBar = () => {
                         <FontAwesomeIcon icon={faSignOutAlt}/>
                         Logout
                     </Link>
-                    <a href="" className="upBtn" id="upBtn" onClick={(e) => {
+                    <p className="upBtn" id="upBtn" onClick={(e) => {
                         e.preventDefault()
                         document.documentElement.scrollTop = 0
                     }}>
                         <ArrowUp className="arrowUp1"/>
                         <ArrowUp className="arrowUp2"/>
                         <ArrowUp className="arrowUp3"/>
-                    </a>
+                    </p>
                 </>
             )}
         </div>
