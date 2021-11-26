@@ -8,13 +8,18 @@
   }
 }
 
-@media only screen and (max-width: 936px) {
+@media screen and (max-width: 936px) {
   .mainPageContainer .header-container .mainLeftContainer {
 
     h1 {
       font-size: 36px;
+      margin-left: 100px;
     }
 
+  }
+
+  .mainPageContainer .mainPageJoinLink {
+    margin-left: 100px;
   }
 
   .section-title h1 {
@@ -28,9 +33,99 @@
   .section-info .info-items p {
     font-size: 15px;
   }
+
+  .mainPageContainer .mainRightContainer img {
+    height: 80%;
+  }
 }
 
-@media only screen and (max-width: 480px) {
+@media screen and (max-width: 780px) {
+  .mainPageContainer .mainRightContainer img {
+    height: 70%;
+  }
+
+  .mainPageContainer .header-container .mainLeftContainer h1 {
+    margin-left: 20px;
+  }
+
+  .mainPageContainer .header-container .mainLeftContainer .btnContainer {
+    top: 450px;
+  }
+
+  .section-title h1 {
+    font-size: 23px;
+  }
+
+  .mainPageContainer .mainPageJoinLink {
+    margin-left: 20px;
+    font-size: 20px;
+  }
+
+  .section-info {
+    grid-template-columns: 1fr;
+
+    .info-image {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .mainPageContainer .header-container .mainLeftContainer h1 {
+    font-size: 30px;
+  }
+
+  .mainPageContainer .header-container .mainLeftContainer .btnContainer .btnLost {
+    width: 430px;
+  }
+
+  .mainPageContainer .header-container .mainLeftContainer .btnContainer .btnFound {
+    width: 330px;
+  }
+
+  .mainPageContainer .header-container .mainLeftContainer .btnContainer .btnFound .btn-found-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h3 {
+      padding: 0 !important;
+    }
+  }
+
+  .section-footer .footer-container p {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 565px) {
+  .mainPageContainer .header-container .mainLeftContainer h1 {
+    font-size: 25px;
+  }
+
+  .mainPageContainer .mainRightContainer img {
+    height: 60%;
+  }
+
+  .section-title h1 {
+    font-size: 18px;
+  }
+
+  .section-info .info-items ul li:last-child {
+    line-height: 26px;
+    margin-top: 0;
+
+    span {
+      margin-top: 8px;
+    }
+  }
+
+  .mainPageContainer .mainPageJoinLink {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
   .mainPageContainer .header-container .mainLeftContainer h1 {
     margin-left: 10px;
     font-size: 28px;
@@ -82,11 +177,40 @@
     font-size: 17px;
   }
 
-  .section-info .info-image{
+  .section-info .info-image {
     display: none;
   }
 
   .section-title h1 {
     font-size: 17px;
+  }
+
+  .section-footer .footer-container p {
+    display: none;
+  }
+
+  .mainPageContainer .header-container {
+    height: 540px;
+  }
+
+  .mainPageContainer .mainPageJoinLink {
+    font-size: 16px;
+    margin-left: 10px;
+  }
+
+  .section-info .info-items ul li {
+    font-size: 13px;
+
+    span {
+      margin-top: 3px;
+    }
+
+    &:last-child {
+      line-height: 20px;
+    }
+  }
+
+  #root {
+    min-width: 480px;
   }
 }

@@ -48,6 +48,7 @@
     font-weight: 500;
     cursor: pointer;
     font-family: Montserrat, sans-serif;
+    margin-left: 195px;
 
     a {
       color: $textColor;
@@ -66,9 +67,10 @@
 
     .mainLeftContainer {
       width: 100%;
+
       h1 {
         font-size: $text56;
-        margin: 100px 0 30px 100px;
+        margin: 100px 0 30px 195px;
 
         span {
           color: $textColor;
@@ -164,6 +166,7 @@
     text-align: center;
     width: 100%;
     overflow: unset !important;
+    display: flex;
 
     img {
       height: 100%;
