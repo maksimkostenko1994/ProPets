@@ -1,30 +1,50 @@
 @import "../variables";
 
 .modal-window-footer {
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid $textGrey;
-  padding-top: 20px;
-  margin-bottom: 0;
-
-  .text-box {
-    font-size: $text12;
-    color: $textGrey;
-    padding-right: 30px;
-    width: 50%;
-
-    span {
-      text-decoration: underline;
-    }
-  }
-
-  .btns-box {
     display: flex;
     justify-content: space-between;
+    border-top: 1px solid $textGrey;
+    padding-top: 20px;
+    margin-bottom: 0;
 
-    button:first-child{
-      margin-right: 15px;
+    .text-box {
+        font-size: $text12;
+        color: $textGrey;
+        padding-right: 30px;
+        width: 50%;
+
+        span {
+            text-decoration: underline;
+        }
     }
-  }
 
+    .btns-box {
+        display: flex;
+        justify-content: space-between;
+
+        button:first-child {
+            margin-right: 15px;
+        }
+    }
+    .text-box-hide {
+        display: none;
+    }
+}
+@media screen and (max-width: 780px) {
+    .modal-window-footer {
+        flex-direction: column;
+        justify-content: center;
+        .btns-box {
+            justify-content: center;
+        }
+    }
+    .modal-window-footer .text-box p {
+        display: none;
+    }
+    .modal-window-footer .text-box-hide {
+        text-align: center;
+        display: block;
+        font-size: $text12;
+        color: $textGrey;
+    }
 }

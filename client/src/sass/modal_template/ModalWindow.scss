@@ -1,67 +1,89 @@
 @import "../variables";
 
 .modal-window {
-  position: fixed;
-  padding: 0 !important;
-  margin: 0 !important;
-  top: 0;
-  background-color: $mainBgColor;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  z-index: 1000;
-
-  .modal-window-body {
+    position: fixed;
+    padding: 0 !important;
+    margin: 0 !important;
+    top: 0;
+    background-color: $mainBgColor;
+    width: 100%;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
-    padding: 20px 50px 20px 50px;
-    background-color: $whiteBgColor;
-    width: 900px;
-    height: 525px;
-    position: relative;
-    animation: animateModalWindow 1s ease;
-    animation-fill-mode: forwards;
-    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    z-index: 1000;
 
+    .modal-window-body {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 50px 20px 50px;
+        background-color: $whiteBgColor;
+        width: 900px;
+        height: 525px;
+        position: relative;
+        animation: animateModalWindow 1s ease;
+        animation-fill-mode: forwards;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
 
-    h5 {
-      font-family: Montserat, sans-serif;
-      color: $textColor;
-      margin: 10px 0;
-      font-size: 1.3rem;
+        h5 {
+            font-family: Montserat, sans-serif;
+            color: $textColor;
+            margin: 10px 0;
+            font-size: 1.3rem;
 
-      span {
-        font-weight: bold;
-        color: $textActive;
-      }
+            span {
+                font-weight: bold;
+                color: $textActive;
+            }
+        }
+
+        .nav-btns {
+            .btn {
+                background-color: #06b2bb9a;
+                border-radius: 0;
+                border: none;
+                border-top: 1px solid $mainBgColor;
+                color: $whiteText;
+                font-family: Montserat, sans-serif;
+                width: 50%;
+                height: 40px;
+                font-weight: $textBolder;
+                font-size: 1rem;
+                box-shadow: none;
+                cursor: pointer;
+            }
+
+            .active {
+                background-color: $textActive;
+            }
+        }
     }
-
-    .nav-btns {
-      .btn {
-        background-color: #06B2BB9A;
-        border-radius: 0;
-        border: none;
-        border-top: 1px solid $mainBgColor;
-        color: $whiteText;
-        font-family: Montserat, sans-serif;
-        width: 50%;
-        height: 40px;
-        font-weight: $textBolder;
-        font-size: 1rem;
-        box-shadow: none;
-        cursor: pointer;
-      }
-
-      .active {
-        background-color: $textActive;
-      }
-    }
-  }
 }
 
 @keyframes animateModalWindow {
-  to {
-    transform: translateY(20%);
-  }
+    to {
+        transform: translateY(20%);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .modal-window .modal-window-body {
+        width: 80%;
+    }
+}
+@media screen and (max-width: 780px) {
+    .modal-window .modal-window-body {
+        h5 {
+            font-size: 1rem;
+            text-align: center;
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .modal-window .modal-window-body {
+        width: 400px;
+        h5 {
+            text-align: center;
+        }
+    }
 }

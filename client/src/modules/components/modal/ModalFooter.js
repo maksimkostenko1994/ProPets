@@ -33,6 +33,12 @@ const ModalFooter = ({ currentForm }) => {
                     />
                 )}
             </div>
+            <div className="text-box-hide">
+                <p>
+                    By clicking "Submit", you agree to us processing your
+                    information in accordance width <span>these terms</span>.
+                </p>
+            </div>
         </div>
     );
 };

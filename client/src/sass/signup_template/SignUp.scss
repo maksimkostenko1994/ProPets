@@ -72,3 +72,20 @@
         }
     }
 }
+
+@media screen and (max-width: 900px) {
+    .signup-box {
+        .not-auth-error {
+            p {
+                font-size: $text16;
+            }
+        }
+    }
+}
+@media screen and (max-width: 610px) {
+    .signup-box .signup-form .signup-div .signup-form-field input {
+        width: 200px;
+    }
+}
+@media screen and (max-width: 500px) {
+}
