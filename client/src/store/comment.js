@@ -31,7 +31,7 @@ export const addCommentAction = (comment) => async (dispatch) => {
     try {
         const response = await addNewComment(comment);
         dispatch(addComment(response));
-        dispatch(getPostAction(response.postId));
+        dispatch(getPostAction(response.postId, 1, 10));
     } catch (e) {
         dispatch(setError({ data: e.data, status: e.status }));
     } finally {
