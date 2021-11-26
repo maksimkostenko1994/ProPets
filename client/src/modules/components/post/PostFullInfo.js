@@ -49,100 +49,103 @@ const PostFullInfo = () => {
         post && post.likes.find((like) => like.userId === user.id) && true;
 
     return (
-        post && (
-            <div className="fullPost">
-                <div className="fullPost-header">
-                    <div className="full-Post-header-left">
-                        {post.avatar ? (
-                            <div className="fullPost-header-img">
-                                <img
-                                    src={`http://localhost:5000/${post.avatar}`}
-                                    alt="user-avatar"
-                                />
+        post && (<>
+                <div className="service-pagination" style={{
+                    top: "600px"
+                }}>
+                    {pagesArr(pages).map((item) => (
+                        <p
+                            id={item}
+                            onClick={(event) => {
+                                dispatch(setCurrentPageAction(item));
+                                event.target.classList.add(
+                                    "service-active-link"
+                                );
+                                Array.from(
+                                    event.target.parentNode.children
+                                ).map((link) =>
+                                    event.target.id !== link.id
+                                        ? link.classList.remove(
+                                            "service-active-link"
+                                        )
+                                        : ""
+                                );
+                            }}
+                            key={item}
+                        >
+                            {item}
+                        </p>
+                    ))}
+                </div>
+                <div className="fullPost">
+                    <div className="fullPost-header">
+                        <div className="full-Post-header-left">
+                            {post.avatar ? (
+                                <div className="fullPost-header-img">
+                                    <img
+                                        src={`http://localhost:5000/${post.avatar}`}
+                                        alt="user-avatar"
+                                    />
+                                </div>
+                            ) : (
+                                <div className="fullPost-header-img">
+                                    <FontAwesomeIcon size="2x" icon={faUser}/>
+                                </div>
+                            )}
+                            <div className="fullPost-header-author">
+                                <h3>{post.full_name}</h3>
+                                <p>{date ? date : ""}</p>
                             </div>
-                        ) : (
-                            <div className="fullPost-header-img">
-                                <FontAwesomeIcon size="2x" icon={faUser}/>
-                            </div>
-                        )}
-                        <div className="fullPost-header-author">
-                            <h3>{post.full_name}</h3>
-                            <p>{date ? date : ""}</p>
+                        </div>
+                        <div className="fullPost-header-button">
+                            <Link to="/posts">
+                                <Button text="back to posts" color="btn"/>
+                            </Link>
                         </div>
                     </div>
-                    <div className="fullPost-header-button">
-                        <Link to="/posts">
-                            <Button text="back to posts" color="btn"/>
-                        </Link>
+                    <div className="fullPost-body">
+                        <img
+                            className="fullPost-img"
+                            src={`http://localhost:5000/${post.photo}`}
+                            alt="dog"
+                        />
                     </div>
-                </div>
-                <div className="fullPost-body">
-                    <img
-                        className="fullPost-img"
-                        src={`http://localhost:5000/${post.photo}`}
-                        alt="dog"
-                    />
-                </div>
-                <div className="fullPost-footer">
-                    <h4>{post.title}</h4>
-                    <p className="fullPost-post-text">{post.text}</p>
-                    <div className="fullPost-footer-like-box">
-                        <p>{post.count}</p>
-                        {!isLiked ? (
-                            <>
-                                <FontAwesomeIcon icon={faThumbsUp}/>
-                                <button onClick={() => dispatch(addLikeAction(post.id, user.id))}>add like</button>
-                            </>
+                    <div className="fullPost-footer">
+                        <h4>{post.title}</h4>
+                        <p className="fullPost-post-text">{post.text}</p>
+                        <div className="fullPost-footer-like-box">
+                            <p>{post.count}</p>
+                            {!isLiked ? (
+                                <>
+                                    <FontAwesomeIcon icon={faThumbsUp}/>
+                                    <button onClick={() => dispatch(addLikeAction(post.id, user.id))}>add like</button>
+                                </>
+                            ) : (
+                                <>
+                                    <FontAwesomeIcon icon={faThumbsDown}/>
+                                    <button onClick={() => dispatch(addDislikeAction(like))}>add dislike</button>
+                                </>
+                            )}
+                        </div>
+                    </div>
+                    <div className="comments">
+                        <p className="comments-p">Comments</p>
+                        <hr/>
+                        {post.comments.length === 0 ? (
+                            <h3>No comments yet</h3>
                         ) : (
-                            <>
-                                <FontAwesomeIcon icon={faThumbsDown}/>
-                                <button onClick={() => dispatch(addDislikeAction(like))}>add dislike</button>
-                            </>
+                            <div>
+                                {post.comments.map((comment, index) => (
+                                    <li key={index}>
+                                        <Comment comment={comment}/>
+                                    </li>
+                                ))}
+                            </div>
                         )}
                     </div>
+                    <AddComment/>
                 </div>
-                <div className="comments">
-                    <p className="comments-p">Comments</p>
-                    <div className="service-pagination">
-                        {pagesArr(pages).map((item) => (
-                            <p
-                                id={item}
-                                onClick={(event) => {
-                                    dispatch(setCurrentPageAction(item));
-                                    event.target.classList.add(
-                                        "service-active-link"
-                                    );
-                                    Array.from(
-                                        event.target.parentNode.children
-                                    ).map((link) =>
-                                        event.target.id !== link.id
-                                            ? link.classList.remove(
-                                                "service-active-link"
-                                            )
-                                            : ""
-                                    );
-                                }}
-                                key={item}
-                            >
-                                {item}
-                            </p>
-                        ))}
-                    </div>
-                    <hr/>
-                    {post.comments.length === 0 ? (
-                        <h3>No comments yet</h3>
-                    ) : (
-                        <div>
-                            {post.comments.map((comment, index) => (
-                                <li key={index}>
-                                    <Comment comment={comment}/>
-                                </li>
-                            ))}
-                        </div>
-                    )}
-                </div>
-                <AddComment/>
-            </div>
+            </>
         )
     );
 };

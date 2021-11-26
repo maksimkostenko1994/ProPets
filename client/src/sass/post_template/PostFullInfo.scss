@@ -6,6 +6,7 @@
     margin: 0 auto;
     padding-top: 40px;
     font-family: Montserrat, sans-serif;
+    position: relative;
 
     .fullPost-header {
         display: flex;
@@ -91,6 +92,7 @@
         }
     }
     .comments {
+
         .comments-p {
             font-size: $text16;
             color: $textColor;
