@@ -129,3 +129,16 @@
         }
     }
 }
+
+@media screen and (max-width: 800px) {
+    .add-lost-post-container {
+        width: 60%;
+        h2 {
+            font-size: $text12;
+        }
+    }
+
+    .right-up {
+        display: none;
+    }
+}

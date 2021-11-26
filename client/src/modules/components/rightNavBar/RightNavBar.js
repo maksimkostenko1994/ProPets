@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSignOutAlt, faUser} from "@fortawesome/free-solid-svg-icons";
-import {logoutAction} from "../../../store/auth";
-import {useDispatch, useSelector} from "react-redux";
-import {appSelector, userSelector} from "../../../store/app";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt, faUser } from "@fortawesome/free-solid-svg-icons";
+import { logoutAction } from "../../../store/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { appSelector, userSelector } from "../../../store/app";
 import ArrowUp from "../arrowUp/ArrowUp";
 
 const RightNavBar = () => {
     const user = useSelector(userSelector);
-    const {auth} = useSelector(appSelector);
+    const { auth } = useSelector(appSelector);
 
     const dispatch = useDispatch();
     const [firstName, secondName] = user ? user.full_name.split(" ") : ["", ""];
@@ -35,20 +35,8 @@ const RightNavBar = () => {
 
     const scrollHandler = (e) => {
         if (e.target.documentElement.scrollTop > 70) {
-            setFetching(true)
+            setFetching(true);
         } else {
-            // if (
-            //     e.target.documentElement.scrollHeight -
-            //     (e.target.documentElement.scrollTop + window.innerHeight) <
-            //     100
-            // ) {
-            //     setFetching(true);
-            // }
-            // if (
-            //     e.target.documentElement.scrollHeight -
-            //     (e.target.documentElement.scrollTop + window.innerHeight) >
-            //     0
-            // ) {
             setFetching(false);
         }
     };
@@ -76,7 +64,7 @@ const RightNavBar = () => {
                                     </div>
                                 )}
                                 <h4>
-                                    {firstName} <br/>
+                                    {firstName} <br />
                                     {secondName}
                                 </h4>
                             </Link>
@@ -87,16 +75,21 @@ const RightNavBar = () => {
                         onClick={() => dispatch(logoutAction())}
                         className="user-logout-btn"
                     >
-                        <FontAwesomeIcon icon={faSignOutAlt}/>
+                        <FontAwesomeIcon icon={faSignOutAlt} />
                         Logout
                     </Link>
-                    <a href="" className="upBtn" id="upBtn" onClick={(e) => {
-                        e.preventDefault()
-                        document.documentElement.scrollTop = 0
-                    }}>
-                        <ArrowUp className="arrowUp1"/>
-                        <ArrowUp className="arrowUp2"/>
-                        <ArrowUp className="arrowUp3"/>
+                    <a
+                        href="#top"
+                        className="upBtn"
+                        id="upBtn"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            document.documentElement.scrollTop = 0;
+                        }}
+                    >
+                        <ArrowUp className="arrowUp1" />
+                        <ArrowUp className="arrowUp2" />
+                        <ArrowUp className="arrowUp3" />
                     </a>
                 </>
             )}
