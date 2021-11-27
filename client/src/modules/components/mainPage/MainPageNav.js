@@ -51,6 +51,7 @@ export default function MainPageNav() {
                                 width: "320px",
                                 display: "flex",
                                 justifyContent: "space-between",
+                                flexDirection: "row-reverse"
                             }}
                         >
                             {((path === "lost" || path === "found") && pets) ? (

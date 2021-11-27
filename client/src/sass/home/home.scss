@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   justify-content: center;
+  transition: all 0.5s ease;
 
   .content {
     background-color: #fff;

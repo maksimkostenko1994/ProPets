@@ -1,0 +1,66 @@
+@media screen and (max-width: 780px) {
+
+  .home-box {
+    grid-template-columns: 45px 1fr 45px;
+  }
+
+  .left-nav-bar, .right-nav-bar {
+    all: unset;
+  }
+
+  .left-nav-bar .left-menu a button {
+    justify-content: flex-start;
+    padding-left: 15px;
+  }
+
+  .right-nav-bar .right-nav-user {
+    width: 140px;
+    border-top: none;
+  }
+
+  .left-nav-bar .left-menu a {
+    margin-right: 0;
+  }
+  .left-nav-bar .left-menu-services div a {
+    margin-left: 13px;
+  }
+
+
+  .left-nav-bar .left-menu-services div {
+    margin-left: 0;
+  }
+
+  .left-nav-bar .left-menu a.active {
+    border-radius: 0;
+  }
+
+  .left-nav-bar .left-menu a button p {
+    opacity: 0;
+  }
+
+  .right-nav-bar .user-logout-btn {
+    margin-left: 15px;
+  }
+
+  .user-avatar {
+    margin-left: 2px;
+  }
+
+  .right-nav-bar .user-logout-btn span {
+    opacity: 0;
+  }
+
+  .left-nav-bar .left-menu-services h3 {
+    opacity: 0;
+  }
+
+  .left-nav-bar .left-menu-services div a button p {
+    opacity: 0;
+  }
+
+  .content {
+    grid-column: 2/4;
+    grid-row-start: 1;
+    grid-row-end: 4;
+  }
+}
