@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link, NavLink} from "react-router-dom";
 import Button from "../button/Button";
 import {faDog, faHome, faHotel, faPaw, faSearch, faStethoscope, faWalking} from "@fortawesome/free-solid-svg-icons";
@@ -9,18 +9,51 @@ const LeftNavBar = () => {
 
     const {auth} = useSelector(appSelector)
 
-    const hamburgerArrow = (event) => {
-        const {parentNode} = event.currentTarget
-        if (parentNode.classList.contains('arrow')) {
-            parentNode.parentNode.classList.remove('change-grid')
-            parentNode.classList.remove('arrow')
-            event.currentTarget.classList.remove('hamburger--arrow')
-        } else {
-            parentNode.parentNode.classList.add('change-grid')
-            parentNode.classList.add('arrow')
-            event.currentTarget.classList.add('hamburger--arrow')
-        }
+    const [isOpen, setOpen] = useState(null)
+
+    const [grid, setGrid] = useState(45)
+
+    const hamburgerArrow = () => {
+        setOpen(!isOpen)
     }
+
+    const currentTarget = document.querySelector('.hamburger')
+
+    useEffect(() => {
+        if (currentTarget) {
+            const {parentNode} = currentTarget
+            if (isOpen === false && grid === 200) {
+                let i = grid
+                const downGrid = setInterval(() => {
+                    parentNode.parentNode.style.gridTemplateColumns = `${i}px 1fr ${i}px`
+                    if (i === 45) {
+                        clearInterval(downGrid)
+                        setGrid(45)
+                    } else {
+                        i-=5
+                        setGrid(i)
+                    }
+                }, 1000/155)
+                parentNode.classList.remove('arrow')
+                currentTarget.classList.remove('hamburger--arrow')
+            }
+            if (isOpen === true && grid === 45) {
+                let i = grid
+                const upGrid = setInterval(() => {
+                    parentNode.parentNode.style.gridTemplateColumns = `${i}px 1fr ${i}px`
+                    if (i === 200) {
+                        clearInterval(upGrid)
+                        setGrid(200)
+                    } else {
+                        i+=5
+                        setGrid(i)
+                    }
+                }, 1000/155)
+                parentNode.classList.add('arrow')
+                currentTarget.classList.add('hamburger--arrow')
+            }
+        }
+    }, [isOpen, currentTarget, grid])
 
     return (
         <div className="left-nav-bar">
