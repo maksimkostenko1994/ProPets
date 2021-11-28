@@ -13,47 +13,65 @@ const LeftNavBar = () => {
 
     const [grid, setGrid] = useState(45)
 
+    const [width, setWidth] = useState(window.innerWidth)
+
     const hamburgerArrow = () => {
         setOpen(!isOpen)
     }
 
     const currentTarget = document.querySelector('.hamburger')
 
+    const resizeHandler = ({currentTarget}) => {
+        setWidth(currentTarget.innerWidth)
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', resizeHandler)
+        return function () {
+            window.removeEventListener('resize', resizeHandler)
+        }
+    }, [])
+
+
     useEffect(() => {
         if (currentTarget) {
             const {parentNode} = currentTarget
-            if (isOpen === false && grid === 200) {
-                let i = grid
-                const downGrid = setInterval(() => {
-                    parentNode.parentNode.style.gridTemplateColumns = `${i}px 1fr ${i}px`
-                    if (i === 45) {
-                        clearInterval(downGrid)
-                        setGrid(45)
-                    } else {
-                        i-=5
-                        setGrid(i)
-                    }
-                }, 1000/155)
-                parentNode.classList.remove('arrow')
-                currentTarget.classList.remove('hamburger--arrow')
-            }
-            if (isOpen === true && grid === 45) {
-                let i = grid
-                const upGrid = setInterval(() => {
-                    parentNode.parentNode.style.gridTemplateColumns = `${i}px 1fr ${i}px`
-                    if (i === 200) {
-                        clearInterval(upGrid)
-                        setGrid(200)
-                    } else {
-                        i+=5
-                        setGrid(i)
-                    }
-                }, 1000/155)
-                parentNode.classList.add('arrow')
-                currentTarget.classList.add('hamburger--arrow')
+            if (width > 780) {
+                parentNode.parentNode.style.gridTemplateColumns = `1fr 3fr 1fr`
+            } else {
+                if (isOpen === false && grid === 200) {
+                    let i = grid
+                    const downGrid = setInterval(() => {
+                        parentNode.parentNode.style.gridTemplateColumns = `${i}px 1fr ${i}px`
+                        if (i === 45) {
+                            clearInterval(downGrid)
+                            setGrid(45)
+                        } else {
+                            i -= 5
+                            setGrid(i)
+                        }
+                    }, 1000 / 155)
+                    parentNode.classList.remove('arrow')
+                    currentTarget.classList.remove('hamburger--arrow')
+                }
+                if (isOpen === true && grid === 45) {
+                    let i = grid
+                    const upGrid = setInterval(() => {
+                        parentNode.parentNode.style.gridTemplateColumns = `${i}px 1fr ${i}px`
+                        if (i === 200) {
+                            clearInterval(upGrid)
+                            setGrid(200)
+                        } else {
+                            i += 5
+                            setGrid(i)
+                        }
+                    }, 1000 / 155)
+                    parentNode.classList.add('arrow')
+                    currentTarget.classList.add('hamburger--arrow')
+                }
             }
         }
-    }, [isOpen, currentTarget, grid])
+    }, [isOpen, currentTarget, grid, width])
 
     return (
         <div className="left-nav-bar">
