@@ -83,199 +83,201 @@ const AddLostPost = () => {
         <div className="add-lost-post-container">
             <h2>Lost your buddy? Keep calm and complete the form</h2>
             <hr />
-            <form className="add-post-form" ref={form} noValidate>
-                <div className="lost-form-body">
-                    <div className="left">
-                        <div className="left-box">
-                            <div className="left-label">
-                                <label>Nickname:</label>
+            <div className="form-container">
+                <form className="add-post-form" ref={form} noValidate>
+                    <div className="lost-form-body">
+                        <div className="left">
+                            <div className="left-box">
+                                <div className="left-label">
+                                    <label>Nickname:</label>
+                                </div>
+                                <div className="left-field">
+                                    <Field
+                                        placeholder="Uncle Sam"
+                                        name="nick"
+                                        error={errors.nick}
+                                    />
+                                </div>
                             </div>
-                            <div className="left-field">
-                                <Field
-                                    placeholder="Uncle Sam"
-                                    name="nick"
-                                    error={errors.nick}
-                                />
+                            <div className="left-box">
+                                <div className="left-label">
+                                    <label>Type:</label>
+                                </div>
+                                <div className="left-field">
+                                    <select name="type" error={errors.type}>
+                                        <option>Dog</option>
+                                        <option>Cat</option>
+                                        <option>Bird</option>
+                                        <option>Reptile</option>
+                                        <option>Mammal</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div className="left-box">
-                            <div className="left-label">
-                                <label>Type:</label>
+                            <div className="left-box">
+                                <div className="left-label">
+                                    <label>Sex:</label>
+                                </div>
+                                <div className="left-field">
+                                    <select name="sex" error={errors.sex}>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        <option>Neutral</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div className="left-field">
-                                <select name="type" error={errors.type}>
-                                    <option>Dog</option>
-                                    <option>Cat</option>
-                                    <option>Bird</option>
-                                    <option>Reptile</option>
-                                    <option>Mammal</option>
-                                </select>
+                            <div className="left-box">
+                                <div className="left-label">
+                                    <label>Breed:</label>
+                                </div>
+                                <div className="left-field">
+                                    <Field
+                                        placeholder="Golden Retriever"
+                                        name="breed"
+                                        error={errors.breed}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div className="left-box">
-                            <div className="left-label">
-                                <label>Sex:</label>
+                            <div className="left-box">
+                                <div className="left-label">
+                                    <label>Color:</label>
+                                </div>
+                                <div className="left-field">
+                                    <Field
+                                        placeholder="Beige"
+                                        name="color"
+                                        error={errors.color}
+                                    />
+                                </div>
                             </div>
-                            <div className="left-field">
-                                <select name="sex" error={errors.sex}>
-                                    <option>Male</option>
-                                    <option>Female</option>
-                                    <option>Neutral</option>
-                                </select>
+                            <div className="left-box">
+                                <div className="left-label">
+                                    <label>Height:</label>
+                                </div>
+                                <div className="left-field">
+                                    <select name="height" error={errors.height}>
+                                        <option>45-70cm</option>
+                                        <option>30-45cm</option>
+                                        <option>10-30cm</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div className="left-box">
-                            <div className="left-label">
-                                <label>Breed:</label>
-                            </div>
-                            <div className="left-field">
-                                <Field
-                                    placeholder="Golden Retriever"
-                                    name="breed"
-                                    error={errors.breed}
-                                />
-                            </div>
-                        </div>
-                        <div className="left-box">
-                            <div className="left-label">
-                                <label>Color:</label>
-                            </div>
-                            <div className="left-field">
-                                <Field
-                                    placeholder="Beige"
-                                    name="color"
-                                    error={errors.color}
-                                />
-                            </div>
-                        </div>
-                        <div className="left-box">
-                            <div className="left-label">
-                                <label>Height:</label>
-                            </div>
-                            <div className="left-field">
-                                <select name="height" error={errors.height}>
-                                    <option>45-70cm</option>
-                                    <option>30-45cm</option>
-                                    <option>10-30cm</option>
-                                </select>
-                            </div>
-                        </div>
 
-                        <div className="left-box">
-                            <div className="left-label">
-                                <label>
-                                    Distinctive features:
-                                    <br />
-                                    <span>up to 60 char</span>
-                                </label>
+                            <div className="left-box">
+                                <div className="left-label">
+                                    <label>
+                                        Distinctive features:
+                                        <br />
+                                        <span>up to 60 char</span>
+                                    </label>
+                                </div>
+                                <div className="left-field">
+                                    <textarea
+                                        name="features"
+                                        error={errors.features}
+                                        cols="30"
+                                        rows="3"
+                                        placeholder="blue collar with stars, no left ear, damaged tail."
+                                        maxLength="60"
+                                    />
+                                </div>
                             </div>
-                            <div className="left-field">
-                                <textarea
-                                    name="features"
-                                    error={errors.features}
-                                    cols="30"
-                                    rows="3"
-                                    placeholder="blue collar with stars, no left ear, damaged tail."
-                                    maxLength="60"
-                                />
+                            <div className="left-box">
+                                <div className="left-label">
+                                    <label>
+                                        Description:
+                                        <br />
+                                        <span>up to 150 char</span>
+                                    </label>
+                                </div>
+                                <div className="left-field">
+                                    <textarea
+                                        name="description"
+                                        error={errors.description}
+                                        cols="30"
+                                        rows="6"
+                                        maxLength="150"
+                                        placeholder="brown fox jumps over a lazy dog. DJs flock by when jhkjk jhgMTV ax quiz prog. Junk MTV quiz graced by fox"
+                                    />
+                                </div>
+                            </div>
+                            <div className="left-box">
+                                <div className="left-label">
+                                    <label>Location:</label>
+                                </div>
+                                <div className="left-field">
+                                    <textarea
+                                        name="location"
+                                        error={errors.location}
+                                        cols="30"
+                                        rows="4"
+                                        placeholder="Oliver Platz, Berlin"
+                                        maxLength="60"
+                                    />
+                                </div>
                             </div>
                         </div>
-                        <div className="left-box">
-                            <div className="left-label">
-                                <label>
-                                    Description:
-                                    <br />
-                                    <span>up to 150 char</span>
-                                </label>
+                        <div className="right">
+                            <div className="right-up">
+                                <div>
+                                    <img src={Photo} alt="man-pictures" />
+                                </div>
                             </div>
-                            <div className="left-field">
-                                <textarea
-                                    name="description"
-                                    error={errors.description}
-                                    cols="30"
-                                    rows="6"
-                                    maxLength="150"
-                                    placeholder="brown fox jumps over a lazy dog. DJs flock by when jhkjk jhgMTV ax quiz prog. Junk MTV quiz graced by fox"
-                                />
-                            </div>
-                        </div>
-                        <div className="left-box">
-                            <div className="left-label">
-                                <label>Location:</label>
-                            </div>
-                            <div className="left-field">
-                                <textarea
-                                    name="location"
-                                    error={errors.location}
-                                    cols="30"
-                                    rows="4"
-                                    placeholder="Oliver Platz, Berlin"
-                                    maxLength="60"
-                                />
+                            <div className="right-down">
+                                <div className="img-section">
+                                    <Field
+                                        placeholder="load image "
+                                        defaultValue={file}
+                                        error={errors.image}
+                                        disabled
+                                        type="text"
+                                        name="loadImg"
+                                    />
+                                </div>
+                                <div className="right-down-btn">
+                                    <Field
+                                        className="btn-1"
+                                        type="file"
+                                        name="image"
+                                        onChange={onChangeHandler}
+                                    />
+                                    <Field
+                                        className="btn-2"
+                                        value="Load image"
+                                        type="text"
+                                        name="loadImg2"
+                                        readOnly
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div className="right">
-                        <div className="right-up">
-                            <div>
-                                <img src={Photo} alt="man-pictures" />
-                            </div>
+                    <hr />
+                    <div className="form-contacts">
+                        <div className="contacts-label">
+                            <label>Contacts:</label>
                         </div>
-                        <div className="right-down">
-                            <div className="img-section">
-                                <Field
-                                    placeholder="load image "
-                                    defaultValue={file}
-                                    error={errors.image}
-                                    disabled
-                                    type="text"
-                                    name="loadImg"
-                                />
-                            </div>
-                            <div className="right-down-btn">
-                                <Field
-                                    className="btn-1"
-                                    type="file"
-                                    name="image"
-                                    onChange={onChangeHandler}
-                                />
-                                <Field
-                                    className="btn-2"
-                                    value="Load image"
-                                    type="text"
-                                    name="loadImg2"
-                                    readOnly
-                                />
-                            </div>
+                        <div className="contacts-field">
+                            <Field
+                                type="text"
+                                placeholder="Phone*"
+                                name="phone"
+                                error={errors.phone}
+                            />
+                        </div>
+                        <div className="contacts-field-right">
+                            <Field
+                                type="text"
+                                name="email"
+                                placeholder="Email"
+                                error={errors.email}
+                            />
                         </div>
                     </div>
-                </div>
-                <hr />
-                <div className="form-contacts">
-                    <div className="contacts-label">
-                        <label>Contacts:</label>
+                    <div className="publishBtnSection" align="right">
+                        <Button text={"Publish"} icon={faPaw} color={"btn "} />
                     </div>
-                    <div className="contacts-field">
-                        <Field
-                            type="text"
-                            placeholder="Phone*"
-                            name="phone"
-                            error={errors.phone}
-                        />
-                    </div>
-                    <div className="contacts-field-right">
-                        <Field
-                            type="text"
-                            name="email"
-                            placeholder="Email"
-                            error={errors.email}
-                        />
-                    </div>
-                </div>
-                <div className="publishBtnSection" align="right">
-                    <Button text={"Publish"} icon={faPaw} color={"btn "} />
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     );
 };

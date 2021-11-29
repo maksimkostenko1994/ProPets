@@ -123,22 +123,56 @@
         }
     }
     .publishBtnSection {
+        display: flex;
+        justify-content: end;
         margin-top: 40px;
         button {
             width: 21%;
         }
     }
 }
-
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1240px) {
     .add-lost-post-container {
-        width: 60%;
         h2 {
-            font-size: $text12;
+            font-size: $text20;
+            text-align: center;
         }
     }
-
-    .right-up {
-        display: none;
+    .right .right-down {
+        .right-down-btn {
+            text-align: center;
+            .btn-2 {
+                width: 120px;
+            }
+        }
+        .img-section {
+            text-align: center;
+            input {
+                padding: 0 !important;
+            }
+        }
+    }
+}
+@media screen and (max-width: 970px) {
+    .add-lost-post-container h2 {
+        font-size: $text14;
+    }
+    .form-container {
+        position: relative;
+        label {
+            font-size: 13px;
+        }
+        .lost-form-body {
+            .right .right-up {
+                display: none !important;
+            }
+            .right {
+                position: absolute;
+                bottom: 0px;
+            }
+        }
+    }
+    .add-lost-post-container .publishBtnSection {
+        justify-content: end;
     }
 }
