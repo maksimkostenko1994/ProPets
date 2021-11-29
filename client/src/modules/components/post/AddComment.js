@@ -18,8 +18,10 @@ const AddComment = () => {
             userId: user.id,
         },
         onSubmit: (values, { reset }) => {
-            dispatch(addCommentAction(values));
-            reset();
+            if (values.text.trim()) {
+                dispatch(addCommentAction(values));
+                reset();
+            }
         },
     });
 
@@ -31,6 +33,7 @@ const AddComment = () => {
                     className="commentArea"
                     rows={3}
                     name="text"
+                    required
                 />
                 <div className="comment-footer">
                     <FontAwesomeIcon icon={faComments} />

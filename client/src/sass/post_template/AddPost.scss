@@ -121,3 +121,36 @@
         }
     }
 }
+
+@media screen and (max-width: 1070px) {
+    .add-post {
+        width: 100%;
+    }
+    .add-post .title {
+        font-size: $text16;
+    }
+}
+
+@media screen and (max-width: 696px) {
+    .add-post {
+        width: 100%;
+
+        .post-container .add-post-form .form-footer-section {
+            flex-direction: column;
+        }
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .add-post .post-container .add-post-form .add-photo-section {
+        display: flex;
+        flex-direction: column;
+        .add-photo-btn {
+            align-self: center;
+            padding: 10px;
+        }
+    }
+    .content .add-post {
+        padding: 40px 20px;
+    }
+}

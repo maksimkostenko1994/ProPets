@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSignOutAlt, faUser} from "@fortawesome/free-solid-svg-icons";
-import {logoutAction} from "../../../store/auth";
-import {useDispatch, useSelector} from "react-redux";
-import {appSelector, userSelector} from "../../../store/app";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt, faUser } from "@fortawesome/free-solid-svg-icons";
+import { logoutAction } from "../../../store/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { appSelector, userSelector } from "../../../store/app";
 import ArrowUp from "../arrowUp/ArrowUp";
 
 const RightNavBar = () => {
     const user = useSelector(userSelector);
-    const {auth} = useSelector(appSelector);
+    const { auth } = useSelector(appSelector);
 
     const dispatch = useDispatch();
     const [firstName, secondName] = user ? user.full_name.split(" ") : ["", ""];
@@ -66,7 +66,7 @@ const RightNavBar = () => {
                                     </div>
                                 )}
                                 <h4>
-                                    {firstName} <br/>
+                                    {firstName} <br />
                                     {secondName}
                                 </h4>
                             </Link>
@@ -77,9 +77,10 @@ const RightNavBar = () => {
                         onClick={() => dispatch(logoutAction())}
                         className="user-logout-btn"
                     >
-                        <FontAwesomeIcon icon={faSignOutAlt}/>
+                        <FontAwesomeIcon icon={faSignOutAlt} />
                         <span>Logout</span>
                     </Link>
+
                     <p
                         className="upBtn"
                         id="upBtn"
@@ -88,9 +89,11 @@ const RightNavBar = () => {
                             document.documentElement.scrollTop = 0;
                         }}
                     >
-                        <ArrowUp className="arrowUp1"/>
-                        <ArrowUp className="arrowUp2"/>
-                        <ArrowUp className="arrowUp3"/>
+                        <div className="arrows-box">
+                            <ArrowUp className="arrowUp1" />
+                            <ArrowUp className="arrowUp2" />
+                            <ArrowUp className="arrowUp3" />
+                        </div>
                     </p>
                 </>
             )}

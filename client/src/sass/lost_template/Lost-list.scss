@@ -21,3 +21,20 @@
         align-content: space-evenly;
     }
 }
+
+@media screen and (max-width: 1300px) {
+    .lost-container {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .lost-container .lost-list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media screen and (max-width: 660px) {
+    .lost-container .lost-list {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,36 +1,35 @@
 @import "../variables.scss";
 
 @media screen and (max-width: 1210px) {
-  .post .post-footer {
-    h4 {
-      font-size: $text14;
-    }
+    .post .post-footer {
+        h4 {
+            font-size: $text14;
+        }
 
-    .post-footer-more {
-      font-size: $text12;
+        .post-footer-more {
+            font-size: $text12;
+        }
     }
-  }
 }
 
 @media screen and (max-width: 780px) {
-  .home-box {
-    grid-template-columns: 5fr;
-  }
-
-  .post-pagination {
-    right: 0 !important;
-    border: 1px solid #1a9399 !important;
-    border-radius: 10px 0 0 10px !important;
-    border-right: none !important;
-
-    p {
-      color: #1a9399 !important;
-      border-bottom: 1px solid #1a9399 !important;
-
-      &:last-child {
-        border-bottom: none !important;
-      }
+    .home-box {
+        grid-template-columns: 5fr;
     }
 
-  }
+    .post-pagination {
+        right: 0 !important;
+        border: 1px solid #1a9399 !important;
+        border-radius: 10px 0 0 10px !important;
+        border-right: none !important;
+
+        p {
+            color: #1a9399 !important;
+            border-bottom: 1px solid #1a9399 !important;
+
+            &:last-child {
+                border-bottom: none !important;
+            }
+        }
+    }
 }
