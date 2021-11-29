@@ -40,6 +40,7 @@
                 .left-label {
                     width: 25%;
                     text-align: end;
+                    padding-right: 10px;
                 }
                 .right {
                     display: flex;
@@ -239,7 +240,7 @@
             }
         }
         .publishBtnSection {
-            justify-content: flex-end;
+            justify-content: flex-start;
         }
         .lost-form-body .right .right-down .right-down-btn .btn-1 {
             left: 110px;
@@ -255,6 +256,6 @@
     }
 
     .add-lost-post-container .publishBtnSection {
-        justify-content: flex-end;
+        justify-content: flex-start;
     }
 }

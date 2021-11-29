@@ -113,7 +113,7 @@ const UserForm = () => {
                 </div>
                 {user && (
                     <form className="user-profile-form" ref={form} noValidate>
-                        <div className="form-item-email">
+                        <div className="form-item">
                             <label>Email:</label>
                             <Field
                                 name="email"
