@@ -1,0 +1,43 @@
+@media screen and (max-width: 780px) {
+  .found-box h2 {
+    font-size: 20px;
+  }
+
+  .found-box form .found-container {
+    flex-direction: column;
+  }
+
+  .found-box form .found-container .found-add-right .found-add-image {
+    display: none;
+  }
+
+  .found-box .found-contacts {
+    input[name="email"] {
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 2;
+    }
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .found-box .found-contacts {
+    grid-template-columns: 1fr;
+    label {
+      text-align: left;
+      padding-left: 10px;
+    }
+
+    input[name="phone"] {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 2;
+    }
+
+    input[name="email"] {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 3;
+    }
+  }
+}

@@ -29,8 +29,20 @@
       border-top: 1px solid #1a9399;
 
       a {
+        opacity: 0;
         display: block;
         width: 155px;
+        transition: all 0.5s ease;
+
+        &:first-child {
+          animation: 0.5s ease dropDownMenu;
+          animation-fill-mode: forwards;
+        }
+
+        &:last-child {
+          animation: 0.5s 0.5s ease dropDownMenu;
+          animation-fill-mode: forwards;
+        }
 
         button {
           width: 100%;
@@ -41,5 +53,15 @@
         }
       }
     }
+  }
+}
+
+@keyframes dropDownMenu {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
