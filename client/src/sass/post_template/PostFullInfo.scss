@@ -1,4 +1,8 @@
 @import "./src/sass/variables";
+
+.fullPost-header-button {
+    align-self: end;
+}
 .fullPost {
     display: flex;
     flex-direction: column;
@@ -35,14 +39,6 @@
                     color: $textGrey;
                     font-size: $text12;
                 }
-            }
-        }
-
-        .fullPost-header-button {
-            align-self: center;
-            .btn-tmp {
-                font-size: 15px !important;
-                width: 160px;
             }
         }
     }
@@ -92,7 +88,6 @@
         }
     }
     .comments {
-
         .comments-p {
             font-size: $text16;
             color: $textColor;
