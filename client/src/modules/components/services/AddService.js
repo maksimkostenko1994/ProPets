@@ -9,7 +9,6 @@ import * as yup from "yup"
 import Field from "../forms/Field";
 import VetHelpForm from "./add_service/VetHelpForm";
 import {addServiceAction} from "../../../store/service";
-import YandexMap from "../map_box/MapBox"
 
 const AddService = () => {
     const user = useSelector(userSelector);
@@ -173,7 +172,6 @@ const AddService = () => {
                 <>
                     <label htmlFor="place">Place</label>
                     <Field type="text" name="place" error={errors.place}/>
-                    <YandexMap/>
                 </>
                 }
                 {serviceType === "Walking" &&
