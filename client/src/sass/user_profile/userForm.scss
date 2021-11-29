@@ -76,7 +76,8 @@
             }
         }
         .form-item {
-            display: flex;
+            display: grid;
+            grid-template-columns: 60px 1fr;
             align-items: center;
 
             label {
@@ -86,15 +87,9 @@
             }
 
             input {
-                width: 90%;
-                margin-left: 15px;
+                width: 100%;
             }
-            .label-pet {
-                margin-left: 10px;
-            }
-            .label-nick {
-                margin-left: 22px;
-            }
+
             .avatar-container {
                 position: relative;
                 width: 100%;
@@ -109,32 +104,39 @@
                     }
                 }
                 .avatar-hide-input {
-                    width: 94%;
+                    width: 100%;
                 }
             }
         }
         .form-body {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr 100px;
 
             .form-body-items {
-                width: 85%;
+                width: 100%;
+                overflow: hidden;
             }
 
             .form-body-pet-img {
-                align-self: center;
-                width: 15%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
                 .user-pet-avatar {
-                    margin: 0 auto;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
 
                 .user-pet-avatar img {
                     border-radius: 50%;
-                    width: 100%;
+                    width: 75px;
+                    height: 75px;
                 }
                 .user-pet-photo {
-                    width: 65%;
+                    width: 100%;
                     margin: 0 auto;
                     svg {
                         width: 100%;
