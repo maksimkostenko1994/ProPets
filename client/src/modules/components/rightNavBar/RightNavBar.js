@@ -81,7 +81,7 @@ const RightNavBar = () => {
                         <span>Logout</span>
                     </Link>
 
-                    <p
+                    <div
                         className="upBtn"
                         id="upBtn"
                         onClick={(e) => {
@@ -94,7 +94,7 @@ const RightNavBar = () => {
                             <ArrowUp className="arrowUp2" />
                             <ArrowUp className="arrowUp3" />
                         </div>
-                    </p>
+                    </div>
                 </>
             )}
         </div>

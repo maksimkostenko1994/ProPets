@@ -6,7 +6,7 @@ import {resetError, setError} from "./auth";
 import {setCurrentPage, setPagination} from "./pagination";
 
 const initialState = {
-    posts: [],
+    posts: null,
     post: null,
     likes: [],
 };
@@ -38,6 +38,7 @@ export const getPostsAction = (page, limit) => async (dispatch) => {
     dispatch(resetError());
     try {
         const posts = await getPosts(page, limit);
+        console.log(posts)
         dispatch(setPosts(posts));
         dispatch(setPagination({total: posts.count, limit: 2}));
         if (Math.ceil(posts.count / limit) < page) {

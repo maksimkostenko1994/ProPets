@@ -4,18 +4,22 @@
 .add-lost-post-container {
     width: 80%;
     margin: 40px auto;
+
     h2 {
         color: $textColor;
     }
+
     hr {
         border: none;
         height: 1px;
         background-color: lightgray;
         margin-top: 20px;
     }
+
     p {
         color: red;
     }
+
     .btn-tmp p {
         color: white;
     }
@@ -25,45 +29,99 @@
         justify-content: space-between;
         margin-top: 20px;
         @include formControl;
+
         .left {
             width: 65%;
+
             .left-box {
                 display: flex;
                 margin-top: 20px;
+
                 .left-label {
                     width: 25%;
                     text-align: end;
                 }
-                .left-field {
-                    width: 70%;
-                    margin-left: 15px;
-                    input {
-                        width: 100%;
-                        padding-top: 0;
+                .right {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    align-items: center;
+                    .right-up {
+                        width: 200px;
+                        img {
+                            width: 100%;
+                        }
+                    }
+                    .right-down {
+                        width: 200px;
+                        .img-section {
+                            margin-bottom: 20px;
+                            input {
+                                background: none;
+                                padding-right: 50px;
+                            }
+                        }
+                        .right-down-btn {
+                            .btn-1 {
+                                position: absolute;
+                                z-index: 2;
+                                opacity: 0;
+                                padding: 5px 0;
+                                font-size: 1rem;
+                                cursor: pointer;
+                                right: 20px;
+
+                                &:hover ~ .btn-2 {
+                                    background-color: $mainBgColor;
+                                    color: white;
+                                }
+                            }
+                            .btn-2 {
+                                z-index: 1;
+                                text-align: center;
+                                color: $textColor;
+                                background-color: $btnWhite;
+                                border: 1px solid $textColor;
+                                border-radius: 20px;
+                                padding: 8px 0;
+                                font-size: 1rem;
+                                transition: all 0.5s ease;
+                            }
+                        }
                     }
                 }
             }
         }
+
         .right {
+            width: 30%;
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
+            justify-content: inherit;
+
             .right-up {
-                width: 200px;
+                align-self: end;
+                width: 100%;
+
                 img {
                     width: 100%;
                 }
             }
+
             .right-down {
-                width: 200px;
+                width: 100%;
+                position: relative;
+                text-align: end;
+
                 .img-section {
                     margin-bottom: 20px;
+
                     input {
                         background: none;
                         padding-right: 50px;
                     }
                 }
+
                 .right-down-btn {
                     .btn-1 {
                         position: absolute;
@@ -79,6 +137,7 @@
                             color: white;
                         }
                     }
+
                     .btn-2 {
                         z-index: 1;
                         text-align: center;
@@ -94,13 +153,16 @@
             }
         }
     }
+
     .form-contacts {
         margin-top: 30px;
         display: flex;
+
         .contacts-label {
             width: 13%;
-            text-align: end;
+            text-align: right;
         }
+
         .contacts-field,
         .contacts-field-right {
             margin-left: 15px;
@@ -114,20 +176,24 @@
                 margin-right: 20px;
             }
         }
+
         .contacts-field-right {
             margin-left: 15px;
             width: 50%;
         }
     }
+
     .publishBtnSection {
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         margin-top: 40px;
+
         button {
             width: 21%;
         }
     }
 }
+
 @media screen and (max-width: 1240px) {
     .add-lost-post-container {
         h2 {
@@ -138,18 +204,22 @@
     .right .right-down {
         .right-down-btn {
             text-align: center;
+
             .btn-2 {
                 width: 120px;
             }
         }
+
         .img-section {
             text-align: center;
+
             input {
                 padding: 0 !important;
             }
         }
     }
 }
+
 @media screen and (max-width: 970px) {
     .add-lost-post-container {
         h2 {
@@ -182,5 +252,9 @@
 @media screen and (max-width: 780px) {
     .add-lost-post-container .publishBtnSection {
         justify-content: center;
+    }
+
+    .add-lost-post-container .publishBtnSection {
+        justify-content: flex-end;
     }
 }
