@@ -15,7 +15,6 @@ export default function MainPageNav() {
     const {pets} = useSelector(petsSelector)
 
     const [dropState, setDropState] = useState(false)
-    console.log(dropState)
 
     const dropDownHandler = () => {
         setDropState(!dropState)

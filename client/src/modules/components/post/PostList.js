@@ -10,7 +10,7 @@ import {
 import "../../../sass/post_template/PostList.scss";
 
 const PostList = () => {
-    const { currentPage, limit, pages } = useSelector(paginationSelector);
+    const { currentPage, pages } = useSelector(paginationSelector);
     const posts = useSelector(postsSelector);
     const pagesArr = (number) => {
         const res = [];
@@ -20,10 +20,10 @@ const PostList = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getPostsAction(currentPage, limit));
-    }, [dispatch, currentPage, limit]);
+        dispatch(getPostsAction(currentPage, 2));
+    }, [dispatch, currentPage]);
 
-    return posts.length === 0 ? (
+    return !posts ? (
         <h1>No Posts yet</h1>
     ) : (
         <PostsBox>
