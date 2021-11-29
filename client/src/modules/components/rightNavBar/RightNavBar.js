@@ -89,10 +89,9 @@ const RightNavBar = () => {
                             let i = document.documentElement.scrollTop
                             let scrollInterval = setInterval(() => {
                                 document.documentElement.scrollTop = i;
-                                if (i === 0) clearInterval(scrollInterval)
-                                i--
-                            }, 1)
-                            //document.documentElement.scrollTop = 0;
+                                if (i <= 0) clearInterval(scrollInterval)
+                                i-=10
+                            }, 1000 / document.documentElement.scrollTop)
                         }}
                     >
                         <div className="arrows-box">
