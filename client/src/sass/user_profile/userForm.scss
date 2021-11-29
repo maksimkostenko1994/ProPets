@@ -115,6 +115,7 @@
         }
         .form-body {
             display: flex;
+            justify-content: space-between;
 
             .form-body-items {
                 width: 85%;
@@ -147,5 +148,26 @@
         display: flex;
         justify-content: flex-end;
         padding-top: 50px;
+    }
+}
+@media screen and (max-width: 1330px) {
+    #user-form {
+        width: 90%;
+    }
+}
+@media screen and (max-width: 1040px) {
+    #user-form .user-profile-form .form-item-email label {
+        width: 40px;
+        font-size: $text10;
+    }
+    #user-form .user-profile-form .form-item label {
+        font-size: $text10;
+        width: 40px;
+    }
+}
+@media screen and (max-width: 905px) {
+    #user-form h3 {
+        font-size: $text16;
+        text-align: center;
     }
 }
