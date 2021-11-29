@@ -58,7 +58,7 @@ const ServiceFullInfo = () => {
                     </p>
                     <p key={3}>
                         <span>Working hours:</span><br/>
-                        {JSON.parse(currentService.text).workhours}
+                        {JSON.parse(currentService.text).workhours.split('\n').map(item =><span style={{display: "block", fontWeight: 200}} key={item}>{item}</span>)}
                     </p>
                 </>
             }
@@ -81,7 +81,7 @@ const ServiceFullInfo = () => {
                         {currentService.location && currentService.location}
                         {` | ${JSON.parse(currentService.contacts).address} | 
                         ${JSON.parse(currentService.contacts).email}
-                        ${JSON.parse(currentService.contacts).userPhone !=="null" ? ` | ${JSON.parse(currentService.contacts).userPhone}` : ''}`}
+                        ${JSON.parse(currentService.contacts).userPhone !== "null" ? ` | ${JSON.parse(currentService.contacts).userPhone}` : ''}`}
                     </>
                 }
             </p>
