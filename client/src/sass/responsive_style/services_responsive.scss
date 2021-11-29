@@ -26,6 +26,21 @@
 
     .service-card {
       grid-template-columns: 250px 250px;
+
+      .service-card-info .service-card-content {
+        a {
+          font-size: 12px;
+        }
+
+        h2 {
+          font-size: 14px;
+        }
+
+        p {
+          font-size: 10px;
+        }
+
+      }
     }
   }
 }
@@ -45,8 +60,13 @@
 }
 
 @media screen and (max-width: 600px) {
+
   .service-list {
     width: 300px;
+
+    .service-title {
+      font-size: 15px;
+    }
 
     .service-card {
       grid-template-columns: 150px 150px;
@@ -66,10 +86,6 @@
 
   .service-list {
     width: 270px;
-
-    .service-title {
-      font-size: 16px;
-    }
 
     .service-card {
       grid-template-columns: 270px;
