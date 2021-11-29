@@ -22,6 +22,7 @@ const PostList = () => {
     useEffect(() => {
         dispatch(getPostsAction(currentPage, limit));
     }, [dispatch, currentPage, limit]);
+    console.log(posts);
 
     return posts.length === 0 ? (
         <h1>No Posts yet</h1>

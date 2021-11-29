@@ -45,21 +45,18 @@
             }
         }
         .right {
-            width: 30%;
             display: flex;
             flex-direction: column;
-            justify-content: inherit;
+            justify-content: space-around;
+            align-items: center;
             .right-up {
-                align-self: end;
-                width: 100%;
+                width: 200px;
                 img {
                     width: 100%;
                 }
             }
             .right-down {
-                width: 100%;
-                position: relative;
-                text-align: end;
+                width: 200px;
                 .img-section {
                     margin-bottom: 20px;
                     input {
@@ -154,25 +151,36 @@
     }
 }
 @media screen and (max-width: 970px) {
-    .add-lost-post-container h2 {
-        font-size: $text14;
-    }
-    .form-container {
-        position: relative;
+    .add-lost-post-container {
+        h2 {
+            font-size: $text14;
+        }
+
         label {
             font-size: 13px;
         }
         .lost-form-body {
+            flex-direction: column;
             .right .right-up {
                 display: none !important;
             }
             .right {
-                position: absolute;
-                bottom: 0px;
+                align-items: flex-start;
             }
         }
+        .publishBtnSection {
+            justify-content: flex-end;
+        }
+        .lost-form-body .right .right-down .right-down-btn .btn-1 {
+            left: 110px;
+        }
+        .lost-form-body .right .right-down .right-down-btn .btn-2 {
+            padding: 4px;
+        }
     }
+}
+@media screen and (max-width: 780px) {
     .add-lost-post-container .publishBtnSection {
-        justify-content: end;
+        justify-content: center;
     }
 }
