@@ -8,7 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { userSelector } from "../../../store/app";
 import { set, useForm } from "react-cool-form";
 import { addFoundPetAction } from "../../../store/pet";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
+import TextArea from "../forms/TextArea";
 
 const AddFoundPet = () => {
     const [file, loadFile] = useState(null);
@@ -37,7 +38,6 @@ const AddFoundPet = () => {
         try {
             await schema.validate(values, { abortEarly: false });
         } catch (yupError) {
-            console.log(yupError);
             yupError.inner.forEach(({ path, message }) =>
                 set(errors, path, message)
             );
@@ -87,7 +87,7 @@ const AddFoundPet = () => {
             <form ref={form} noValidate>
                 <div className="found-container">
                     <div className="found-add-left">
-                        <div>
+                        <div className="found-add-items">
                             <label htmlFor="type">Type:</label>
                             <select name="type" error={errors.type}>
                                 <option value="Dog">Dog</option>
@@ -98,7 +98,7 @@ const AddFoundPet = () => {
                                 <option value="Mammal">Mammal</option>
                             </select>
                         </div>
-                        <div>
+                        <div className="found-add-items">
                             <label htmlFor="sex">Sex:</label>
                             <select name="sex" error={errors.sex}>
                                 <option value="Male">Male</option>
@@ -106,7 +106,7 @@ const AddFoundPet = () => {
                                 <option value="Neutral">Neutral</option>
                             </select>
                         </div>
-                        <div>
+                        <div className="found-add-items">
                             <label htmlFor="breed">Breed:</label>
                             <Field
                                 type="text"
@@ -115,7 +115,7 @@ const AddFoundPet = () => {
                                 error={errors.breed}
                             />
                         </div>
-                        <div>
+                        <div className="found-add-items">
                             <label htmlFor="color">Color:</label>
                             <Field
                                 type="text"
@@ -124,7 +124,7 @@ const AddFoundPet = () => {
                                 error={errors.color}
                             />
                         </div>
-                        <div>
+                        <div className="found-add-items">
                             <label htmlFor="height">Height:</label>
                             <select name="height" error={errors.height}>
                                 <option value="20cm-35cm">20cm - 35cm</option>
@@ -132,33 +132,33 @@ const AddFoundPet = () => {
                                 <option value="75cm-115cm">75cm - 115cm</option>
                             </select>
                         </div>
-                        <div>
+                        <div className="found-add-items">
                             <label htmlFor="features">
                                 Distinctive <br /> features:
                                 <br />
                                 <span>up to 60 char</span>
                             </label>
-                            <textarea
+                            <TextArea
                                 name="features"
                                 placeholder="Type features"
                                 error={errors.features}
                             />
                         </div>
-                        <div>
+                        <div className="found-add-items">
                             <label htmlFor="description">
                                 Description:
                                 <br />
                                 <span>up to 150 char</span>
                             </label>
-                            <textarea
+                            <TextArea
                                 name="description"
                                 placeholder="Type description"
                                 error={errors.description}
                             />
                         </div>
-                        <div>
+                        <div className="found-add-items">
                             <label htmlFor="location">Location: </label>
-                            <textarea
+                            <TextArea
                                 name="location"
                                 placeholder="Type location"
                                 error={errors.location}

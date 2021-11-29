@@ -1,0 +1,43 @@
+@media screen and (max-width: 680px) {
+  .navMainPage .navContainer {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .nav-bar-drop-down {
+    color: #1a9399;
+    position: relative;
+
+    .drop-down-visible {
+      display: flex;
+      align-items: center;
+      height: 30px;
+      justify-content: flex-start;
+      padding-left: 12px;
+      width: 155px;
+
+      svg {
+        margin-right: 18px;
+      }
+    }
+
+    .drop-down-hidden {
+      position: absolute;
+      right: 0;
+
+      a {
+        display: block;
+        width: 155px;
+
+        button {
+          width: 100%;
+          border-radius: 0;
+          background-color: #fff;
+          color: #1a9399 !important;
+        }
+      }
+    }
+  }
+}

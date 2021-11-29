@@ -1,12 +1,10 @@
-
 import Error from "../error/Error";
 
-const TextArea = ({ error, ...rest }) => {
+const TextArea = ({error, ...rest}) => {
     return (
         <>
             <textarea {...rest} />
-            <br />
-            {error && <Error text={error} />}
+            {error && <Error text={error}/>}
         </>
     );
 };

@@ -1,10 +1,10 @@
 import Error from "../error/Error";
 
-const Field = ({ error, ...rest }) => {
+const Field = ({error, ...rest}) => {
     return (
         <>
             <input {...rest} />
-            {error && <Error text={error} />}
+            {error && <Error text={error}/>}
         </>
     );
 };

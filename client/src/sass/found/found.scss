@@ -28,11 +28,25 @@
         margin-right: 20px;
         flex-grow: 2;
 
-        div {
+        .found-add-items {
           display: grid;
-          grid-template-columns: 0.5fr 2fr;
+          grid-template-columns: 75px 2fr;
           align-items: center;
           margin-bottom: 10px;
+
+          div {
+            grid-column-start: 2;
+
+            p {
+              color: red;
+              font-size: 10px;
+              margin-top: 3px;
+
+              &:first-letter {
+                text-transform: uppercase;
+              }
+            }
+          }
 
           label {
             justify-self: end;
@@ -116,7 +130,7 @@
             padding-bottom: 5px;
 
             &:disabled {
-              background:none;
+              background: none;
               color: lightgray;
             }
 
