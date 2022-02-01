@@ -9,7 +9,7 @@ const VetHelpCard = ({ service }) => {
         <li className="service-card">
             <div className="service-card-img">
                 <img
-                    src={`http://localhost:5000/${service.photo}`}
+                    src={`https://pro-pets-server.herokuapp.com/${service.photo}`}
                     alt="service fostering"
                 />
             </div>

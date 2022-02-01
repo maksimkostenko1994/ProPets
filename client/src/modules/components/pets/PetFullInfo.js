@@ -57,7 +57,7 @@ const PetFullInfo = () => {
                 <div className="lfi-body">
                     <div className="lfi-body-left">
                         <img
-                            src={`http://localhost:5000/${currentPet.image}`}
+                            src={`https://pro-pets-server.herokuapp.com/${currentPet.image}`}
                             alt="imgPhoto"
                         />
                     </div>

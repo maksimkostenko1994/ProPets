@@ -8,7 +8,7 @@ const HotelCard = ({service}) => {
     return (
         <li className="service-card">
             <div className="service-card-img">
-                <img src={`http://localhost:5000/${service.photo}`} alt="service fostering"/>
+                <img src={`https://pro-pets-server.herokuapp.com/${service.photo}`} alt="service fostering"/>
             </div>
             <div className="service-card-info">
                 <div className="service-card-content">

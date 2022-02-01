@@ -53,7 +53,7 @@ const RightNavBar = () => {
                                 {user.avatar ? (
                                     <div className="user-avatar">
                                         <img
-                                            src={`http://localhost:5000/${user.avatar}`}
+                                            src={`https://pro-pets-server.herokuapp.com/${user.avatar}`}
                                             alt="avatar"
                                         />
                                     </div>

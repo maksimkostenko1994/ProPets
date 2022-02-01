@@ -8,13 +8,13 @@ const FosteringCard = ({service}) => {
     return (
         <li className="service-card">
             <div className="service-card-img">
-                <img src={`http://localhost:5000/${service.photo}`} alt="service fostering"/>
+                <img src={`https://pro-pets-server.herokuapp.com/${service.photo}`} alt="service fostering"/>
             </div>
             <div className="service-card-info">
                 <Link to={"/profile"} className="service-card-profile">
                     {service.avatar ? (
                         <div className="user-avatar">
-                            <img src={`http://localhost:5000/${service.avatar}`} alt="avatar"/>
+                            <img src={`https://pro-pets-server.herokuapp.com/${service.avatar}`} alt="avatar"/>
                         </div>
                     ) : (
                         <div className="user-avatar">

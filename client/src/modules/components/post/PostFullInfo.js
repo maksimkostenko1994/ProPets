@@ -91,7 +91,7 @@ const PostFullInfo = () => {
                             {post.avatar ? (
                                 <div className="fullPost-header-img">
                                     <img
-                                        src={`http://localhost:5000/${post.avatar}`}
+                                        src={`https://pro-pets-server.herokuapp.com/${post.avatar}`}
                                         alt="user-avatar"
                                     />
                                 </div>
@@ -109,7 +109,7 @@ const PostFullInfo = () => {
                     <div className="fullPost-body">
                         <img
                             className="fullPost-img"
-                            src={`http://localhost:5000/${post.photo}`}
+                            src={`https://pro-pets-server.herokuapp.com/${post.photo}`}
                             alt="dog"
                         />
                     </div>

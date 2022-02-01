@@ -32,7 +32,7 @@ const ServiceFullInfo = () => {
             <div className="service-user-info">
                 {currentService.user.avatar ? (
                     <div className="user-avatar">
-                        <img src={`http://localhost:5000/${currentService.user.avatar}`} alt="avatar"/>
+                        <img src={`https://pro-pets-server.herokuapp.com/${currentService.user.avatar}`} alt="avatar"/>
                     </div>
                 ) : (
                     <div className="user-avatar">
@@ -45,7 +45,7 @@ const ServiceFullInfo = () => {
                 </div>
             </div>}
             <div className="service-full-img">
-                <img src={`http://localhost:5000/${currentService.photo}`} alt="service"/>
+                <img src={`https://pro-pets-server.herokuapp.com/${currentService.photo}`} alt="service"/>
             </div>
             <h2>{currentService.title}</h2>
             <div className="service-full-text">{currentService.text[0] !== "{" ? currentService.text :

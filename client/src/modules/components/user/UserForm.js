@@ -94,7 +94,7 @@ const UserForm = () => {
                     {user.avatar ? (
                         <div className="user-form-avatar">
                             <img
-                                src={`http://localhost:5000/${user.avatar}`}
+                                src={`https://pro-pets-server.herokuapp.com/${user.avatar}`}
                                 alt="avatar"
                             />
                         </div>
@@ -189,7 +189,7 @@ const UserForm = () => {
                                 {user.pet_photo ? (
                                     <div className="user-pet-avatar">
                                         <img
-                                            src={`http://localhost:5000/${user.pet_photo}`}
+                                            src={`https://pro-pets-server.herokuapp.com/${user.pet_photo}`}
                                             alt="pet-icon"
                                         />
                                     </div>

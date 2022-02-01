@@ -15,7 +15,7 @@ const Post = ({ post }) => {
                 {post.avatar ? (
                     <div className="post-header-img">
                         <img
-                            src={`http://localhost:5000/${post.avatar}`}
+                            src={`https://pro-pets-server.herokuapp.com/${post.avatar}`}
                             alt="user-avatar"
                         />
                     </div>
@@ -33,7 +33,7 @@ const Post = ({ post }) => {
             <div className="post-body">
                 <img
                     className="post-img"
-                    src={`http://localhost:5000/${post.photo}`}
+                    src={`https://pro-pets-server.herokuapp.com/${post.photo}`}
                     alt="dog"
                 />
             </div>

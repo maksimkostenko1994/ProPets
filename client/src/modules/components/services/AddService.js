@@ -188,7 +188,7 @@ const AddService = () => {
                 <div>
                     <div className="user-data-service">
                         {user && user.avatar ? (
-                            <img src={`http://localhost:5000/${user.avatar}`} alt="avatar"/>
+                            <img src={`https://pro-pets-server.herokuapp.com/${user.avatar}`} alt="avatar"/>
                         ) : (
                             <div className="user-avatar">
                                 <FontAwesomeIcon size="2x" icon={faUser}/>

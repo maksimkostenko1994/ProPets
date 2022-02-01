@@ -100,7 +100,7 @@ const AddPost = () => {
                             {user && user.avatar ? (
                                 <div className="add-post-user-avatar">
                                     <img
-                                        src={`http://localhost:5000/${user.avatar}`}
+                                        src={`https://pro-pets-server.herokuapp.com/${user.avatar}`}
                                         alt="avatar"
                                     />
                                 </div>

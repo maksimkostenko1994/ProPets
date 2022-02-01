@@ -23,7 +23,7 @@ const PetItem = ({ pet, index }) => {
             </div>
             <div className="lost-body">
                 <img
-                    src={`http://localhost:5000/${pet.image}`}
+                    src={`https://pro-pets-server.herokuapp.com/${pet.image}`}
                     alt="pet-icon"
                 />
             </div>

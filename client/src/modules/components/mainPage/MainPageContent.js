@@ -3,7 +3,7 @@ import mainImg from './img/Image2.png'
 import MainPageLostBtn from './MainPageLostBtn'
 import MainPageFoundBtn from './MainPageFoundBtn'
 import {Link} from "react-router-dom";
-import DogAndBird from "../../../assets/img/dogCatBirdBig.png"
+import DogAndBird from "./../../../assets/img/dogCatBirdBig.png"
 import Logo from "../logo/Logo";
 
 export default function MainPageContent() {
