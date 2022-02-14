@@ -6,7 +6,7 @@ import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import store from "./store/store";
 
-console.log("test webhook")
+console.log("new tests")
 
 ReactDOM.render(
     <React.StrictMode>
